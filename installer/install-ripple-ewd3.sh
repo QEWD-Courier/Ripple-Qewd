@@ -77,7 +77,7 @@ sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-po
 
 echo "----------------------------------------------------------------------------------"
 echo " The set up of the EWD 3 Ripple Middle Tier on your Ubuntu server is now complete!"
-echo "  Start it up using:
-echo "    cd ~/ewd3
-echo "    node start-rippleosi-ewd3
+echo "  Start it up using:                                                              "
+echo "    cd ~/ewd3                                                                     "
+echo "    node start-rippleosi-ewd3                                                     "
 echo "----------------------------------------------------------------------------------"
