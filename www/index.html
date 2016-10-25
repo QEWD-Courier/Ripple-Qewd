@@ -1,0 +1,59 @@
+<!doctype html><!--
+  ~  Copyright 2015 Ripple OSI
+  ~
+  ~      Licensed under the Apache License, Version 2.0 (the "License");
+  ~      you may not use this file except in compliance with the License.
+  ~      You may obtain a copy of the License at
+  ~
+  ~          http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~      Unless required by applicable law or agreed to in writing, software
+  ~      distributed under the License is distributed on an "AS IS" BASIS,
+  ~      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~      See the License for the specific language governing permissions and
+  ~      limitations under the License.
+  ~
+  --> <html class="no-js"> <head> <meta charset="utf-8"> <title>IDCR POC</title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.397f98fb.css"> <link rel="stylesheet" href="styles/main.4f5302d2.css"> <link rel="stylesheet" href="styles/heroweb/hero-demo.f6be30a3.css"> <link rel="stylesheet" href="styles/foundation-icons//foundation-icons.3e02aaec.css"> <link rel="icon" type="img/ico" href="images/favicon.ico"> <script src="scripts/vendor.db52cbf3.js"></script> <!--[if lt IE 9]>
+  <script src="scripts/oldieshim.a4a80e32.js"></script>
+  <![endif]--> <script src="scripts/scripts.6f24b768.js"></script>  
+
+      <script src="/ewd-client.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+
+<body ng-app="ripple-ui" ng-cloak ng-controller="headerController"> 
+
+
+     <script>
+       angular.element(document).ready(function() {
+         // Angular is ready - now initialise EWD.js
+
+         EWD.on('ewd-registered', function() {
+           // add EWD session token to cookie so it gets sent with every REST request
+           EWD.log = true;
+           EWD.setCookie();
+           EWD.send({
+             type: 'authenticate'
+           });
+         });
+
+         EWD.start('ewd-ripple', null, io);
+       });
+
+     </script>
+
+<!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--> <!-- Add your site or application content here --> <!-- Header --> <div class="row header-background hidden-xs"> <div class="col-sm-4 header-left"> <div class="glyphs g"> <p class="header-title-1" ng-if="title"><img alt="Ripple Icon" class="header-icon" ng-click="goHome()"> {{title}}</p> </div> </div> <div class="col-md-5 col-sm-8 hidden-xs header-search ng-cloak" ng-cloak ng-class="{'searchBarHidden' : !searchBarEnabled }"> <div class="header-search-inner"> <div class="search-left-inner-addon"> <div ng-show="searchMode" class="ng-cloak" ng-cloak> <span ng-cloak ng-show="searchMode" class="label ng-cloak report-label"> <div ng-if="reportMode">Reports&nbsp;</div> <div ng-if="settingsMode">Setting&nbsp;</div> <div ng-if="patientMode">Patients&nbsp;</div> <i ng-show="searchMode" ng-click="cancelSearchMode()" class="fa fa-times"></i></span> </div> <div ng-show="reportTypeSet" class="ng-cloak" ng-cloak> <span ng-cloak ng-show="reportTypeSet" class="label ng-cloak reportType-label"> <div ng-if="reportTypeSet" class="reportTypeSet"> {{reportTypeString}}&nbsp; <i ng-show="reportTypeSet" ng-click="cancelReportType()" class="fa cancel-reportType fa-times"></i> </div> </span> </div> <div></div> <input key-bind="{ enter: 'searchFunction()', esc: 'cancelSearchMode()' }" class="form-control" placeholder="Search..." type="text" typeahead="report for report in reportTypes | filter:$viewValue" ng-model="searchExpression" ng-keyup="checkExpression()" ng-trim="false" ng-class="{'moveRight': searchMode && !reportTypeSet, 'moveFurtherRight': searchMode && reportTypeSet}" focus-element="searchFocused"> </div> <i ng-show="searchExpression !== '' || searchMode" ng-click="cancelSearchMode()" class="clearAll fa fa-times-circle"></i> <button class="btn btn-info searchButton" ng-click="searchFunction();"><i class="fa fa-search"></i><span class="hidden-xs hidden-sm hidden-md"> Search</span></button> </div> <div class="advanced-search-text pull-right"> <a ng-click="openAdvancedSearch()">Advanced search</a> </div> </div> <div class="col-md-3 col-sm-12 header-right"> <!-- User Profile --> <div class="collapse navbar-collapse"> <ul class="nav navbar-nav navbar-right"> <li class="dropdown-profile"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> <span class="header-title-3">Demonstration</span> <span class="glyphicon glyphicon-chevron-down"></span> </a> <ul class="dropdown-menu"> <li> <div class="navbar-login"> <div class="row"> <div class="col-md-4 col-sm-4"> <div class="user-profile-image"><i class="glyphicon glyphicon-user"></i></div> </div> <div class="col-md-8 col-sm-8"> <p class="dropdown-profile-text"><b>{{currentUser.firstName}} {{currentUser.surname}}</b></p> <p class="dropdown-profile-text"><b>{{currentUser.role}}</b></p> <p class="dropdown-profile-text"> {{currentUser.email}} </p> <p class="dropdown-profile-text">10/05/1984</p> </div> </div> </div> </li> <li class="divider"></li> <li> <div class="navbar-login navbar-login-session"> <div class="row"> <div class="col-lg-12"> <p> <a class="btn btn-danger btn-block" ng-click="logout()">Sign Out</a> </p> </div> </div> </div> </li> </ul> </li> </ul> </div> <!-- /.User Profile --> </div> </div> <!-- /.Header --> <!-- New Mobile Navbar --> <nav class="navbar navbar-default header-nav visible-xs"> <div class="container-fluid"> <div class="navbar-header"> <a ng-if="title" class="navbar-brand" ng-click="goHome()"><img class="header-icon nav-logo" alt="{{title}}"> {{title}}</a> <ul class="nav nav-tabs pull-right" role="tablist"> <li ng-class="activeNavTab('notifications')"><a ng-click="changeNavTab('notifications')"> <i class="fa fa-bell-o"><span class="count">2</span></i></a> </li> <li ng-class="activeNavTab('user')"><a ng-click="changeNavTab('user')"> <i class="fa fa-user"></i></a> </li> <li ng-class="activeNavTab('search')"><a ng-click="changeNavTab('search')"> <i class="fa fa-search"></i></a> </li> </ul> </div> <!-- Tab panes --> <div class="tab-content" ng-switch="currentNavTab"> <!-- Notification --> <div ng-switch-when="notifications" class="pane row" id="tab-notifications"> <div class="notifications-header"> Notifications (2) </div> <div class="notifications-body"> <ul> <li> <div class="notification-info">Information from Liquid Logic (Social Care) is currently unavailable.</div> <div class="notification-time">5 minutes ago</div> </li> <li> <div class="notification-info">Information from Liquid Logic (Social Care) is currently unavailable.</div> <div class="notification-time">5 minutes ago</div> </li> </ul> </div> </div> <!-- /.Notification --> <!-- User Profile --> <div ng-switch-when="user" class="pane row" id="tab-user"> <div class="col-xs-12"> <div class="user-type superuser">Super User</div> <!--<div class="user-type clinician">Clinician</div>--> <!--<div class="user-type patient">Patient</div>--> <div class="user-profile-image"><i class="fa fa-user"></i></div> <p><strong>User Name:</strong> {{currentUser.role}}</p> <p>{{currentUser.email}}</p> <p>10/05/2099</p> </div> <div class="col-xs-12 options"> <ul> <li><a href="" class="btn">Settings</a></li> <li><a href="" class="btn">Admin Console</a></li> </ul> <ul> <li><a href="https://ripple-identity-uat.answerappcloud.com/signout" class="signout btn">SIGN OUT <i class="fa fa-sign-out"></i></a></li> </ul> </div> </div> <!-- /.User Profile --> <!-- Mobile Nav Search --> <div ng-switch-when="search" class="pane row" id="tab-search"> <div id="mobile-nav-search"> <div class="col-xs-12 header-search-mobile"> <button class="btn btn-info" ng-click="searchFunction();"><i class="fa fa-search"></i></button> <div class="search-left-inner-addon"> <div ng-show="reportMode" class="ng-cloak" ng-cloak><span ng-cloak ng-show="reportMode" class="label ng-cloak report-label">Reports&nbsp;<i ng-show="reportMode" ng-click="cancelSearchMode()" class="fa fa-times"></i></span></div> <div><i ng-show="searchExpression !== '' || reportMode" ng-click="cancelReportMode()" class="clearAll fa fa-times-circle"></i></div> <input class="form-control" placeholder="Search..." type="text" typeahead="report for report in reportTypes | filter:$viewValue" ng-model="searchExpression" ng-keyup="checkExpression()" ng-trim="false" ng-class="{moveRight: reportMode}"> </div> </div> </div> </div> <!-- /.Mobile Nav Search --> </div> <!-- /.Tab panes --> </div><!-- /.container-fluid --> </nav> <!-- /.New Mobile Navbar --> <!-- Header toolbar --> <div class="row header-toolbar hidden-xs"> <div class="col-sm-5 previousGroup"> <span class="glyphicon glyphicon-arrow-left previous-page-arrow" ng-if="previousPage && currentUser.role=='idcr'" ng-click="goBack()"></span> <span class="previous-page-title" ng-if="previousPage && currentUser.role=='idcr'">Back</span> </div> <div class="col-sm-6"> <span class="current-page-title">{{pageHeader}}</span> </div> </div> <!-- /.Header toolbar --> <!-- Header toolbar mobile --> <div class="row header-toolbar visible-xs"> <div class="col-xs-2"> <div class="innner"> <span class="glyphicon glyphicon-arrow-left previous-page-arrow" ng-if="previousPage && currentUser.role=='idcr'" ng-click="goBack()"></span> </div> </div> <div class="col-xs-8 current-page-title-mobile"> <div class="inner"> <span>{{pageHeader}}</span> </div> </div> <div class="col-xs-2 text-right"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-nav" aria-expanded="false" ng-if="(userContextViewExists)"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> </div> </div> <div class="visible-xs mobile-sidebar navbar-default"> <div class="collapse navbar-collapse sidebar" id="sidebar-nav"> <ul side-menu class="nav" ui-view="actions"></ul> </div> </div> <!-- /.Header toolbar mobile--> <!-- Sidebar--> <div class="wrapper navbar-default sidebar hidden-xs" role="navigation"> <div class="sidebar-nav navbar-collapse"> <ul side-menu class="nav" ui-view="actions"></ul> </div> </div> <!-- /.Sidebar--> <!-- /page-wrapper --> <div ng-class="actionsExists ? 'page-wrapper' : 'page-wrapper-off'"> <div class="section-north" ui-view="user-context" ng-if="(userContextViewExists)"></div> <div class="section section-content"> <div class="row"> <div class="col-md-{{mainWidth}} col-left"> <div class="section-main" ui-view="main"></div> </div> <div class="col-md-{{detailWidth}} col-right"> <div class="section-detail" ui-view="detail"></div> </div> </div> </div> </div> <!-- /.#page-wrapper --> <!-- /.#page-wrapper --> <div class="notifications" growl-notifications></div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>(function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');</script>  <footer> <div class="row footer-background"> <div class="footer-left"> <p class="footer-title-1">{{footer}}</p> </div> <div class="footer-right"> <p class="footer-title-1">Powered By <img src="images/ripple-icon.f1800171.png" alt="Ripple Icon" class="footer-icon"></p><p class="footer-title-2"> Ripple</p> </div> </div> </footer> 

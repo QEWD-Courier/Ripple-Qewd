@@ -1,10 +1,16 @@
 {
   "name": "ewd-ripple",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "EWD 3/ ewd-xpress Middle Tier for Ripple OSI",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "request": "",
+    "moment-timezone": "",
+    "route-parser": "",
+    "mysql": ""
   },
   "repository": {
     "type": "git",

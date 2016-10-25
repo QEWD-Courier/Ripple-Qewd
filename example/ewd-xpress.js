@@ -24,55 +24,47 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  16 May 2016
+  17 October 2016
 
 */
 
+var ewdXpress = require('ewd-xpress').master;
 
 var config = {
   managementPassword: 'keepThisSecret!',
-  serverName: 'New EWD Server',
+  serverName: 'RippleOSI EWD3 Server',
   port: 3000,
   poolSize: 2,
-  webServerRootPath: '/opt/tomcat/ripple',
+  //webServerRootPath: '/opt/tomcat/ripple',
   database: {
     type: 'gtm'
   },
-  moduleMap: {
-    api: 'ewd-ripple'
+  lockSession: false,
+  /*
+  resilientMode: {
+    keepPeriod: 600 // just keep the last 10 minutes
+  }
+  */
+};
+
+var routes = [
+  {
+    path: '/api',
+    module: 'ewd-ripple'
+  }
+];
+
+var q = ewdXpress.start(config, routes);
+
+var pasConfig = {
+  openEHR: {
+    pasModule: 'mysqlPAS',
+    summaryHeadings: ['allergies', 'problems', 'medications', 'contacts', {name: 'transfers', value: true}]
   }
 };
 
-var ewdXpress = require('ewd-xpress').master;
-var xp = ewdXpress.intercept();
-
-var bodyParser = require('body-parser');
-xp.app.use(bodyParser.json());
-
-xp.app.use('/api', xp.qx.router());
-
-/*
-  Optiional - add custom Express middleware, eg:
-
-  var xp = ewdXpress.intercept();
-  xp.app.use('/api', xp.router());
+var pas = process.argv[2] || 'openEHR' 
+q.userDefined['rippleUser'] = pasConfig[pas];
 
 
-  xp.app.get('/testx', function(req, res) {
-    console.log('*** /testx query: ' + JSON.stringify(req.query));
-    res.send({
-      hello: 'world',
-      query: JSON.stringify(req.query)
-    });
-    // or use ewd-qoper8-express handler
-    //xp.qx.handleMessage(req, res);
-  });
-*/
 
-xp.q.on('started', function() {
-  if (!this.userDefined) this.userDefined = {
-    pasModule: 'mysqlPAS'
-  };
-});
-
-ewdXpress.start(config);
