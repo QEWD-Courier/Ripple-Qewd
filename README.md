@@ -5,6 +5,10 @@ Email: <code.custodian@rippleosi.org>
 
 Author: Rob Tweed, M/Gateway Developments Ltd (@rtweed)
 
+## Introduction
+
+rippleosi-ewd3 is a Node.js-based Middle Tier for the Ripple OSI 
+project.
 
 ## Installing
 
@@ -17,29 +21,22 @@ Author: Rob Tweed, M/Gateway Developments Ltd (@rtweed)
 1) Assumptions
 
   The EWD 3 Middle Tier for RippleOSI is designed to run on a Linux
-  platform (eg Ubuntu 16.04).  The Open Source GT.M database is
-  used as a high-performance embedded cache and session store.  InterSystems
-  Cache could be used as an alternative.
+  platform (eg Ubuntu 16.04).  The embedded Open Source GT.M database is
+  used as a high-performance cache and session store.
 
-  It is also assumed that the RippleOSI environment has already been installed.
-  See https://github.com/RippleOSI/Org-Ripple-DevOps/wiki for details.
 
- 2) Install the GT.M database, NodeM, Node.js and EWD 3
-
-   This can be done in one go using the EWD 3 installer script for GT.M:
+ 2) Install the EWD 3 Node.js-based Run-time Environment
 
        cd ~
        sudo apt-get -y install git
        git clone https://github.com/robtweed/ewd-3-installers
        source ewd-3-installers/ewd-xpress/install_gtm.sh
 
-   If you already have any of the constituent components already installed, edit
-   the install_gtm.sh file appropriately before running it.
+  The installer will create a new directory: ~/ewd3
+  The EWD 3 run-time environment is created under this directory.
 
-   The installer will create a new directory: ~/ewd3
-   The EWD 3 run-time environment is created under this directory.
-
-3) Now use this installer to create the Ripple environment:
+3) Now use this installer to create the EWD 3 Node.js-based Ripple 
+ Middle Tier and UI:
 
       cd ~
       wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-NodeJS-EWD3/master/installer/install-ripple-ewd3.sh
