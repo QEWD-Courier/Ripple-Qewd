@@ -1,6 +1,6 @@
 {
   "name": "ewd-ripple",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "EWD 3/ ewd-xpress Middle Tier for Ripple OSI",
   "main": "index.js",
   "scripts": {
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/robtweed/ewd-ripple.git"
+    "url": "https://github.com/RippleOSI/Org-Ripple-NodeJS-EWD3"
   },
   "author": "Rob Tweed, M/Gateway Developments Ltd",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/robtweed/ewd-ripple/issues"
+    "url": "https://github.com/RippleOSI/Org-Ripple-NodeJS-EWD3/issues"
   },
-  "homepage": "https://github.com/robtweed/ewd-ripple#readme"
+  "homepage": "https://github.com/RippleOSI/Org-Ripple-NodeJS-EWD3#readme"
 }
