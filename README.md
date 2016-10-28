@@ -28,9 +28,8 @@ project.
  2) Install the EWD 3 Node.js-based Run-time Environment
 
        cd ~
-       sudo apt-get -y install git
-       git clone https://github.com/robtweed/ewd-3-installers
-       source ewd-3-installers/ewd-xpress/install_gtm.sh
+       wget https://raw.githubusercontent.com/robtweed/ewd-3-installers/master/ewd-xpress/install_gtm.sh
+       source install_gtm.sh
 
   The installer will create a new directory: ~/ewd3
   The EWD 3 run-time environment is created under this directory.
