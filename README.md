@@ -95,7 +95,7 @@ The EWD 3 run-time environment is created under this directory.
 
 As an interim measure, two small changes must be made to the index.html and index.js files used by the RippleOSI UI:
 
-1) Edit /opt/tomcat/ripple/index.html - edit the &lt;/head> tag and insert the following tags before it:
+1) Edit /opt/tomcat/ripple/index.html - find the &lt;/head> tag and insert the following tags before it:
 
       <script src="/ewd-client.js"></script>
       <script src="/socket.io/socket.io.js"></script>
