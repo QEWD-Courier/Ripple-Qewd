@@ -24,60 +24,67 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
- 21 September 2016
+18 October 2016
 
 */
 
-var pas;
+var mpv = require('./mpv'); // Multiple Patient View
+var spv = require('./spv'); // Single Patient View
+var router = require('../router');
+var authenticate = require('../sessions/authenticate');
+
+  /*
+
+    /api/patients                                         -> mpv.getPatients()
+    /api/patients/{{patientId}}                           -> spv.getPatientSummary(patientId)                   -> patientSummary.js
+    /api/patients/{{patientId}}/{{heading}}               -> spv.getHeadingTable(patientId, heading)            -> patientHeadingTable.js
+    /api/patients/{{patientId}}/{{heading}}/{{sourceId}}  -> spv.getHeadingDetail(patientId, heading, sourceId) -> patientHeadingDetail.js
+
+  */
+
+var routes = [
+  {
+    url: '/api/patients/:patientId/:heading/:sourceId',
+    method: spv.getHeadingDetail
+  },
+  {
+    url: '/api/patients/:patientId/:heading',
+    method: spv.getHeadingTable
+  },
+  {
+    url: '/api/patients/:patientId',
+    method: spv.getPatientSummary
+  },
+  {
+    url: '/api/patients',
+    method: mpv.getPatients
+  }
+];
+
+routes = router.initialise(routes);
+
+function patients(messageObj, finished) {
+
+  var status = authenticate.call(this, messageObj);
+  if (status.error) {
+    finished(status);
+    return;
+  }
+
+  router.process.call(this, messageObj, status.session, routes, function(results) {
+    if (results.error) {
+      finished(results);
+    }
+    else {
+      finished(results);
+    }
+  });
+}
 
 module.exports = {
-
-  init: function() {
-    console.log('pasModule: ' + this.userDefined.rippleUser.pasModule);
-    pas = require('../' + this.userDefined.rippleUser.pasModule);
-    if (pas.init) pas.init.call(this);
+  init: function() {  
+    mpv.init.call(this);
+    spv.init.call(this);
   },
-
-  getPatients: function(args, callback) {
-    var session = args.session;
-    var patientCache = session.data.$('patients');
-    //var patientCache = new this.documentStore.DocumentNode('ripplePatients');
-
-    // Have we already fetched the patients from the PAS and cached them?
-
-    if (patientCache.exists) {
-      var patients = [];
-      patientCache.forEachChild(function(no, patient) {
-        var record = patient.getDocument();
-        if (!record.nhsNumber) {
-          // something wrong with the cache - need to clear it up...
-          patientCache.delete();
-          return true; // abort the forEach loop and let it drop through to build the cache again
-        }
-
-        //console.log('**** record for ' + no + ' = ' + JSON.stringify(record));
-        //console.log('********************************');
-        delete record.domains;
-        delete record.domainIndex;
-        record.nhsNumber = record.nhsNumber.toString();
-        record.id = record.id.toString();
-        if (record.pasNo) record.pasNo = record.pasNo.toString();
-        patients.push(record);
-      });
-      if (patientCache.exists) {
-        if (callback) callback(patients);
-        return;
-      }
-    }
-    pas.getPatients.call(this, function(patients) {
-      if (patients.error) {
-        callback(patients);
-      }
-      else {
-        patientCache.delete();
-        patientCache.setDocument(patients);
-        if (callback) callback(patients);
-      }
-    });
-  }
+  api: patients
 };

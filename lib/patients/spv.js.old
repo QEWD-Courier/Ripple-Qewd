@@ -36,8 +36,83 @@ var headingsLib = require('../headings/headings');
 var patientSummary = require('./patientSummary');
 var patientHeadingTable = require('./patientHeadingTable');
 var patientHeadingDetail = require('./patientHeadingDetail');
-var postHeading = require('./postHeading');
 var advancedSearch = require('./advancedSearch');
+
+var headings = headingsLib.headings;
+
+
+function postHeading(nhsNo, heading, dataArr, callback) {
+  if (headings[heading] && headings[heading].post) {
+    var q = this;
+    if (!Array.isArray(dataArr)) dataArr = [dataArr];
+    dataArr.forEach(function(data) {
+      var host = headings[heading].post.destination || 'ethercis';
+      openEHR.startSession(host, function(session) {
+        console.log('**** inside startSession callback - sessionId = ' + session.id);
+        openEHR.mapNHSNoByHost(nhsNo, host, session.id, function(ehrId) {
+          // force a reload of this heading after the update
+          var patientHeading = new q.documentStore.DocumentNode('ripplePatients', [nhsNo, 'headings', headings[heading].name]);
+          var patientHeadingIndex = new q.documentStore.DocumentNode('ripplePatients', [nhsNo, 'headingIndex', headings[heading].name]);
+          patientHeading.delete();
+          patientHeadingIndex.delete();
+          postHeadingData.call(q, heading, ehrId, host, session.id, data, function() {
+            openEHR.stopSession(host, session.id);
+            if (callback) callback();  
+          });
+        });
+      });
+    });
+  }
+}
+
+function postHeadingData(heading, ehrId, host, sessionId, data, callback) {
+  if (headings[heading] && headings[heading].post) {
+    var body = {};
+    var post = headings[heading].post;
+    var fieldMap = post.fieldMap;
+    var map;
+    for (var fieldName in fieldMap) {
+      console.log('** ' + fieldName);
+      map = fieldMap[fieldName];
+      console.log('** map: ' + JSON.stringify(map));
+      var mapped = false;
+      if (map.field) {
+        if (data[map.field]) {
+          console.log('** body[' + fieldName + '] = ' + data[map.field]);
+          body[fieldName] = data[map.field];
+          mapped = true;
+        }
+      }
+      if (!mapped && map.default) {
+        if (typeof map.default === 'function') {
+          body[fieldName] = map.default(data, host);
+        }
+        else {
+          body[fieldName] = map.default;
+        }
+        console.log('*** default: body[' + fieldName + '] = ' + map.default);
+      }
+    }
+    // ready to post
+    var params = {
+      host: host,
+      callback: callback,
+      url: '/rest/v1/composition',
+      queryString: {
+        templateId: post.templateId,
+        ehrId: ehrId,
+        format: 'FLAT'
+      },
+      method: 'POST',
+      session: sessionId,
+      options: {
+        body: body
+      }
+    };
+    console.log('**** about to post data: ' + JSON.stringify(params, null, 2));
+    openEHR.request(params);
+  }
+}
 
 
 module.exports = {
@@ -56,13 +131,7 @@ module.exports = {
     patientSummary.get.call(this, args.patientId, args.session, callback);
   },
   getHeadingTable:  function(args, callback) {
-    console.log('** spv.getHeadingTable: ' + JSON.stringify(args));
-    if (args.res.method === 'POST') {
-      postHeading.call(this, args.patientId, args.heading, args.res.body, args.session, callback)
-    }
-    else {
-      patientHeadingTable.call(this, args.patientId, args.heading, args.session, callback)
-    }
+    patientHeadingTable.call(this, args.patientId, args.heading, args.session, callback)
   },
 
   getHeadingDetail: function(args, callback) {
