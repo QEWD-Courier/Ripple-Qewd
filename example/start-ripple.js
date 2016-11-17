@@ -24,30 +24,38 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-28 October 2016
+  17 November 2016
 
 */
 
-function authenticate(messageObj) {
-  var cookie = messageObj.headers.cookie;
-  if (!cookie) return {error: 'Missing cookie'};
+var ewdRipple = require('ewd-ripple/lib/startup');
 
-  var pieces = cookie.split(';');
-  var token;
-  pieces.forEach(function(piece) {
-    if (piece.indexOf('JSESSIONID') !== -1) {
-      token = piece.split('JSESSIONID=')[1];
-    }
-  });
-  if (!token) return {error: 'Missing JSESSIONID token'};
-  var status = this.sessions.authenticate(token);
-
-  if (status.error) {
-    // for future use - see if this is a still valid user authentication session id
-    //  otherwise over to Auth0....
+var config = {
+  auth0: {
+    domain:       'rippleosi.eu.auth0.com',
+    clientID:     'Ghi91Wk1PERQjxIN5ili6rssnl4em8In',
+    callbackURL:  'http://139.59.187.100/auth0/token',
+    clientSecret: 'sZn_wWPQQV3mfIYDANrufQ12pyWcCtWULoGOqqakH1IiCs0IBLRybK6c1XB863WT',
+    indexURL: '/demo.html'
+  },
+  managementPassword: 'keepThisSecret!',
+  serverName: 'RippleOSI EWD3 Server',
+  port: 3000,
+  poolSize: 2,
+  webServerRootPath: '/opt/tomcat/ripple',
+  database: {
+    type: 'gtm'
+  },
+  lockSession: false,
+  ripple: {
+    pas: {
+      openEHR: {
+        pasModule: 'mysqlPAS',
+        summaryHeadings: ['allergies', 'problems', 'medications', 'contacts', {name: 'transfers', value: true}]
+      }
+    },
+    mode: 'simulated-patient' //'uat'
   }
+};
 
-  return status;
-}
-
-module.exports = authenticate;
+ewdRipple.start(config);
