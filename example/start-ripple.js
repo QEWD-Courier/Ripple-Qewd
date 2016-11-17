@@ -54,7 +54,7 @@ var config = {
         summaryHeadings: ['allergies', 'problems', 'medications', 'contacts', {name: 'transfers', value: true}]
       }
     },
-    mode: 'simulated-patient' //'uat'
+    mode: 'demo' //'secure'
   }
 };
 
