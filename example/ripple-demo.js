@@ -1,15 +1,15 @@
 /*
 
  ----------------------------------------------------------------------------
- | ewd-xpress.js: Express and ewd-qoper8 based application container        |
+ | rippleosi-ewd3: EWD3/ewd-xpress Middle Tier for Ripple OSI               |
  |                                                                          |
- | Copyright (c) 2016 M/Gateway Developments Ltd,                           |
- | Reigate, Surrey UK.                                                      |
+ | Copyright (c) 2016 Ripple Foundation Community Interest Company          |
  | All rights reserved.                                                     |
  |                                                                          |
- | http://www.mgateway.com                                                  |
- | Email: rtweed@mgateway.com                                               |
+ | http://rippleosi.org                                                     |
+ | Email: code.custodian@rippleosi.org                                      |
  |                                                                          |
+ | Author: Rob Tweed, M/Gateway Developments Ltd                            |
  |                                                                          |
  | Licensed under the Apache License, Version 2.0 (the "License");          |
  | you may not use this file except in compliance with the License.         |
@@ -24,47 +24,39 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  17 October 2016
+  17 November 2016
 
 */
 
-var ewdXpress = require('ewd-xpress').master;
+var ewdRipple = require('ewd-ripple/lib/startup');
 
 var config = {
+  auth0: {
+    domain:       'xxxxxxxxx.eu.auth0.com',
+    clientID:     'xxxxxxxxxxxxxxxxxxxxxxxx',
+    callbackURL:  'http://xxx.xxx.xxx.xxx/auth0/token',
+    clientSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    indexURL: '/index.html',
+    connections: ['Username-Password-Authentication', 'google-oauth2', 'twitter']
+  },
   managementPassword: 'keepThisSecret!',
   serverName: 'RippleOSI EWD3 Server',
   port: 3000,
   poolSize: 2,
-  //webServerRootPath: '/opt/tomcat/ripple',
+  webServerRootPath: '/home/ripple/ewd3/www',
   database: {
     type: 'gtm'
   },
   lockSession: false,
-  /*
-  resilientMode: {
-    keepPeriod: 600 // just keep the last 10 minutes
-  }
-  */
-};
-
-var routes = [
-  {
-    path: '/api',
-    module: 'ewd-ripple'
-  }
-];
-
-var q = ewdXpress.start(config, routes);
-
-var pasConfig = {
-  openEHR: {
-    pasModule: 'mysqlPAS',
-    summaryHeadings: ['allergies', 'problems', 'medications', 'contacts', {name: 'transfers', value: true}]
+  ripple: {
+    pas: {
+      openEHR: {
+        pasModule: 'mysqlPAS',
+        summaryHeadings: ['allergies', 'problems', 'medications', 'contacts', {name: 'transfers', value: true}]
+      }
+    },
+    mode: 'demo'
   }
 };
 
-var pas = process.argv[2] || 'openEHR' 
-q.userDefined['rippleUser'] = pasConfig[pas];
-
-
-
+ewdRipple.start(config);
