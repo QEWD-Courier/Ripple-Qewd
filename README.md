@@ -41,7 +41,25 @@ The installer script installs and configures the following:
 - ripple-demo.js   (Designed to run the RippleOSI system in demo mode)
 - ripple-secure.js (Designed to run the RippleOSI system in secure mode, using Auth0 for identity management)
 
-You need to modify these lines:
+### Demo Mode
+
+If you just want to try out RippleOSI, use the demo startup file - no changes are needed to it.  Just type the
+following in a terminal window to start it up:
+
+        cd ~/ewd3
+        node ripple-demo
+
+In this mode, the UI will bypass the user login and you'll be automatically logged in as a user named Bob Smith, with access
+to all the simulated patient data.
+
+
+### Secure Mode
+
+If you want proper user authentication, use the secure mode startup file.  This expects to use Auth0 as an OAuth2 
+identity management provider.
+
+
+You'll need to modify these lines in the ripple-secure.js file:
 
        var config = {
         auth0: {
@@ -51,33 +69,28 @@ You need to modify these lines:
           clientSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 
 
-to correspond with the values for your Auth0 client.  The callbackURL should use the IP address/domain name of
+to correspond with the values for your Auth0 client.  You can set up a client for free on Auth0 (https://auth0.com/)
+
+The callbackURL should use the IP address/domain name of
 the server on which you've installed RippleOSI, but must point to /auth0/token on this machine.  The callbackURL
 must be defined as an allowed callback URL in your Auth0 client configuration.
 
-You may need to also modify this line:
+Once you've edited the ripple-secure.js file, you should now be able to start the RippleOSI Middle Tier by typing:
 
-      webServerRootPath: '/home/ripple/ewd3/www',
-
-Change "/ripple/" for the user name you used when installing RippleOSI (eg "/ubuntu/" on an Amazon EC2 machine)
-
-
-You should now be able to start it by typing:
-
-      cd ~/ewd3
-      node ripple-demo
-
-or
 
       cd ~/ewd3
       node ripple-secure
 
-5) Point at the browser at the server's IP address and it should start up
+
+5) Point at the browser at the server's IP address and it should start up, eg:
+
+      http://123.221.100.21
+
 
 If you're running in secure mode, the first time you connect you'll be redirected to Auth0's Lock screen, 
 through which you can log in.  
 
-
+The RippleOSI User Interface should then appear.
 
 
 ## License
