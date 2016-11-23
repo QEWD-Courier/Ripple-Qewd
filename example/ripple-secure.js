@@ -39,22 +39,9 @@ var config = {
     indexURL: '/index.html',
     connections: ['Username-Password-Authentication', 'google-oauth2', 'twitter']
   },
-  managementPassword: 'keepThisSecret!',
-  serverName: 'RippleOSI EWD3 Server',
-  port: 8081,
+  port: 3000,
   poolSize: 2,
-  webServerRootPath: '/home/ripple/ewd3/www',
-  database: {
-    type: 'gtm'
-  },
-  lockSession: false,
   ripple: {
-    pas: {
-      openEHR: {
-        pasModule: 'mysqlPAS',
-        summaryHeadings: ['allergies', 'problems', 'medications', 'contacts', {name: 'transfers', value: true}]
-      }
-    },
     mode: 'secure'
   }
 };

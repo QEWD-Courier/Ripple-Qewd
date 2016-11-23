@@ -31,30 +31,9 @@
 var ewdRipple = require('ewd-ripple/lib/startup');
 
 var config = {
-  auth0: {
-    domain:       'xxxxxxxxx.eu.auth0.com',
-    clientID:     'xxxxxxxxxxxxxxxxxxxxxxxx',
-    callbackURL:  'http://xxx.xxx.xxx.xxx/auth0/token',
-    clientSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-    indexURL: '/index.html',
-    connections: ['Username-Password-Authentication', 'google-oauth2', 'twitter']
-  },
-  managementPassword: 'keepThisSecret!',
-  serverName: 'RippleOSI EWD3 Server',
   port: 3000,
   poolSize: 2,
-  webServerRootPath: '/home/ripple/ewd3/www',
-  database: {
-    type: 'gtm'
-  },
-  lockSession: false,
   ripple: {
-    pas: {
-      openEHR: {
-        pasModule: 'mysqlPAS',
-        summaryHeadings: ['allergies', 'problems', 'medications', 'contacts', {name: 'transfers', value: true}]
-      }
-    },
     mode: 'demo'
   }
 };

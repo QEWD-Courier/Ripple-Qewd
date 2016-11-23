@@ -184,7 +184,7 @@ echo "-----------------------------------------------------------------------"
 # Retrieve the UI code
 cd ~
 
-wget https://github.com/RippleOSI/Org-Ripple-UI-rf3/raw/890dc1c71037d225331619db815f03c0b91b2ff4/build/rippleui-1.1.1.zip
+wget https://github.com/RippleOSI/Org-Ripple-UI-rf3/raw/develop/build/ripple_latest.zip
 
 # Unpack the UI
 
