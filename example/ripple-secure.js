@@ -43,7 +43,7 @@ var config = {
   serverName: 'RippleOSI EWD3 Server',
   port: 8081,
   poolSize: 2,
-  webServerRootPath: '/opt/tomcat/ripple',
+  webServerRootPath: '/home/ripple/ewd3/www',
   database: {
     type: 'gtm'
   },

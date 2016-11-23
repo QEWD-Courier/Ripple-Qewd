@@ -10,11 +10,6 @@ Author: Rob Tweed, M/Gateway Developments Ltd (@rtweed)
 rippleosi-ewd3 is a Node.js-based Middle Tier for the Ripple OSI 
 project.
 
-## Installing
-
-       This module in isolation: 
-
-         npm install ewd-ripple
 
 ### Installing and Configuring the RippleOSI Node.js / EWD 3 Middle Tier
 
@@ -25,112 +20,63 @@ project.
   used as a high-performance cache and session store.
 
 
- 2) Install the EWD 3 Node.js-based Run-time Environment
-
-       cd ~
-       wget https://raw.githubusercontent.com/robtweed/ewd-3-installers/master/ewd-xpress/install_gtm.sh
-       source install_gtm.sh
-
-  The installer will create a new directory: ~/ewd3
-  The EWD 3 run-time environment is created under this directory.
-
-3) Now use this installer to create the EWD 3 Node.js-based Ripple 
+2) Use this installer to create the EWD 3 Node.js-based Ripple 
  Middle Tier and UI:
 
       cd ~
-      wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-NodeJS-EWD3/master/installer/install-ripple-ewd3.sh
-      source install-ripple-ewd3.sh
+      wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-NodeJS-EWD3/master/installer/install_ripple.sh
+      source install_ripple.sh
+
+The installer script installs and configures the following:
+
+- The Open Source GT.M database (used by RippleOSI's middle tier as a high-performance session cache)
+- Node.js
+- The EWD 3 / Node.js-based RippleOSI Middle Tier
+- The RippleOSI User Interface files
+- A MySQL-based Patient Administration (PAS) database
 
 
-4) You should now be able to start it by typing:
+3) When the installer has completed, you'll find two template startup files in the ~/ewd3 directory:
+
+- ripple-demo.js   (Designed to run the RippleOSI system in demo mode)
+- ripple-secure.js (Designed to run the RippleOSI system in secure mode, using Auth0 for identity management)
+
+You need to modify these lines:
+
+       var config = {
+        auth0: {
+          domain:       'xxxxxxxxx.eu.auth0.com',
+          clientID:     'xxxxxxxxxxxxxxxxxxxxxxxx',
+          callbackURL:  'http://xxx.xxx.xxx.xxx/auth0/token',
+          clientSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+
+
+to correspond with the values for your Auth0 client.  The callbackURL should use the IP address/domain name of
+the server on which you've installed RippleOSI, but must point to /auth0/token on this machine.  The callbackURL
+must be defined as an allowed callback URL in your Auth0 client configuration.
+
+You may need to also modify this line:
+
+      webServerRootPath: '/home/ripple/ewd3/www',
+
+Change "/ripple/" for the user name you used when installing RippleOSI (eg "/ubuntu/" on an Amazon EC2 machine)
+
+
+You should now be able to start it by typing:
 
       cd ~/ewd3
-      node start-rippleosi-ewd3
+      node ripple-demo
+
+or
+
+      cd ~/ewd3
+      node ripple-secure
 
 5) Point at the browser at the server's IP address and it should start up
 
+If you're running in secure mode, the first time you connect you'll be redirected to Auth0's Lock screen, 
+through which you can log in.  
 
-### Replacing An Existing RippleOSI Middle Tier
-
-If you're already using the RippleOSI application with an Apache Tomcat / Java middle tier,
-you can migrate it to use the Node.js / EWD 3 middle tier by following the steps below:
-
-#### Create a non-Root user
-
-If you only have Root access, you should add a non-Root user.  The username can be anything you like.  The example below assumes the
-new username is "ripple". You'll be asked to define a password for this user:
-
-       adduser ripple
-
-After answering all the questions (most of which can be left blank), give the new user sudo access rights:
-
-       usermod -aG sudo ripple
-
-Switch to this user:
-
-       su - ripple
-
-#### Install the EWD 3 Node.js-based Run-time Environment
-
-       cd ~
-       wget https://raw.githubusercontent.com/robtweed/ewd-3-installers/master/ewd-xpress/install_gtm.sh
-       source install_gtm.sh
-
-The installer will create a new directory: ~/ewd3
-The EWD 3 run-time environment is created under this directory.
-
-#### Install the ewd-ripple Middle Tier module and associated client code:
-
-      cd ~/ewd3
-      npm install ewd-client ewd-ripple
-
-#### Move various files into place:
-
-      sudo cp ~/ewd3/node_modules/ewd-client/lib/proto/ewd-client.js /opt/tomcat/ripple/ewd-client.js
-      cp ~/ewd3/node_modules/ewd-ripple/example/start-rippleosi-ewd3.js ~/ewd3/start-rippleosi-ewd3.js
-      sudo cp ~/ewd3/node_modules/ewd-ripple/www/ewd-ripple.js /opt/tomcat/ripple/ewd-ripple.js
-
-
-#### Modify two RippleOSI UI files
-
-As an interim measure, two small changes must be made to the index.html and index.js files used by the RippleOSI UI:
-
-1) Edit /opt/tomcat/ripple/index.html - find the &lt;/head> tag and insert the following tags before it:
-
-      <script src="/ewd-client.js"></script>
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="ewd-ripple.js"></script>
-
-
-1) Edit /opt/tomcat/ripple/index.js - At approximately line 259 you'll find a line:
-
-        console.log("app start");
-
-Add the following after this line:
-
-        console.log('starting ewd-ripple');
-        startEwdRipple();
-
-This establishes an EWD Session within the middle tier, and assigns its token to a cookie which will be subsequently sent with every REST 
-request to the middle tier.
-
-#### Map port 3000 to port 80:
-
-        sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
-
-The UI will now connect to the EWD 3 / Node.js middle tier instead of the Tomcat/Java one
-
-To switch back to using the Java middle tier, simply remove the iptables mapping:
-
-        sudo iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
-
-
-#### Finally, start the EWD 3 Middle Tier:
-
-        cd ~/ewd3
-        node start-rippleosi-ewd3
-
-You can now load the RippleOSI UI in your browser and you'll begin to see activity in the EWD 3 / Node.js process.
 
 
 
