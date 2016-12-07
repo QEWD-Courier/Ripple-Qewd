@@ -188,7 +188,7 @@ wget https://github.com/RippleOSI/Org-Ripple-UI-rf3/raw/develop/build/ripple_lat
 
 # Unpack the UI
 
-unzip rippleui-1.1.1.zip
+unzip ripple_latest.zip
 
 # move it into place
 
