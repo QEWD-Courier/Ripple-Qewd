@@ -3,10 +3,10 @@ select
   a/composer/name as author,
   a/context/start_time/value as date_created,
   b_a/data[at0001]/items[at0002]/value/value as cause,
-  b_a/data[at0001]/items[at0002]/value/defining_code/code_string as cause_terminology,
-  b_a/data[at0001]/items[at0002]/value/defining_code/terminology_id/value as cause_code,
+  b_a/data[at0001]/items[at0002]/value/defining_code/code_string as cause_code,
+  b_a/data[at0001]/items[at0002]/value/defining_code/terminology_id/value as cause_terminology,
   b_a/data[at0001]/items[at0009]/items[at0011]/value/value as reaction,
-  b_a/data[at0001]/items[at0009]/items[at0011]/value/defining_code/codeString as reaction_code,
+  b_a/data[at0001]/items[at0009]/items[at0011]/value/defining_code/code_string as reaction_code,
   b_a/data[at0001]/items[at0009]/items[at0011]/value/terminology_id/value as reaction_terminology
  from EHR e [ehr_id/value = '{{ehrId}}']
   contains COMPOSITION a[openEHR-EHR-COMPOSITION.adverse_reaction_list.v1]
