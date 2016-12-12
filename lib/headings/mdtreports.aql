@@ -5,7 +5,7 @@ select
   b_d/protocol[at0008]/items[at0011]/value/value as service_team,
   b_f/data[at0001]/items[at0002]/value/value as notes,
   b_g/data[at0001]/items[at0004]/value/value as question
- from EHR e
+ from EHR e [ehr_id/value = '{{ehrId}}']
  contains COMPOSITION a[openEHR-EHR-COMPOSITION.report.v1]
  contains (
    INSTRUCTION b_d[openEHR-EHR-INSTRUCTION.request-referral.v1] or
@@ -13,7 +13,4 @@ select
    EVALUATION b_g[openEHR-EHR-EVALUATION.reason_for_encounter.v1]
  )
  where
-   a/name/value='MDT Output Report' and (
-     e/ehr_status/subject/external_ref/namespace='uk.nhs.nhs_number' and
-     e/ehr_status/subject/external_ref/id/value='{{patientId}}'
-   )
+   a/name/value='MDT Output Report'
