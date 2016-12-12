@@ -2,18 +2,18 @@ select
   a/uid/value as uid,
   a/composer/name as author,
   a/context/start_time/value as date_created,
-  b_a/items[openEHR-EHR-EVALUATION.care_preference_uk.v1]/data/items[at0003]/value/value as priority_place_of_care,
-  b_a/items[openEHR-EHR-EVALUATION.care_preference_uk.v1]/data/items[at0015]/value/value as priority_place_of_death,
-  b_a/items[openEHR-EHR-EVALUATION.care_preference_uk.v1]/data/items[at0029]/value/value as priority_comment,
-  b_a/items[openEHR-EHR-EVALUATION.advance_decision_refuse_treatment_uk.v1]/data/items[at0003]/value/value as treatment_decision,
-  b_a/items[openEHR-EHR-EVALUATION.advance_decision_refuse_treatment_uk.v1]/data/items[at0002]/value/value as treatment_date_of_decision,
-  b_a/items[openEHR-EHR-EVALUATION.advance_decision_refuse_treatment_uk.v1]/data/items[at0021]/value/value as treatment_comment,
-  b_a/items[openEHR-EHR-EVALUATION.cpr_decision_uk.v1]/data/items[at0003]/value/value as cpr_decision,
-  b_a/items[openEHR-EHR-EVALUATION.cpr_decision_uk.v1]/data/items[at0002]/value/value as cpr_date_of_decision,
-  b_a/items[openEHR-EHR-EVALUATION.cpr_decision_uk.v1]/data/items[at0021]/value/value as cpr_comment
- from EHR e
+  b_a/data/items[at0003]/value/value as priority_place_of_care,
+  b_a/data/items[at0015]/value/value as priority_place_of_death,
+  b_a/data/items[at0029]/value/value as priority_comment,
+  b_b/data/items[at0003]/value/value as treatment_decision,
+  b_b/data/items[at0002]/value/value as treatment_date_of_decision,
+  b_b/data/items[at0021]/value/value as treatment_comment,
+  b_c/data/items[at0003]/value/value as cpr_decision,
+  b_c/data/items[at0002]/value/value as cpr_date_of_decision,
+  b_c/data/items[at0021]/value/value as cpr_comment
+ from EHR e [ehr_id/value = '{{ehrId}}']
  contains COMPOSITION a[openEHR-EHR-COMPOSITION.care_plan.v1]
- contains SECTION b_a[openEHR-EHR-SECTION.legal_information_rcp.v1]
+ contains (EVALUATION b_a[openEHR-EHR-EVALUATION.care_preference_uk.v1]
+  or EVALUATION b_b[openEHR-EHR-EVALUATION.advance_decision_refuse_treatment_uk.v1]
+   or EVALUATION b_c[openEHR-EHR-EVALUATION.cpr_decision_uk.v1])
  where a/name/value='End of Life Patient Preferences'
- and e/ehr_status/subject/external_ref/namespace = 'uk.nhs.nhs_number'
- and e/ehr_status/subject/external_ref/id/value = '{{patientId}}'
