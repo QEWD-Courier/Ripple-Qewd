@@ -11,7 +11,7 @@ select
     b_b/data[at0001]/items[openEHR-EHR-CLUSTER.individual_person_uk.v1]/items[openEHR-EHR-CLUSTER.person_name.v1]/items[at0001]/value/value as name,
     b_b/data[at0001]/items[openEHR-EHR-CLUSTER.individual_person_uk.v1]/items[openEHR-EHR-CLUSTER.address_uk.v0]/items[at0002]/value/value as address,
     b_b/data[at0001]/items[openEHR-EHR-CLUSTER.individual_person_uk.v1]/items[openEHR-EHR-CLUSTER.telecom_uk.v1]/items[at0002]/value/value as contactInformation
-from EHR e
+ from EHR e [ehr_id/value = '{{ehrId}}']
 contains COMPOSITION a[openEHR-EHR-COMPOSITION.health_summary.v1]
 contains (
     ADMIN_ENTRY b_b[openEHR-EHR-ADMIN_ENTRY.relevant_contact_rcp.v1])
