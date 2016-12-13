@@ -1,5 +1,5 @@
 select
-    a/uid/value as uId,
+    a/uid/value as uid,
     a/context/start_time/value as dateCreated,
     a/composer/name as author,
     b_b/data[at0001]/items[at0030]/value/value as relationshipRoleType,
