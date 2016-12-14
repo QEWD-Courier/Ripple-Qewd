@@ -1,15 +1,12 @@
 select
-  a/uid/value as uid,
-  a/composer/name as author,
-  a/context/start_time/value as date_submitted,
-  a_a/items/activities/timing/value as referral_date,
-  a_a/items/protocol/items/items/value/value as referral_from,
-  a_a/items/activities/description/items[at0121]/value/value as referral_to,
-  a_a/items/activities/description/items[at0062]/value/value as referral_reason,
-  a_a/items/activities/description/items[at0064]/value/value as clinical_summary
- from EHR e
- contains COMPOSITION a[openEHR-EHR-COMPOSITION.encounter.v1]
- contains SECTION a_a[openEHR-EHR-SECTION.referral_details_rcp.v1]
- where a/name/value='Referral'
-  and e/ehr_status/subject/external_ref/namespace = 'uk.nhs.nhs_number'
-  and e/ehr_status/subject/external_ref/id/value = '{{patientId}}'
+    a/uid/value as uid,
+    a/composer/name as author,
+    a/context/start_time/value as date_submitted,
+    b_a/activities[at0001]/timing/value as referral_date,
+    b_a/protocol/items/items/value/value as referral_from,
+    b_a/activities[at0001]/description[at0009]/items[at0121]/value/value as referral_to,
+    b_a/activities/description/items[at0062]/value/value as referral_reason,
+    b_a/activities/description/items[at0064]/value/value as clinical_summary
+ from EHR e [ehr_id/value = '{{ehrId}}']
+contains COMPOSITION a[openEHR-EHR-COMPOSITION.encounter.v1]
+contains INSTRUCTION b_a[openEHR-EHR-INSTRUCTION.request-referral.v1]
