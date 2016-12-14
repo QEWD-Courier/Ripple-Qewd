@@ -13,14 +13,30 @@ project.
 
 ### Installing and Configuring the RippleOSI Node.js / EWD 3 Middle Tier
 
+Please follow ALL the steps listed below:
+
 1) Assumptions
 
   The EWD 3 Middle Tier for RippleOSI is designed to run on a Linux
   platform (eg Ubuntu 16.04).  The embedded Open Source GT.M database is
   used as a high-performance cache and session store.
 
+2) If your Linux machine / VM only has a root user, you'll need to create a non-root user with sudo privileges.
+If you already log in to your Linux machine with a non-root user, the user will need sudo privileges.
 
-2) Use this installer to create the EWD 3 Node.js-based Ripple 
+To create a new user named ripple (change to whatever you want) (when logged in as root):
+
+     adduser ripple
+
+You'll be asked for a password.  You'll also be asked for user details which you can just leave blank by hitting the Enter key 
+each time.
+
+To give the user sudo privileges:
+
+     usermod -aG sudo ripple
+
+
+3) Use the installer script from this repo to create the EWD 3 Node.js-based Ripple 
  Middle Tier and UI:
 
       cd ~
@@ -91,6 +107,43 @@ If you're running in secure mode, the first time you connect you'll be redirecte
 through which you can log in.  
 
 The RippleOSI User Interface should then appear.
+
+
+6) You'll probably want to run the Ripple middle tier as a background service.  The easiest way is to use PM2.  First 
+install it using:
+
+      cd ~/ewd3
+      sudo npm install -g pm2
+
+
+If you want to run the demo mode as a service:
+
+     cd ~/ewd3
+     pm2 start ripple-demo.js
+
+The console output from the middle tier process is piped by PM2 to a log file in:
+
+     ~/ewd3/.pm2/logs
+
+It will initially be:
+
+     ~/ewd3/.pm2/logs/ripple-demo-out-0.log
+
+YOu can view it using:
+
+     tail -f ~/.pm2/logs/ripple-demo-out-0.log
+
+If, for some reason, the middle tier crashes, PM2 will automatically restart it.
+
+
+To stop the middle tier service:
+
+     pm2 stop ripple-demo
+
+For more information about PM2, see:
+
+[https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04)
+
 
 
 ## License
