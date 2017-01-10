@@ -1,6 +1,6 @@
 {
   "name": "ewd-ripple",
-  "version": "1.27.0",
+  "version": "1.28.0",
   "description": "EWD 3/ ewd-xpress Middle Tier for Ripple OSI",
   "main": "index.js",
   "scripts": {

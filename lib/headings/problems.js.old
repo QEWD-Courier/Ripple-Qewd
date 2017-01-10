@@ -3,7 +3,7 @@
  ----------------------------------------------------------------------------
  | rippleosi-ewd3: EWD3/ewd-xpress Middle Tier for Ripple OSI               |
  |                                                                          |
- | Copyright (c) 2016-17 Ripple Foundation Community Interest Company       |
+ | Copyright (c) 2016 Ripple Foundation Community Interest Company          |
  | All rights reserved.                                                     |
  |                                                                          |
  | http://rippleosi.org                                                     |
@@ -24,7 +24,7 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-6 January 2017
+18 October 2016
 
 */
 
@@ -48,7 +48,7 @@ module.exports = {
     }
   },
   post: {
-    templateId: 'IDCR - Problem List.v1',
+    templateId: 'IDCR Problem List.v1',
     fieldMap: {
       'ctx/composer_name': {
         field: 'author',
@@ -80,23 +80,25 @@ module.exports = {
           return new Date().toISOString()
         }
       },
-      'problem_list/problems_and_issues:0/problem_diagnosis:0/clinical_description': {
-        field: 'description'
-      },
-      'problem_list/problems_and_issues:0/problem_diagnosis:0/problem_diagnosis_name|value': {
+      'problem_list/problems_and_issues/problem_diagnosis:0/problem_diagnosis_name|value': {
         field: 'problem'
       },
-      'problem_list/problems_and_issues:0/problem_diagnosis:0/problem_diagnosis_name|code': {
+      'problem_list/problems_and_issues/problem_diagnosis:0/clinical_description': {
+        field: 'description'
+      },
+      'problem_list/problems_and_issues/problem_diagnosis:0/problem_diagnosis_name|code': {
         field: 'code',
         default: '00001'
       },
-      'problem_list/problems_and_issues:0/problem_diagnosis:0/problem_diagnosis_name|terminology': {
+      'problem_list/problems_and_issues/problem_diagnosis:0/problem_diagnosis_name|terminology': {
         field: 'terminology',
         default: 'SNOMED-CT'
       },
-      'problem_list/problems_and_issues:0/problem_diagnosis:0/date_time_of_onset': {
+      'problem_list/problems_and_issues/problem_diagnosis:0/date_time_of_onset': {
         field: 'dateOfOnset'
       }
     }
   }
+
 };
+
