@@ -14,7 +14,9 @@
     "route-parser": "",
     "mysql": "",
     "passport": "",
-    "passport-auth0": ""
+    "passport-auth0": "",
+    "xml2js": "",
+    "js2xmlparser": ""
   },
   "repository": {
     "type": "git",
