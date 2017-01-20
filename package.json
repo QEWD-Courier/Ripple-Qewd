@@ -14,8 +14,8 @@
     "route-parser": "",
     "mysql": "",
     "passport": "",
-    "passport-auth0": ""
-    "xml2js": ""
+    "passport-auth0": "",
+    "xml2js": "",
     "js2xmlparser": ""
   },
   "repository": {
