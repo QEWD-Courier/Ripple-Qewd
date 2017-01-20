@@ -15,6 +15,8 @@
     "mysql": "",
     "passport": "",
     "passport-auth0": ""
+    "xml2js": ""
+    "js2xmlparser": ""
   },
   "repository": {
     "type": "git",
