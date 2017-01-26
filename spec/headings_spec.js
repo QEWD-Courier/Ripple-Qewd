@@ -29,14 +29,14 @@ Object.keys(openEHR.servers).forEach(function(server) {
   }
 
   describe("OpenEHR Server " + server, function() {
-    var ivonCoxNhsId = 9999999000;
-    var ivonCoxEhrId;
+    var ivorCoxNhsId = 9999999000;
+    var ivorCoxEhrId;
 
     beforeEach(function(done) {
       request('/rest/v1/ehr', {
-          subjectId: ivonCoxNhsId,
+          subjectId: ivorCoxNhsId,
           subjectNamespace: 'uk.nhs.nhs_number'
-        }, done, function(res) { ivonCoxEhrId = res.ehrId;}
+        }, done, function(res) { ivorCoxEhrId = res.ehrId;}
       );
     });
 
@@ -45,9 +45,9 @@ Object.keys(openEHR.servers).forEach(function(server) {
       var heading = headings.headings[headingName];
       describe("using " + headingName, function() {
         if(heading.query && heading.query.aql) {
-          it("can get Ivon Cox details using AQL", function(done) {
+          it("can get Ivor Cox details using AQL", function(done) {
             aql = template.replace(heading.query.aql,{
-              patientId: ivonCoxNhsId, ehrId: ivonCoxEhrId
+              patientId: ivorCoxNhsId, ehrId: ivorCoxEhrId
             });
 
             request('/rest/v1/query', {aql:aql}, done, function(res) {
