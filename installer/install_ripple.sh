@@ -88,13 +88,13 @@ sudo ln -s /usr/local/bin/npm /usr/bin/npm
 sudo ln -s /usr/local/bin/node-waf /usr/bin/node-waf
 n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
 
-# ewd-xpress
+# QEWD
 
 echo 'Installing NodeM'
 
 cd ~
-mkdir ewd3
-cd ewd3
+mkdir qewd
+cd qewd
 
 # NodeM
 
@@ -103,41 +103,41 @@ echo 'Installing NodeM'
 npm install nodem
 sudo ln -sf $gtm_dist/libgtmshr.so /usr/local/lib/
 sudo ldconfig
-base=~/ewd3
+base=~/qewd
 [ -f "$GTMCI" ] || export GTMCI="$(find $base -iname nodem.ci)"
 nodemgtmr="$(find $base -iname v4wnode.m | tail -n1 | xargs dirname)"
 echo "$gtmroutines" | fgrep "$nodemgtmr" || export gtmroutines="$nodemgtmr $gtmroutines"
 
-echo 'base=~/ewd3' >> ~/.profile
+echo 'base=~/qewd' >> ~/.profile
 echo '[ -f "$GTMCI" ] || export GTMCI="$(find $base -iname nodem.ci)"' >> ~/.profile
 echo 'nodemgtmr="$(find $base -iname v4wnode.m | tail -n1 | xargs dirname)"' >> ~/.profile
 echo 'echo "$gtmroutines" | fgrep "$nodemgtmr" || export gtmroutines="$nodemgtmr $gtmroutines"' >> ~/.profile
 
 
-# Install ewd-ripple (and its dependencies)
+# Install qewd-ripple (and its dependencies)
 
-cd ~/ewd3
-npm install ewd-ripple ewd-client
+cd ~/qewd
+npm install qewd-ripple ewd-client
 sudo npm install -g pm2
 
 
-echo 'Moving ewd-ripple and ewd-express files into place'
+echo 'Moving qewd-ripple and QEWD files into place'
 
-mv ~/ewd3/node_modules/ewd-ripple/example/ripple-demo.js ~/ewd3/ripple-demo.js
-mv ~/ewd3/node_modules/ewd-ripple/example/ripple-secure.js ~/ewd3/ripple-secure.js
+mv ~/qewd/node_modules/qewd-ripple/example/ripple-demo.js ~/qewd/ripple-demo.js
+mv ~/qewd/node_modules/qewd-ripple/example/ripple-secure.js ~/qewd/ripple-secure.js
 
-cd ~/ewd3
+cd ~/qewd
 mkdir www
 cd www
-mkdir ewd-xpress-monitor
-cp ~/ewd3/node_modules/ewd-xpress-monitor/www/bundle.js ~/ewd3/www/ewd-xpress-monitor
-cp ~/ewd3/node_modules/ewd-xpress-monitor/www/*.html ~/ewd3/www/ewd-xpress-monitor
-cp ~/ewd3/node_modules/ewd-xpress-monitor/www/*.css ~/ewd3/www/ewd-xpress-monitor
-cp ~/ewd3/node_modules/ewd-client/lib/proto/ewd-client.js ~/ewd3/www/ewd-client.js
+mkdir qewd-monitor
+cp ~/qewd/node_modules/qewd-monitor/www/bundle.js ~/qewd/www/qewd-monitor
+cp ~/qewd/node_modules/qewd-monitor/www/*.html ~/qewd/www/qewd-monitor
+cp ~/qewd/node_modules/qewd-monitor/www/*.css ~/qewd/www/qewd-monitor
+cp ~/qewd/node_modules/ewd-client/lib/proto/ewd-client.js ~/qewd/www/ewd-client.js
 
-echo "EWD 3 / Node.js middle tier is now installed"
+echo "QEWD / Node.js middle tier is now installed"
 
-cd ~/ewd3
+cd ~/qewd
 
 
 echo "-----------------------------------------------------------------------"
@@ -184,25 +184,25 @@ echo "-----------------------------------------------------------------------"
 # Retrieve the UI code
 cd ~
 
-wget https://github.com/RippleOSI/Org-Ripple-UI-rf3/raw/develop/build/ripple_latest.zip
+wget -O ripple-ui.zip https://github.com/PulseTile/PulseTile/blob/master/build/ripple-latest.zip?raw=true
 
 # Unpack the UI
 
-unzip ripple_latest.zip
+unzip ripple_ui.zip
 
 # move it into place
 
-mv -v ~/dist/* ~/ewd3/www/
+mv -v ~/dist/* ~/qewd/www/
 
 # Map port 80 to port 3000
 
 sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 
 echo "----------------------------------------------------------------------------------"
-echo " The set up of the EWD 3 Ripple Middle Tier on your Ubuntu server is now complete!"
+echo " The set up of the QEWD Ripple Middle Tier on your Ubuntu server is now complete!"
 echo "  Startup template files (ripple-demo.js and ripple-secure.js                     "
-echo "    are in the ~/ewd3 directory.  Add the appropriate Auth0 credentials           "
+echo "    are in the ~/qewd directory.  Add the appropriate Auth0 credentials           "
 echo "----------------------------------------------------------------------------------"
 
-cd ~/ewd3
+cd ~/qewd
 

@@ -1,9 +1,9 @@
 /*
 
  ----------------------------------------------------------------------------
- | rippleosi-ewd3: EWD3/ewd-xpress Middle Tier for Ripple OSI               |
+ | qewd-ripple: QEWD-based Middle Tier for Ripple OSI                       |
  |                                                                          |
- | Copyright (c) 2016 Ripple Foundation Community Interest Company          |
+ | Copyright (c) 2016-17 Ripple Foundation Community Interest Company       |
  | All rights reserved.                                                     |
  |                                                                          |
  | http://rippleosi.org                                                     |
@@ -24,11 +24,11 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  17 November 2016
+  26 January 2017
 
 */
 
-var ewdRipple = require('ewd-ripple/lib/startup');
+var ewdRipple = require('qewd-ripple/lib/startup');
 
 var config = {
   port: 3000,

@@ -1,4 +1,6 @@
-# rippleosi-ewd3
+# qewd-ripple
+
+[![Build Status](https://travis-ci.org/RippleOSI/Qewd-Ripple.svg?branch=master)](https://travis-ci.org//RippleOSI/Qewd-Ripple)
 
 Email: <code.custodian@rippleosi.org>
 2016 Ripple Foundation Community Interest Company [http://rippleosi.org  ](http://rippleosi.org)
@@ -7,17 +9,16 @@ Author: Rob Tweed, M/Gateway Developments Ltd (@rtweed)
 
 ## Introduction
 
-rippleosi-ewd3 is a Node.js-based Middle Tier for the Ripple OSI 
-project.
+qewd-ripple is a Node.js-based Middle Tier for the Ripple OSI project, based on the QEWD framework.
 
 
-### Installing and Configuring the RippleOSI Node.js / EWD 3 Middle Tier
+### Installing and Configuring the RippleOSI Node.js / QEWD Middle Tier
 
 Please follow ALL the steps listed below:
 
 1) Assumptions
 
-  The EWD 3 Middle Tier for RippleOSI is designed to run on a Linux
+  The QEWD Middle Tier for RippleOSI is designed to run on a Linux
   platform (eg Ubuntu 16.04).  The embedded Open Source GT.M database is
   used as a high-performance cache and session store.
 
@@ -40,19 +41,20 @@ To give the user sudo privileges:
  Middle Tier and UI:
 
       cd ~
-      wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-NodeJS-EWD3/master/installer/install_ripple.sh
+      wget https://raw.githubusercontent.com/RippleOSI/Qewd-Ripple/master/installer/install_ripple.sh
       source install_ripple.sh
 
 The installer script installs and configures the following:
 
 - The Open Source GT.M database (used by RippleOSI's middle tier as a high-performance session cache)
 - Node.js
-- The EWD 3 / Node.js-based RippleOSI Middle Tier
+- QEWD
+- The QEWD-based RippleOSI Middle Tier
 - The RippleOSI User Interface files
 - A MySQL-based Patient Administration (PAS) database
 
 
-3) When the installer has completed, you'll find two template startup files in the ~/ewd3 directory:
+3) When the installer has completed, you'll find two template startup files in the ~/qewd directory:
 
 - ripple-demo.js   (Designed to run the RippleOSI system in demo mode)
 - ripple-secure.js (Designed to run the RippleOSI system in secure mode, using Auth0 for identity management)
@@ -62,7 +64,7 @@ The installer script installs and configures the following:
 If you just want to try out RippleOSI, use the demo startup file - no changes are needed to it.  Just type the
 following in a terminal window to start it up:
 
-        cd ~/ewd3
+        cd ~/qewd
         node ripple-demo
 
 In this mode, the UI will bypass the user login and you'll be automatically logged in as a user named Bob Smith, with access
@@ -94,7 +96,7 @@ must be defined as an allowed callback URL in your Auth0 client configuration.
 Once you've edited the ripple-secure.js file, you should now be able to start the RippleOSI Middle Tier by typing:
 
 
-      cd ~/ewd3
+      cd ~/qewd
       node ripple-secure
 
 
@@ -109,25 +111,22 @@ through which you can log in.
 The RippleOSI User Interface should then appear.
 
 
-6) You'll probably want to run the Ripple middle tier as a background service.  The easiest way is to use PM2.  First 
-install it using:
-
-      cd ~/ewd3
-      sudo npm install -g pm2
+6) You'll probably want to run the Ripple middle tier as a background service.  The easiest way is to use PM2,  First 
+which will have been installed for you
 
 
 If you want to run the demo mode as a service:
 
-     cd ~/ewd3
+     cd ~/qewd
      pm2 start ripple-demo.js
 
 The console output from the middle tier process is piped by PM2 to a log file in:
 
-     ~/ewd3/.pm2/logs
+     ~/.pm2/logs
 
 It will initially be:
 
-     ~/ewd3/.pm2/logs/ripple-demo-out-0.log
+     ~/.pm2/logs/ripple-demo-out-0.log
 
 YOu can view it using:
 
@@ -148,7 +147,7 @@ For more information about PM2, see:
 
 ## License
 
-  Copyright (c) 2016 Ripple Foundation Community Interest Company
+  Copyright (c) 2016-17 Ripple Foundation Community Interest Company
   All rights reserved.
 
   http://rippleosi.org

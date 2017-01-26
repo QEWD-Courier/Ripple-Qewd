@@ -1,29 +1,36 @@
 {
-  "name": "ewd-ripple",
-  "version": "1.28.0",
-  "description": "EWD 3/ ewd-xpress Middle Tier for Ripple OSI",
+  "name": "qewd-ripple",
+  "version": "2.1.0",
+  "description": "QEWD-based Middle Tier for Ripple OSI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/jasmine/bin/jasmine.js"
   },
   "dependencies": {
-    "ewd-xpress": "",
-    "ewd-xpress-monitor": "",
+    "qewd": "",
+    "qewd-monitor": "",
+    "qewd-router": "",
+    "qewd-template": "",
     "request": "",
     "moment-timezone": "",
     "route-parser": "",
     "mysql": "",
     "passport": "",
-    "passport-auth0": ""
+    "passport-auth0": "",
+    "xml2js": "",
+    "js2xmlparser": ""
+  },
+  "devDependencies": {
+    "jasmine": ""
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RippleOSI/Org-Ripple-NodeJS-EWD3"
+    "url": "https://github.com/RippleOSI/Qewd-Ripple"
   },
   "author": "Rob Tweed, M/Gateway Developments Ltd",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/RippleOSI/Org-Ripple-NodeJS-EWD3/issues"
+    "url": "https://github.com/RippleOSI/Qewd-Ripple/issues"
   },
-  "homepage": "https://github.com/RippleOSI/Org-Ripple-NodeJS-EWD3#readme"
+  "homepage": "https://github.com/RippleOSI/Qewd-Ripple#readme"
 }

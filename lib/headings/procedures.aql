@@ -14,4 +14,4 @@ select
  contains ACTION b_a[openEHR-EHR-ACTION.procedure.v1]
  where a/name/value='Procedures list'
  and e/ehr_status/subject/external_ref/namespace = 'uk.nhs.nhs_number'
- and e/ehr_status/subject/external_ref/id/value = '{{patientid}}'
+ and e/ehr_status/subject/external_ref/id/value = '{{patientId}}'
