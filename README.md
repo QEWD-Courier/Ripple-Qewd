@@ -111,8 +111,8 @@ through which you can log in.
 The RippleOSI User Interface should then appear.
 
 
-6) You'll probably want to run the Ripple middle tier as a background service.  The easiest way is to use PM2,  First 
-which will have been installed for you
+6) You'll probably want to run the Ripple middle tier as a background service.  The easiest way is to use PM2
+ which has already been installed for you.
 
 
 If you want to run the demo mode as a service:
