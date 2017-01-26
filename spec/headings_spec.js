@@ -30,7 +30,7 @@
 
 var headings = require('./../lib/headings/headings');
 var openEHR = require('./../lib/openEHR/openEHR');
-var template = require('./../lib/template');
+var template = require('qewd-template');
 
 Object.keys(openEHR.servers).forEach(function(server) {
   var session;
