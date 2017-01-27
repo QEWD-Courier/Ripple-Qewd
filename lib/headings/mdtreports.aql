@@ -1,19 +1,18 @@
 select
   a/uid/value as uid,
-  a/context/start_time/value as date_created,
-  b_d/activities[at0001]/timing/value as meeting_date,
-  b_d/protocol[at0008]/items[at0011]/value/value as service_team,
-  b_f/data[at0001]/items[at0002]/value/value as notes,
-  b_g/data[at0001]/items[at0004]/value/value as question
- from EHR e
+  a/context/start_time/value as meeting_date,
+  a/content[openEHR-EHR-SECTION.referral_details_rcp.v1]/items[openEHR-EHR-ACTION.referral_uk.v1]/time/value as request_date,
+  a_a/protocol[at0008]/items[at0011]/value/value as service_team,
+  a_b/data[at0001]/items[at0004]/value/value as question,
+  a_c/data[at0001]/items[at0002]/value/value as notes,
+  a/content[openEHR-EHR-SECTION.referral_details_rcp.v1]/items[openEHR-EHR-ACTION.referral_uk.v1]/ism_transition/careflow_step/defining_code/code_string as careflow_step
+ from EHR e [ehr_id/value = '{{ehrId}}']
  contains COMPOSITION a[openEHR-EHR-COMPOSITION.report.v1]
  contains (
-   INSTRUCTION b_d[openEHR-EHR-INSTRUCTION.request-referral.v1] or
-   EVALUATION b_f[openEHR-EHR-EVALUATION.recommendation.v1] or
-   EVALUATION b_g[openEHR-EHR-EVALUATION.reason_for_encounter.v1]
+   INSTRUCTION a_a[openEHR-EHR-INSTRUCTION.request.v0] or
+   EVALUATION a_b[openEHR-EHR-EVALUATION.reason_for_encounter.v1] or
+   EVALUATION a_c[openEHR-EHR-EVALUATION.recommendation.v1]
  )
  where
-   a/name/value='MDT Output Report' and (
-     e/ehr_status/subject/external_ref/namespace='uk.nhs.nhs_number' and
-     e/ehr_status/subject/external_ref/id/value='{{patientId}}'
-   )
+   a/name/value='MDT Output Report' and
+   a/content[openEHR-EHR-SECTION.referral_details_rcp.v1]/items[openEHR-EHR-ACTION.referral_uk.v1]/ism_transition/careflow_step/defining_code/code_string = 'at0002'
