@@ -21,7 +21,8 @@
     "js2xmlparser": ""
   },
   "devDependencies": {
-    "jasmine": ""
+    "jasmine": "",
+    "underscore": ""
   },
   "repository": {
     "type": "git",
