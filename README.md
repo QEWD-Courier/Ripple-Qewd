@@ -1,6 +1,6 @@
 # qewd-ripple
 
-[![Build Status](https://travis-ci.org/RippleOSI/Qewd-Ripple.svg?branch=master)](https://travis-ci.org//RippleOSI/Qewd-Ripple)
+[![Build Status](https://travis-ci.org/RippleOSI/Qewd-Ripple.svg?branch=master)](https://travis-ci.org/RippleOSI/Qewd-Ripple)
 
 Email: <code.custodian@rippleosi.org>
 2016 Ripple Foundation Community Interest Company [http://rippleosi.org  ](http://rippleosi.org)
