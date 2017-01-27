@@ -135,7 +135,7 @@ It will initially be:
 
      ~/.pm2/logs/ripple-demo-out-0.log
 
-YOu can view it using:
+You can view it using:
 
      tail -f ~/.pm2/logs/ripple-demo-out-0.log
 
@@ -163,7 +163,7 @@ To run the *qewd-monitor* application, point your browser at:
 
         Change the IP address as appropriate, and optionally specify port 3000
 
-The default management password is *keepThisSecret*
+The default management password is *keepThisSecret!*
 
 You can change this by editing the qewd-ripple startup file (~/qewd/ripple-demo.js or ~/qewd/ripple-secure.js). 
 Add the property *managementPassword* to the *config* object, eg:
