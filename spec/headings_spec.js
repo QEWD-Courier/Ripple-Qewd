@@ -43,7 +43,7 @@ inOpenEHRSession(function(request, server) {
     var ivorCoxNhsId = 9999999000;
     var ivorCoxEhrId;
 
-    beforeEach(function(done) {
+    beforeAll(function(done) {
       request('/rest/v1/ehr', {
           subjectId: ivorCoxNhsId,
           subjectNamespace: 'uk.nhs.nhs_number'
@@ -55,7 +55,7 @@ inOpenEHRSession(function(request, server) {
     forEachHeading(function(heading) {
       describe("GET AQL response of " + heading.name, function() {
         var result;
-        beforeEach(function(done){
+        beforeAll(function(done){
           spyOn(dateTime, 'getRippleTime');
           spyOn(dateTime, 'msSinceMidnight');
           var aql = template.replace(heading.query.aql,{

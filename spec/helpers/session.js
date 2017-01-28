@@ -37,14 +37,14 @@ inOpenEHRSession = function(tests) {
     var session;
 
     // Create a session with the current openEHR server
-    beforeEach(function(done) {
+    beforeAll(function(done) {
       openEHR.startSession(server, function(res) {
         session = res.id;
         done();
       });
     });
 
-    afterEach(function(done) {
+    afterAll(function(done) {
       openEHR.stopSession(server, session, done);
     });
 
