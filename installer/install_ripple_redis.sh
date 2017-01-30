@@ -1,57 +1,59 @@
 #!/usr/bin/env bash
 
-# Installs Ripple Middle Tier on Raspberry Pi
-# run using: source install_ripple_rpi.sh
-# run as normal user, eg pi
+# run using: source install_ripple.sh
 
-echo "-----------------------------------------------------------------------"
+# Acknowledgement: Wladimir Mutel for NodeM configuration logic
+#                  KS Bhaskar for GT.M installation logic
+
+# run as normal user, eg ubuntu
+
+
+# Prepare
+
 echo 'Preparing environment'
-echo "-----------------------------------------------------------------------"
 
 sudo apt-get update
 sudo apt-get install -y build-essential libssl-dev
 sudo apt-get install -y wget gzip openssh-server curl python-minimal unzip
 
-# Install NVM
+# Node.js
 
-echo "-----------------------------------------------------------------------"
-echo 'Installing NVM'
-echo "-----------------------------------------------------------------------"
+echo 'Installing Node.js'
+
+cd ~
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
-command -v nvm
-
-echo "NVM installed"
-
-echo "-----------------------------------------------------------------------"
-echo 'Installing Node.js'
-echo "-----------------------------------------------------------------------"
-
 nvm install 6
 
-echo "Node.js installed:"
-node -v
+#make Node.js available to sudo
 
-echo "-----------------------------------------------------------------------"
-echo 'Installing QEWD and the Ripple Middle Tier components'
-echo "-----------------------------------------------------------------------"
+sudo ln -s /usr/local/bin/node /usr/bin/node
+sudo ln -s /usr/local/lib/node /usr/lib/node
+sudo ln -s /usr/local/bin/npm /usr/bin/npm
+sudo ln -s /usr/local/bin/node-waf /usr/bin/node-waf
+n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
+
+# QEWD
 
 cd ~
 mkdir qewd
 cd qewd
+
+# Install qewd-ripple (and its dependencies)
+
+cd ~/qewd
 npm install qewd-ripple ewd-client
 npm install tcp-netx
 npm install ewd-redis-globals
+sudo npm install -g pm2
 
-echo "-----------------------------------------------------------------------"
+
 echo 'Moving qewd-ripple and QEWD files into place'
-echo "-----------------------------------------------------------------------"
 
-mv ~/qewd/node_modules/qewd-ripple/example/ripple-rpi.js ~/qewd/ripple-rpi.js
+mv ~/qewd/node_modules/qewd-ripple/example/ripple-demo-redis.js ~/qewd/ripple-demo.js
+mv ~/qewd/node_modules/qewd-ripple/example/ripple-secure-redis.js ~/qewd/ripple-secure.js
 
 cd ~/qewd
 mkdir www
@@ -62,7 +64,7 @@ cp ~/qewd/node_modules/qewd-monitor/www/*.html ~/qewd/www/qewd-monitor
 cp ~/qewd/node_modules/qewd-monitor/www/*.css ~/qewd/www/qewd-monitor
 cp ~/qewd/node_modules/ewd-client/lib/proto/ewd-client.js ~/qewd/www/ewd-client.js
 
-echo "QEWD / Node.js and Ripple middle tier is now installed"
+echo "QEWD / Node.js middle tier is now installed"
 
 echo "-----------------------------------------------------------------------"
 echo " Installing Redis..."
@@ -79,23 +81,22 @@ cd redis
 
 # build Redis
 
-echo "Building Redis - be patient, this will take some time!"
+echo "Building Redis - be patient, this will take a few minutes"
 
 make
 sudo make install
-cd utils
 
 echo "----------------------------------------------------------------------------------"
 echo " Redis Server now being started"
 echo "  Hit Enter to accept the default settings in the questions that follow...      "
 echo "----------------------------------------------------------------------------------"
 
+cd utils
 sudo ./install_server.sh
 
 echo "Redis is now installed and running, listening on port 6379"
 
 cd ~/qewd
-
 
 echo "-----------------------------------------------------------------------"
 echo " Installing MySQL Server..."
@@ -135,20 +136,37 @@ echo "-----------------------------------------------------------------------"
 
 
 echo "-----------------------------------------------------------------------"
-echo "Fetching and installing the Ripple UI code"
+echo " Initialising deployment environment..."
 echo "-----------------------------------------------------------------------"
 
+# Retrieve the UI code
 cd ~
+
 wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/master/build/ripple-latest.zip?raw=true
+
+# Unpack the UI
+
 unzip ripple_ui.zip
 
-# move the files into place
+# move it into place
 
 mv -v ~/dist/* ~/qewd/www/
 
+# Map port 80 to port 3000
+
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+
 echo "----------------------------------------------------------------------------------"
-echo " The set up of the QEWD Ripple Middle Tier on your Raspberry Pi is now complete!  "
-echo "  Start using: node ripple-rpi                                                    "
+echo " Port 80 will be permanently mapped to port 3000"
+echo "  Answer Yes to all questions that follow to make this happen...                  "
+echo "----------------------------------------------------------------------------------"
+
+sudo apt-get install iptables-persistent
+
+echo "----------------------------------------------------------------------------------"
+echo " The set up of the QEWD Ripple Middle Tier on your Ubuntu server is now complete!"
+echo "  Startup template files (ripple-demo.js and ripple-secure.js                     "
+echo "    are in the ~/qewd directory.  Add the appropriate Auth0 credentials           "
 echo "----------------------------------------------------------------------------------"
 
 cd ~/qewd

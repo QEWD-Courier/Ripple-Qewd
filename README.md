@@ -20,7 +20,7 @@ Please follow ALL the steps listed below:
 1) Assumptions
 
   The QEWD Middle Tier for RippleOSI is designed to run on a Linux
-  platform (eg Ubuntu 16.04).  The embedded Open Source GT.M database is
+  platform (eg Ubuntu 16.04).  The embedded Redis or Open Source GT.M database is
   used as a high-performance cache and session store.
 
 2) If your Linux machine / VM only has a root user, you'll need to create a non-root user with sudo privileges.
@@ -38,16 +38,22 @@ To give the user sudo privileges:
      usermod -aG sudo ripple
 
 
-3) Use the installer script from this repo to create the QEWD/Node.js-based Ripple 
- Middle Tier and UI:
+3) Use on of the installer scripts from this repo to create the QEWD/Node.js-based Ripple 
+ Middle Tier and UI.  To install *qewd-ripple* with Redis as its database:
 
       cd ~
-      wget https://raw.githubusercontent.com/RippleOSI/Qewd-Ripple/master/installer/install_ripple.sh
-      source install_ripple.sh
+      wget https://raw.githubusercontent.com/RippleOSI/Qewd-Ripple/master/installer/install_ripple_redis.sh
+      source install_ripple_redis.sh
+
+To install *qewd-ripple* with GT.M as its database:
+
+      cd ~
+      wget https://raw.githubusercontent.com/RippleOSI/Qewd-Ripple/master/installer/install_ripple_gtm.sh
+      source install_ripple_gtm.sh
 
 The installer script installs and configures the following:
 
-- The Open Source GT.M database (used by RippleOSI's middle tier as a high-performance session cache and Document Store)
+- Redis or the Open Source GT.M database (used by RippleOSI's middle tier as a high-performance session cache and Document Store)
 - Node.js
 - QEWD
 - The QEWD-based RippleOSI Middle Tier

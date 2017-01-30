@@ -199,6 +199,13 @@ mv -v ~/dist/* ~/qewd/www/
 sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 
 echo "----------------------------------------------------------------------------------"
+echo " Port 80 will be permanently mapped to port 3000"
+echo "  Answer Yes to all questions that follow to make this happen...                  "
+echo "----------------------------------------------------------------------------------"
+
+sudo apt-get install iptables-persistent
+
+echo "----------------------------------------------------------------------------------"
 echo " The set up of the QEWD Ripple Middle Tier on your Ubuntu server is now complete!"
 echo "  Startup template files (ripple-demo.js and ripple-secure.js                     "
 echo "    are in the ~/qewd directory.  Add the appropriate Auth0 credentials           "
