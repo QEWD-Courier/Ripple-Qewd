@@ -39,7 +39,9 @@ To give the user sudo privileges:
 
 
 3) Use on of the installer scripts from this repo to create the QEWD/Node.js-based Ripple 
- Middle Tier and UI.  To install *qewd-ripple* with Redis as its database:
+ Middle Tier and UI.  
+ 
+ To install *qewd-ripple* with Redis as its database:
 
       cd ~
       wget https://raw.githubusercontent.com/RippleOSI/Qewd-Ripple/master/installer/install_ripple_redis.sh
