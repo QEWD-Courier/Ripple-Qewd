@@ -154,7 +154,7 @@ mv -v ~/dist/* ~/qewd/www/
 
 # Map port 80 to port 3000
 
-sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport 80 -j REDIRECT --to-port 3000
 
 echo "----------------------------------------------------------------------------------"
 echo " Port 80 will be permanently mapped to port 3000"
