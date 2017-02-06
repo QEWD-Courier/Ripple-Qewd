@@ -1,9 +1,9 @@
 /*
 
  ----------------------------------------------------------------------------
- | qewd-ripple: QEWD-based Middle Tier for Ripple OSI                       |
+ | rippleosi-ewd3: EWD3/ewd-xpress Middle Tier for Ripple OSI               |
  |                                                                          |
- | Copyright (c) 2016-17 Ripple Foundation Community Interest Company       |
+ | Copyright (c) 2016 Ripple Foundation Community Interest Company          |
  | All rights reserved.                                                     |
  |                                                                          |
  | http://rippleosi.org                                                     |
@@ -24,34 +24,38 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-18 October 2016
+  17 November 2016
 
 */
 
-var dateTime = require('.././dateTime');
+var ewdRipple = require('ewd-ripple/lib/startup');
 
-module.exports = {
-  name: 'mdtreports',
-  query: {
-    sql: []
+var config = {
+  managementPassword: 'keepThisSecret!',
+  serverName: 'RippleOSI EWD3 Server',
+  port: 8082,
+  poolSize: 2,
+  webServerRootPath: '/opt/tomcat/ripple',
+  database: {
+    type: 'gtm'
   },
-  textFieldName: 'name',
-  headingTableFields: ['serviceTeam', 'dateOfRequest', 'dateOfMeeting'],
-  fieldMap: {
-    serviceTeam: 'service_team',
-    dateOfRequest: function(data, host) {
-      return dateTime.getRippleTime(data.date_created, host);
+  lockSession: false,
+  ripple: {
+    pas: {
+      openEHR: {
+        pasModule: 'mysqlPAS',
+        summaryHeadings: ['allergies', 'problems', 'medications', 'contacts', {name: 'transfers', value: true}]
+      }
     },
-    dateOfMeeting: function(data, host) {
-      return dateTime.getRippleTime(data.meeting_date, host);
-    },
-    timeOfMeeting: function(data, host) {
-      return dateTime.msSinceMidnight(data.meeting_date, host);
-    },
-    servicePageLink: function() {
-      return null;
-    },
-    question: 'question',
-    notes: 'notes'
-  }
+    mode: 'demo'
+  },
+  ssl: {
+    keyFilePath: 'ssl/ssl.key',
+    certFilePath: 'ssl/ssl.crt',
+  },
+  cors: true,
+  customSocketModule: 'ewd-ripple/lib/webrtc/sockets'
 };
+
+ewdRipple.start(config);
+
