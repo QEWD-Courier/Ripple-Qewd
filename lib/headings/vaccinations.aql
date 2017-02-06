@@ -10,3 +10,4 @@ select
    contains COMPOSITION a[openEHR-EHR-COMPOSITION.health_summary.v1]
    contains ACTION b_a[openEHR-EHR-ACTION.immunisation_procedure.v1]
  where a/name/value='Immunisation summary'
+
