@@ -24,39 +24,21 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  26 January 2017
+  30 January 2017
 
 */
 
-var byPatient = require('./byPatient');
-var router = require('qewd-router');
-var authenticate = require('../sessions/authenticate');
+var ewdRipple = require('qewd-ripple/lib/startup');
 
-var routes = [
-  {
-    url: '/api/search/patient/table',
-    handler: byPatient
+var config = {
+  port: 3000,
+  poolSize: 2,
+  ripple: {
+    mode: 'demo'
+  },
+  database: {
+    type: 'redis'
   }
-];
+};
 
-routes = router.initialise(routes);
-
-function search(messageObj, finished) {
-
-  var status = authenticate.call(this, messageObj);
-  if (status.error) {
-    finished(status);
-    return;
-  }
-
-  router.process.call(this, messageObj, status.session, routes, function(results) {
-    if (results.error) {
-      finished(results);
-    }
-    else {
-      finished(results);
-    }
-  });
-}
-
-module.exports = search;
+ewdRipple.start(config);

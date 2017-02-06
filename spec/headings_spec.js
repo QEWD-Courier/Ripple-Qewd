@@ -9,7 +9,7 @@
  | http://rippleosi.org                                                     |
  | Email: code.custodian@rippleosi.org                                      |
  |                                                                          |
- | Author: Rob Tweed, M/Gateway Developments Ltd                            |
+ | Author: Chris Johnson                                                    |
  |                                                                          |
  | Licensed under the Apache License, Version 2.0 (the "License");          |
  | you may not use this file except in compliance with the License.         |
@@ -28,47 +28,64 @@
 
 */
 
-var mysql = require('mysql');
+var headings = require('./../lib/headings/headings');
+var openEHR = require('./../lib/openEHR/openEHR');
+var template = require('qewd-template');
 
-module.exports = {
+Object.keys(openEHR.servers).forEach(function(server) {
+  var session;
 
-  connect: function(callback) {
-    var con = mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "password",
-      database: 'poc_legacy'
+  // Create a session with the current openEHR server
+  beforeEach(function(done) {
+    openEHR.startSession(server, function(res) {
+      session = res.id;
+      done();
     });
+  });
 
-    con.connect(function(err){
-      if (err) {
-        callback({error: 'Unable to connect to MySQL: ' + err});
-        return;
-      }
-      console.log('Connected to MySQL');
-    });
-    return con;
-  },
+  afterEach(function(done) {
+    openEHR.stopSession(server, session, done);
+  });
 
-  disconnect: function(connection) {
-    console.log('Disconnected from MySQL');
-    connection.end();
-  },
-
-  query: function(query, callback) {
-    var q = this;
-    var connection = this.connect(callback);
-    console.log('about to run query ' + query);
-    connection.query(query,function(err, rows) {
-      console.log('query results: ' + JSON.stringify(rows));
-      if(err) {
-        q.disconnect(connection);
-        if (callback) callback({error: 'MySQL query error: ' + err});
-        return;
-      }
-      q.disconnect(connection);
-      if (callback) callback(rows);
+  function request(url, data, done, process) {
+    openEHR.request({
+      url: url,
+      queryString: data,
+      host: server,
+      session: session,
+      processBody: process,
+      callback: done
     });
   }
 
-};
+  describe("OpenEHR Server " + server, function() {
+    var ivorCoxNhsId = 9999999000;
+    var ivorCoxEhrId;
+
+    beforeEach(function(done) {
+      request('/rest/v1/ehr', {
+          subjectId: ivorCoxNhsId,
+          subjectNamespace: 'uk.nhs.nhs_number'
+        }, done, function(res) { ivorCoxEhrId = res.ehrId;}
+      );
+    });
+
+    // For each heading which has an aql defined
+    Object.keys(headings.headings).forEach(function(headingName) {
+      var heading = headings.headings[headingName];
+      describe("using " + headingName, function() {
+        if(heading.query && heading.query.aql) {
+          it("can get Ivor Cox details using AQL", function(done) {
+            aql = template.replace(heading.query.aql,{
+              patientId: ivorCoxNhsId, ehrId: ivorCoxEhrId
+            });
+
+            request('/rest/v1/query', {aql:aql}, done, function(res) {
+              expect(res.resultSet).toBeTruthy();
+            });
+          });
+        }
+      });
+    });
+  });
+});

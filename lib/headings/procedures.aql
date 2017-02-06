@@ -1,4 +1,5 @@
 select
+<<<<<<< HEAD
     a/uid/value as uid,
     a/composer/name as author,
     a/context/start_time/value as date_submitted,
