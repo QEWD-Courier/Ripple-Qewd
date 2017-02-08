@@ -24,58 +24,42 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  01 February 2017
+  30 January 2017
 
 */
+var documents = require('./../../lib/documents/documents');
+var fs = require('fs');
 
-var openEHR = require('../openEHR/openEHR');
-
-// function init() {
-//     openEHR.init.call(this);
-// }
-
-function postDocument(nhsNumber, templateId, document, host, callback) {
-    console.log('** documents.postDocument: ' + JSON.stringify(document));
-
-    if(nhsNumber !== undefined && templateId !== undefined) {
-        openEHR.startSession('ethercis', function(session) {
-            console.log('**** inside startSession callback - sessionId = ' + session.id);
-            openEHR.mapNHSNoByHost(nhsNumber, host, session.id, function(ehrId) {
-                makeRequest(ehrId, document, templateId, host, session.id,  function() {
-                    openEHR.stopSession(host, session.id);
-                    callback({info: 'document saved'});  
-                });
-            });
-        });
-    }
-    else {
-        // error - no patient id or template id
-    }
-}
-
-function makeRequest(ehrId, body, templateId, host, sessionId, callback) {
-  // ready to post
-    var params = {
-      host: host,
-      callback: callback,
-      url: '/rest/v1/composition',
-      queryString: {
-        templateId: templateId, 
-        ehrId: ehrId,
-        format: 'FLAT'
-      },
-      method: 'POST',
-      session: sessionId,
-      options: {
-        body: body
-      }
-    };    
-
-    console.log('**** about to post data: ' + JSON.stringify(params, null, 2));
-    openEHR.request(params);
-}
-
-module.exports = {
-    //init: init,
-    post: postDocument
+const tests = {
+    referral: {
+        file: 'spec/documents/resources/general.referral.xml',
+    },
+    discharge: {
+        file: 'spec/documents/resources/discharge.summary.xml',
+    }   
 };
+
+describe("openEHR.post referral", function() {
+    beforeEach(function(done) {
+        jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+        done();
+    });
+    
+     it("can save a new document into an openEHR instance", function(done) {
+    
+         for(test in tests) {
+            console.log('starting to test posting of ' + test);
+            
+            var messageObj = {
+                path: '/api/documents/' + test,
+                method: 'POST',
+                body: fs.readFileSync(tests[test].file, 'utf8'),
+            };
+
+            documents.api(messageObj, function(response) {
+                expect(response.documentCompositionId).toBeTruthy();           
+                done();
+            });
+        }
+     });
+});

@@ -33,8 +33,8 @@ var fs = require('fs');
 
 describe("healthlink.getReferral", function() {
     it("can map a given input XML referral into a FLAT JSON representation", function() {
-        var referralXml = fs.readFileSync('spec/documents/general.referral.xml', 'utf8');       
-        var referral = underTest.getReferral(referralXml);
+        var referralXml = fs.readFileSync('spec/documents/resources/general.referral.xml', 'utf8');       
+        var referral = underTest.referral(referralXml);
   
         expect(referral['ctx/composer_name']).toBe("TEST, HPM");
         expect(referral['ctx/health_care_facility|id']).toBe("012121");
@@ -48,15 +48,12 @@ describe("healthlink.getReferral", function() {
         expect(referral['referral/referral_details/referral_status/referral_type']).toBe("General");
         expect(referral['referral/referral_details/service_request/request:0/referral_type']).toBe("General");
         expect(referral['referral/referral_details/service_request/narrative']).toBe("General");
-        
-        //expect(referral['referral/referral_details/service_request/request:0/priority|code']).toBe("");
 
         expect(referral['referral/referral_details/service_request/referring_provider/identifier']).toBe("b841ffc7-49c8-4813-8eb5-c0073bf1f815");    
         expect(referral['ctx/health_care_facility|name']).toBe("The Medical Centre");    
         expect(referral['referral/referral_details/service_request/distribution:0/individual_recipient:0/gp/name_of_organisation']).toBe("The Medical Centre");    
         expect(referral['referral/referral_details/service_request/referring_provider/name_of_organisation']).toBe("The Medical Centre");    
         expect(referral['referral/referral_details/service_request/distribution/individual_recipient/gp/wpn/work_number']).toBe("022 21551");    
-       // expect(referral['referral/referral_details/service_request/referring_provider/identifier']).toBe("012121");    
         expect(referral['referral/referral_details/service_request/referred_to_provider/name_of_organisation']).toBe("15 Beecher Street");       
 
         // TODO - contact details & observations
@@ -65,9 +62,9 @@ describe("healthlink.getReferral", function() {
 
 describe("healthlink.getDischarge", function() {
     it("can map a given input XML discharge into a FLAT JSON representation", function() {
-        var dischargeXml = fs.readFileSync('spec/documents/discharge.summary.xml', 'utf8');       
-        var discharge = underTest.getDischarge(dischargeXml);
-        
+        var dischargeXml = fs.readFileSync('spec/documents/resources/discharge.summary.xml', 'utf8');       
+        var discharge = underTest.discharge(dischargeXml);
+
         // context
         expect(discharge['ctx/composer_id']).toBe("023781");
         expect(discharge['ctx/composer_name']).toBe("McCrea, Siobhan");
@@ -111,12 +108,12 @@ describe("healthlink.getDischarge", function() {
 
 describe("healthlink.getInternalPatientId", function() {
     it("can extract a patient identifier from the input XML", function() {
-        var xml = fs.readFileSync('spec/documents/discharge.summary.xml', 'utf8');       
+        var xml = fs.readFileSync('spec/documents/resources/discharge.summary.xml', 'utf8');       
         var internalPatientId = underTest.getInternalPatientId(xml);
         
         expect(internalPatientId).toBe("9999999000");
         
-        xml = fs.readFileSync('spec/documents/general.referral.xml', 'utf8');       
+        xml = fs.readFileSync('spec/documents/resources/general.referral.xml', 'utf8');       
         internalPatientId = underTest.getInternalPatientId(xml);
         
         expect(internalPatientId).toBe("9999999000");
