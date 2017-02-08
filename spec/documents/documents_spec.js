@@ -32,10 +32,10 @@ var fs = require('fs');
 
 const tests = {
     referral: {
-        file: 'spec/documents/resources/general.referral.xml',
+        file: 'spec/documents/resources/healthlink.referral.json',
     },
     discharge: {
-        file: 'spec/documents/resources/discharge.summary.xml',
+        file: 'spec/documents/resources/healthlink.discharge.json',
     }   
 };
 
@@ -53,7 +53,7 @@ describe("openEHR.post referral", function() {
             var messageObj = {
                 path: '/api/documents/' + test,
                 method: 'POST',
-                body: fs.readFileSync(tests[test].file, 'utf8'),
+                body: JSON.parse(fs.readFileSync(tests[test].file, 'utf8')),
             };
 
             documents.api(messageObj, function(response) {
