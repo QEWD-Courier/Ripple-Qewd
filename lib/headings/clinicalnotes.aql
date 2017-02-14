@@ -1,0 +1,11 @@
+select
+  a/uid/value as uid,
+  a/composer/name as author,
+  a/context/start_time/value as date_created,
+  b_a/data[at0001]/items[at0002]/value/value as note,
+  b_a/name/value as type
+from EHR e[ehr_id/value='{{ehrId}}']
+contains COMPOSITION a[openEHR-EHR-COMPOSITION.encounter.v1]
+contains EVALUATION b_a[openEHR-EHR-EVALUATION.clinical_synopsis.v1]
+where a/name/value='Clinical Notes'
+

@@ -13,3 +13,4 @@ select
     INSTRUCTION a_a[openEHR-EHR-INSTRUCTION.request-lab_test.v1] and
     ACTION b_a[openEHR-EHR-ACTION.laboratory_test.v1])
  where a/name/value='Laboratory order'
+
