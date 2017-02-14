@@ -1,6 +1,6 @@
 {
   "name": "qewd-ripple",
-  "version": "2.8.1",
+  "version": "2.9.0",
   "description": "QEWD-based Middle Tier for Ripple OSI",
   "main": "index.js",
   "scripts": {
