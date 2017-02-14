@@ -38,12 +38,18 @@ To give the user sudo privileges:
      usermod -aG sudo ripple
 
 
-3) Use on of the installer scripts from this repo to create the QEWD/Node.js-based Ripple 
- Middle Tier and UI.  To install *qewd-ripple* with Redis as its database:
+3) Use one of the installer scripts from this repo to create the QEWD/Node.js-based Ripple 
+ Middle Tier and UI.  
+
+To install *qewd-ripple* with Redis as its database:
 
       cd ~
       wget https://raw.githubusercontent.com/RippleOSI/Qewd-Ripple/master/installer/install_ripple_redis.sh
       source install_ripple_redis.sh
+
+(NB: during the installation, you'll be asked for the settings it should use for Redis & IPTables setup. 
+Just accept all the default values by pressing the *{Enter}* key when asked.)
+
 
 To install *qewd-ripple* with GT.M as its database:
 
@@ -51,7 +57,8 @@ To install *qewd-ripple* with GT.M as its database:
       wget https://raw.githubusercontent.com/RippleOSI/Qewd-Ripple/master/installer/install_ripple_gtm.sh
       source install_ripple_gtm.sh
 
-The installer script installs and configures the following:
+
+The installer scripts install and configures the following:
 
 - Redis or the Open Source GT.M database (used by RippleOSI's middle tier as a high-performance session cache and Document Store)
 - Node.js
@@ -61,7 +68,7 @@ The installer script installs and configures the following:
 - A MySQL-based Patient Administration (PAS) database
 
 
-3) When the installer has completed, you'll find two template startup files in the *~/qewd* directory:
+4) When the installer has completed, you'll find two template startup files in the *~/qewd* directory:
 
 - **ripple-demo.js**   (Designed to run the RippleOSI system in demo mode)
 - **ripple-secure.js** (Designed to run the RippleOSI system in secure mode, using Auth0 for identity management)
