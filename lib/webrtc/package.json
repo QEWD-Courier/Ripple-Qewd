@@ -1,0 +1,19 @@
+{
+  "name": "socket-server",
+  "version": "1.0.0",
+  "description": "Installation:\r 1. clone repo (git clone repo_url)\r 2. npm i && bower i (from webapp directory)\r 3. cd webapp/socket-server && node socket",
+  "main": "socket.js",
+  "dependencies": {
+  	"mysql": "2.11.1",
+    "node-uuid": "1.4.7",
+    "socket.io": "~1.4.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node socket"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "author": ""
+}
