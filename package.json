@@ -1,6 +1,6 @@
 {
   "name": "qewd-ripple",
-  "version": "2.11.0",
+  "version": "2.12.0",
   "description": "QEWD-based Middle Tier for Ripple OSI",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "qewd-monitor": "",
     "qewd-router": "",
     "qewd-template": "",
+    "qewd-content-store": "",
     "request": "",
     "moment-timezone": "",
     "route-parser": "",

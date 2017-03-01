@@ -57,9 +57,15 @@ cd ~/qewd
 mkdir www
 cd www
 mkdir qewd-monitor
+mkdir qewd-content-store
+
 cp ~/qewd/node_modules/qewd-monitor/www/bundle.js ~/qewd/www/qewd-monitor
 cp ~/qewd/node_modules/qewd-monitor/www/*.html ~/qewd/www/qewd-monitor
 cp ~/qewd/node_modules/qewd-monitor/www/*.css ~/qewd/www/qewd-monitor
+
+cp ~/qewd/node_modules/qewd-content-store/www/bundle.js ~/qewd/www/qewd-content-store
+cp ~/qewd/node_modules/qewd-content-store/www/*.html ~/qewd/www/qewd-content-store
+
 cp ~/qewd/node_modules/ewd-client/lib/proto/ewd-client.js ~/qewd/www/ewd-client.js
 
 echo "QEWD / Node.js and Ripple middle tier is now installed"
