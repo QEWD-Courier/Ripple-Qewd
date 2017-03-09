@@ -37,8 +37,8 @@ $(document).ready(function () {
   getNotificationPermission();
 
   findUserMediaStream(constraintsList)
-    .then(setLocalStream)
-    .catch(errorHandler);
+      .then(setLocalStream)
+      .catch(errorHandler);
 
 
   /**
@@ -58,14 +58,14 @@ $(document).ready(function () {
       return reject(new Error('Cannot cam+mic or only mic devices stream'));
 
     getUserMediaStream(constraints)
-      .then(resolve)
-      .catch(function() {
-        getAnyUserMediaStream(constraintsList, index + 1, resolve, reject);
-      });
+        .then(resolve)
+        .catch(function() {
+          getAnyUserMediaStream(constraintsList, index + 1, resolve, reject);
+        });
   }
 
   function getUserMediaStream(constraints) {
-      return navigator.mediaDevices.getUserMedia(constraints)
+    return navigator.mediaDevices.getUserMedia(constraints)
   }
 
   function cretePeerConnection() {
@@ -98,7 +98,7 @@ $(document).ready(function () {
       "iceServers": [
         {url: 'stun:stun.xten.com'},
         {
-          url: 'turn:139.59.163.92:3478',
+          url: 'turn:138.68.134.7:3478',
           username: 'idcr',
           credential: 'E3rtvo6fkghFrt6'
         }]
@@ -126,8 +126,8 @@ $(document).ready(function () {
       }
     };
     pc.createOffer(options)
-      .then(gotLocalDescription)
-      .catch(errorHandler);
+        .then(gotLocalDescription)
+        .catch(errorHandler);
   }
 
   function createAnswer() {
@@ -138,8 +138,8 @@ $(document).ready(function () {
       }
     };
     pc.createAnswer(options)
-      .then(gotLocalDescription)
-      .catch(errorHandler);
+        .then(gotLocalDescription)
+        .catch(errorHandler);
   }
 
 
@@ -523,10 +523,10 @@ $(document).ready(function () {
 
   function playSound(filename) {
     $('#notificationSound').empty().html('<audio autoplay="autoplay">' +
-      '<source src="sounds/' + filename + '.mp3" type="audio/mpeg" />' +
-      '<source src="sounds/' + filename + '.ogg" type="audio/ogg" />' +
-      '<embed hidden="true" autostart="true" loop="false" src="sounds/' + filename + '.mp3" />' +
-      '</audio>');
+        '<source src="sounds/' + filename + '.mp3" type="audio/mpeg" />' +
+        '<source src="sounds/' + filename + '.ogg" type="audio/ogg" />' +
+        '<embed hidden="true" autostart="true" loop="false" src="sounds/' + filename + '.mp3" />' +
+        '</audio>');
   }
 
   function isDoctor(user) {
@@ -542,14 +542,13 @@ $(document).ready(function () {
 
   function getDiffTime(from, to, withoutHours) {
     return ((withoutHours) ?
-      [
-        ('0' + (Math.abs(moment.utc(from).diff(to, 'minutes')) % 60)).slice(-2),
-        ('0' + (Math.abs(moment.utc(from).diff(to, 'seconds')) % 60)).slice(-2)] :
-      [
-        ('0' + Math.abs(moment.utc(from).diff(to, 'hours'))).slice(-2),
-        ('0' + (Math.abs(moment.utc(from).diff(to, 'minutes')) % 60)).slice(-2),
-        ('0' + (Math.abs(moment.utc(from).diff(to, 'seconds')) % 60)).slice(-2)
-      ]).join(':');
+        [
+          ('0' + (Math.abs(moment.utc(from).diff(to, 'minutes')) % 60)).slice(-2),
+          ('0' + (Math.abs(moment.utc(from).diff(to, 'seconds')) % 60)).slice(-2)] :
+        [
+          ('0' + Math.abs(moment.utc(from).diff(to, 'hours'))).slice(-2),
+          ('0' + (Math.abs(moment.utc(from).diff(to, 'minutes')) % 60)).slice(-2),
+          ('0' + (Math.abs(moment.utc(from).diff(to, 'seconds')) % 60)).slice(-2)
+        ]).join(':');
   }
 });
-
