@@ -24,7 +24,7 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  26 January 2017
+  10 March 2017
 
 */
 
@@ -43,7 +43,8 @@ var config = {
   poolSize: 2,
   ripple: {
     mode: 'secure'
-  }
+  },
+  sessionTimeout: 900
 };
 
 ewdRipple.start(config);
