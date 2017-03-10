@@ -29,14 +29,14 @@
 */
 
 var xml2js = require('xml2js');
-var underTest = require('./../../lib/documents/healthlink');
+var underTest = require('./../../lib/documents/healthlink/healthlink');
 var fs = require('fs');
 
 describe("healthlink.getReferral", function() {
     it("can map a given input XML referral into a FLAT JSON representation", function() {
         var healthlinkReferral = JSON.parse(fs.readFileSync('spec/documents/resources/healthlink.referral.json', 'utf8'));       
         
-        var openEhrReferral = underTest.referral(healthlinkReferral);
+        var openEhrReferral = underTest.toOpenEhr(healthlinkReferral);
   
         expect(openEhrReferral['ctx/composer_name']).toBe("TEST, HPM");
         expect(openEhrReferral['ctx/health_care_facility|id']).toBe("012121");
@@ -66,7 +66,7 @@ describe("healthlink.getDischarge", function() {
     it("can map a given input XML discharge into a FLAT JSON representation", function() {
         var healthlinkDischarge = JSON.parse(fs.readFileSync('spec/documents/resources/healthlink.discharge.json', 'utf8'));       
         
-        var openEhrDischarge = underTest.discharge(healthlinkDischarge);
+        var openEhrDischarge = underTest.toOpenEhr(healthlinkDischarge);
 
         // context
         expect(openEhrDischarge['ctx/composer_id']).toBe("023781");
