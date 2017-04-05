@@ -12,6 +12,7 @@
     "qewd-router": "",
     "qewd-template": "",
     "qewd-content-store": "",
+    "qewd-transform-json": "",
     "request": "",
     "moment-timezone": "",
     "route-parser": "",
