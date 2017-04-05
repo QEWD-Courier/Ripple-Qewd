@@ -41,4 +41,14 @@ var config = {
   }
 };
 
+config.addMiddleware = function(bodyParser, app) {
+  require('body-parser-xml')(bodyParser);
+  app.use(bodyParser.xml({
+     limit: '1MB',
+     xmlParseOptions: {
+        explicitArray: false
+     }
+  }));
+};
+
 ewdRipple.start(config);

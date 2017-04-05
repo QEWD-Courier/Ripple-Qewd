@@ -1,0 +1,10 @@
+select
+  a/uid/value as uid,
+  a/composer/name as author,
+  a/context/start_time/value as dateCreated,
+  a/name/value as documentType,
+  a/archetype_details/template_id/value as documentTemplate
+from EHR e [ehr_id/value = '{{ehrId}}']
+contains COMPOSITION a
+where a/archetype_details/template_id/value = '{{templateId}}'
+order by a/context/start_time/value desc

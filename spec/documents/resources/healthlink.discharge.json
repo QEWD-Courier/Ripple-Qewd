@@ -1,0 +1,225 @@
+{
+    REF_I12: {
+        MSH: {
+            MSH .1: "|",
+            MSH .2: "^~\&",
+            MSH .3: {
+                HD .1: "MILLENIUM.HEALTHLINK.5"
+            },
+            MSH .4: {
+                HD .1: "St.James's Hospital (Dublin)",
+                HD .2: "904",
+                HD .3: "L"
+            },
+            MSH .6: {
+                HD .1: "McCrea, Siobhan",
+                HD .2: "023781",
+                HD .3: "Medical Council No"
+            },
+            MSH .7: {
+                TS .1: "20100514142700"
+            },
+            MSH .9: {
+                MSG .1: "REF",
+                MSG .2: "I12"
+            },
+            MSH .10: "49789",
+            MSH .11: {
+                PT .1: "P"
+            },
+            MSH .12: {
+                VID .1: "2.4"
+            }
+        },
+        REF_I12.PROVIDER_CONTACT: {
+            PRD: {
+                PRD .1: {
+                    CE .1: "",
+                    CE .2: "",
+                    CE .3: "",
+                    CE .4: "",
+                    CE .5: "",
+                    CE .6: ""
+                },
+                PRD .2: {
+                    XPN .1: {
+                        FN .1: ""
+                    },
+                    XPN .2: "",
+                    XPN .3: "",
+                    XPN .4: "",
+                    XPN .5: "",
+                    XPN .6: ""
+                }
+            }
+        },
+        PID: {
+            PID .3: [{
+                    CX .1: "9999999000",
+                    CX .4: {
+                        HD .1: "St.James's Hospital (Dublin)"
+                    },
+                    CX .5: "MRN"
+                },
+                {
+                    CX .1: "9999999000",
+                    CX .5: "MRN"
+                },
+                {
+                    CX .1: "-",
+                    CX .5: "GMS"
+                },
+                {
+                    CX .1: "1020714",
+                    CX .5: "OTH"
+                }
+            ],
+            PID .5: {
+                XPN .1: {
+                    FN .1: "ANON"
+                },
+                XPN .2: "ANON",
+                XPN .5: "-",
+                XPN .7: "L"
+            },
+            PID .7: {
+                TS .1: "19010101"
+            },
+            PID .8: "M",
+            PID .11: {
+                XAD .1: {
+                    SAD .1: "ADD1"
+                },
+                XAD .2: "ADD2",
+                XAD .3: "ADD3",
+                XAD .4: "-"
+            }
+        },
+        DG1: {
+            DG1 .1: "1",
+            DG1 .2: "",
+            DG1 .3: {
+                CE .1: "Cholecystectomy",
+                CE .2: "Cholecystectomy"
+            },
+            DG1 .4: "",
+            DG1 .5: "",
+            DG1 .6: "Working"
+        },
+        REF_I12.PATIENT_VISIT: {
+            PV1: {
+                PV1 .2: "I",
+                PV1 .3: {
+                    PL .9: ""
+                },
+                PV1 .7: {
+                    XCN .1: "4547",
+                    XCN .2: {
+                        FN .1: "COOKE MR FIACHRA"
+                    },
+                    XCN .3: "",
+                    XCN .4: "",
+                    XCN .5: "",
+                    XCN .6: ""
+                },
+                PV1 .9: {
+                    XCN .1: "",
+                    XCN .2: {
+                        FN .1: ""
+                    },
+                    XCN .3: "",
+                    XCN .4: "",
+                    XCN .5: "",
+                    XCN .6: ""
+                },
+                PV1 .36: "1",
+                PV1 .37: {
+                    DLD .1: ""
+                },
+                PV1 .44: {
+                    TS .1: "201003100716"
+                },
+                PV1 .45: {
+                    TS .1: "201003191125"
+                },
+                PV1 .51: ""
+            }
+        },
+        NTE: {
+            NTE .3: {
+                _: "ADMISSION REASON: Admit with acute abdominal pain, deranged LFTs, normal amylase DIAGNOSIS: Cholecystectomy PROBLEMS: Abdominal pain PROBLEMS: Gallstones THEATRE PROCS: Lap Chole NON THEATRE PROCS: None LAB INVESTIGATIONS: As attached - FBC, UE, LFTs, Amylase RAD INVESTIGATIONS: As attached - USS Abdomen, MRCP OTHER INVESTIGATIONS: None PROGRESS DURING STAY: Uncomplicated post operative recovery. Full diet tolerated, wound sites dry and intact, no oozing. Vital signs normal, apyrexial. Mobilising/teds/clexane. No c/o abdominal pain. C/O right shoulder tip pain - advised post operative complication and should resolve within several days. Normal MRCP pre-op. Dx = acute cholecystitis with transiemt choledocholithiasis. ALLERGIES: NKDA DISCHARGE MEDICATION: MEDICATION:Refused analgesia on d/c INFO GIVEN TO PATIENT: All results and surgery as above explained. For removal of clips in 10/7 in dressing clinic - appt given. Avoid constipation OPD FOLLOW UP: 6/52 GP ACTIONS: Routine follow up",
+                escape: [{
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    },
+                    {
+                        $: {
+                            V: ".br"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

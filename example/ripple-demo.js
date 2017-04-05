@@ -24,7 +24,7 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  10 March 2017
+  26 January 2017
 
 */
 
@@ -35,8 +35,17 @@ var config = {
   poolSize: 2,
   ripple: {
     mode: 'demo'
-  },
-  sessionTimeout: 900
+  }
+};
+
+config.addMiddleware = function(bodyParser, app) {
+  require('body-parser-xml')(bodyParser);
+  app.use(bodyParser.xml({
+     limit: '1MB',
+     xmlParseOptions: {
+        explicitArray: false
+     }
+  }));
 };
 
 ewdRipple.start(config);

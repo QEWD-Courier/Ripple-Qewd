@@ -24,7 +24,7 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  10 March 2017
+  26 January 2017
 
 */
 
@@ -32,19 +32,33 @@ var ewdRipple = require('qewd-ripple/lib/startup');
 
 var config = {
   auth0: {
-    domain:       'xxxxxxxxx.eu.auth0.com',
-    clientID:     'xxxxxxxxxxxxxxxxxxxxxxxx',
-    callbackURL:  'http://xxx.xxx.xxx.xxx/auth0/token',
-    clientSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    domain:       'rippleosi.eu.auth0.com',
+    clientID:     'Ghi91Wk1PERQjxIN5ili6rssnl4em8In',
+    callbackURL:  'https://138.68.134.7:8081/auth0/token',
+    clientSecret: 'sZn_wWPQQV3mfIYDANrufQ12pyWcCtWULoGOqqakH1IiCs0IBLRybK6c1XB863WT',
     indexURL: '/index.html',
     connections: ['Username-Password-Authentication', 'google-oauth2', 'twitter']
   },
-  port: 3000,
+  port: 8081,
   poolSize: 2,
   ripple: {
     mode: 'secure'
   },
-  sessionTimeout: 900
+  cors: true,
+  ssl: {
+    keyFilePath: 'ssl/ssl.key',
+    certFilePath: 'ssl/ssl.crt',
+  }
+};
+
+config.addMiddleware = function(bodyParser, app) {
+  require('body-parser-xml')(bodyParser);
+  app.use(bodyParser.xml({
+     limit: '1MB',
+     xmlParseOptions: {
+        explicitArray: false
+     }
+  }));
 };
 
 ewdRipple.start(config);

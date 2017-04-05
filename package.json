@@ -1,6 +1,6 @@
 {
   "name": "qewd-ripple",
-  "version": "2.14.0",
+  "version": "2.15.0",
   "description": "QEWD-based Middle Tier for Ripple OSI",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "passport": "",
     "passport-auth0": "",
     "xml2js": "",
+    "body-parser-xml": "",
     "js2xmlparser": ""
   },
   "devDependencies": {
