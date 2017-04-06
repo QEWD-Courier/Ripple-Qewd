@@ -8,3 +8,4 @@ from EHR e[ehr_id/value='{{ehrId}}']
 contains COMPOSITION a[openEHR-EHR-COMPOSITION.encounter.v1]
 contains EVALUATION b_a[openEHR-EHR-EVALUATION.clinical_synopsis.v1]
 where a/name/value='Clinical Notes'
+
