@@ -252,7 +252,7 @@ mv -v ~/dist/* ~/qewd/www/
 
 # sudo apt-get install iptables-persistent
 
-# ========== Install nginx Proxy, listening on port 8086 =================
+# ========== Install nginx Proxy, listening on port 80 =================
 
 #  alias /var/www to the QEWD www directory
 
@@ -261,20 +261,16 @@ sudo apt-get install -y nginx
 sudo cp ~/qewd/node_modules/qewd-ripple/nginx/sites-available/default /etc/nginx/sites-available/default
 sudo systemctl restart nginx
 
+cd ~/qewd
+pm2 start ripple-demo.js
+pm2 start ripple-secure.js
 
 echo "----------------------------------------------------------------------------------"
-echo " The set up of the QEWD Ripple Middle Tier on your Ubuntu server is now complete!"
+echo " The set up of the QEWD Ripple Middle Tier on your Ubuntu server is now complete! "
 echo "  Startup template files (ripple-demo.js and ripple-secure.js                     "
 echo "    are in the ~/qewd directory.  Add the appropriate Auth0 credentials           "
 echo "                                                                                  "
-echo "  eg:                                                                             "
-echo "     cd ~/qewd                                                                    "
-echo "     node ripple-demo                                                             "
-echo "                                                                                  "
-echo "  or use PM2 to run it as a service, eg:                                          "
-echo "     cd ~/qewd                                                                    "
-echo "     pm2 start ripple-demo.js                                                     "
+echo "  ripple-demo and ripple-secure have been started in PM2 for you                  "
 echo "----------------------------------------------------------------------------------"
 
-cd ~/qewd
 

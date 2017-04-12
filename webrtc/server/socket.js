@@ -6,8 +6,8 @@
 const fs = require('fs');
 const https = require('https');
 const server = https.createServer({
-    key: fs.readFileSync('/home/ripple/qewd/ssl/ssl.key'),
-    cert: fs.readFileSync('/home/ripple/qewd/ssl/ssl.crt')
+    key: fs.readFileSync(process.env.HOME + '/qewd/ssl/ssl.key'),
+    cert: fs.readFileSync(process.env.HOME + '/qewd/ssl/ssl.crt')
 });
 server.listen(8070);
 
