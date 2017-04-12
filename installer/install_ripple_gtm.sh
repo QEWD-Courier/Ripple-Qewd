@@ -153,7 +153,8 @@ pm2 save
 
 # Client
 
-cp -r ~/qewd/node_modules/qewd-ripple/webrtc/client/ ~/qewd/www/videochat/
+# cp -r ~/qewd/node_modules/qewd-ripple/webrtc/client/ ~/qewd/www/videochat/
+#   this is copied from the client s/w repository later
 
 # TURN Server
 
@@ -255,8 +256,8 @@ mv -v ~/dist/* ~/qewd/www/
 #  alias /var/www to the QEWD www directory
 
 sudo ln -s ~/qewd/www/ /var/www
-sudo apt-get install nginx
-sudo cp ~/qewd/node_modules/qewd-ripple/nginx/sites-available/default ~/etc/nginx/sites-available/default
+sudo apt-get install -y nginx
+sudo cp ~/qewd/node_modules/qewd-ripple/nginx/sites-available/default /etc/nginx/sites-available/default
 sudo systemctl restart nginx
 
 

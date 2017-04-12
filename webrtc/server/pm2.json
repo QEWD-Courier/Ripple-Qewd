@@ -2,8 +2,8 @@
   "name": "WebRTC Socket Server",
   "script": "socket.js",
   "watch": false,
-  "error_file": "/home/ripple/videochat-socket-server/server_error.log",
-  "out_file": "/home/ripple/videochat-socket-server/server_info.log",
+  "error_file": "~/videochat-socket-server/server_error.log",
+  "out_file": "~/videochat-socket-server/server_info.log",
   "env": {
     "HOST": "0.0.0.0",
     "PORT": 8070
