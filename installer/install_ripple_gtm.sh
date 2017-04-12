@@ -146,6 +146,7 @@ cp ~/qewd/node_modules/ewd-client/lib/proto/ewd-client.js ~/qewd/www/ewd-client.
 # Server
 
 cp -r ~/qewd/node_modules/qewd-ripple/webrtc/server/ ~/videochat-socket-server/
+cp -r ~/qewd/node_modules/qewd-ripple/webrtc/ssl/ ~/qewd/ssl/
 cd ~/videochat-socket-server
 npm install
 pm2 start pm2.json
