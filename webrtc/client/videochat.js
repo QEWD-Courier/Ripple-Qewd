@@ -1,3 +1,9 @@
+var turnServer = {
+  url: 'turn:138.68.134.7:3478',
+  username: 'idcr',
+  credential: 'E3rtvo6fkghFrt6'
+};
+
 window.onbeforeunload = function (e) {
   var dialogText = 'Please, close the appointment by pressing "End call" or the appointment will stay active!';
   e.returnValue = dialogText;
@@ -75,7 +81,13 @@ $(document).ready(function () {
   function setLocalStream(stream) {
     $.get('/api/user').then(function (usr) {
       user = usr;
-
+console.log('user: ', user);
+      $('#patientName').text(user.username);
+      $('#patientPhone').text(user.phone);
+      $('#patientDob').text(moment(user.dateOfBirth).format('DD-MMM-YYYY'));
+      $('#patientGender').text(user.gender);
+      $('#patientNhs').text(user.nhsNumber);
+      
       // username is used as ID !
       socket.emit('user:init', {
         username: user.username || user.sub,
@@ -97,11 +109,15 @@ $(document).ready(function () {
     pc = new PeerConnection({
       "iceServers": [
         {url: 'stun:stun.xten.com'},
+        turnServer
+        /*
         {
           url: 'turn:138.68.134.7:3478',
           username: 'idcr',
           credential: 'E3rtvo6fkghFrt6'
-        }]
+        }
+        */
+      ]
     });
 
     pc.addStream(stream);
@@ -186,7 +202,9 @@ $(document).ready(function () {
 
   socket.on('call:getPatientInfo', function (data) {
     $.get('/api/patients/' + data.patientId).then(function (data) {
+      console.log('getPatientInfo: ', data);
       $('#patientName').text(data.name);
+      $('#patientPhone').text(data.telephone);
       $('#patientDob').text(moment(data.dateOfBirth).format('DD-MMM-YYYY'));
       $('#patientGender').text(data.gender);
       $('#patientNhs').text(data.nhsNumber);

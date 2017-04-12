@@ -1,0 +1,20 @@
+select
+    a/uid/value as uid,
+    a/composer/name as author,
+    a/context/start_time/value as date_submitted,
+    b_a/description[at0001]/items[at0002]/value/value as procedure_name,
+    b_a/description[at0001]/items[at0002]/value/defining_code/code_string as procedure_code,
+    b_a/description[at0001]/items[at0002]/value/defining_code/terminology_id/value as procedure_terminology,
+    b_a/description[at0001]/items[at0049]/value/value as procedure_notes,
+    b_a/other_participations/performer/name as performer,
+    b_a/time/value as procedure_datetime,
+    b_a/ism_transition/current_state/value as procedure_state,
+    b_a/ism_transition/current_state/defining_code/code_string as procedure_state_code,
+    b_a/ism_transition/current_state/defining_code/terminology_id/value as procedure_state_terminology,
+    b_a/ism_transition/careflow_step/value as procedure_step,
+    b_a/ism_transition/careflow_step/defining_code/code_string as procedure_step_code,
+    b_a/ism_transition/careflow_step/defining_code/terminology_id/value as procedure_step_terminology
+    from EHR e [ehr_id/value = '{{ehrId}}']
+contains COMPOSITION a[openEHR-EHR-COMPOSITION.health_summary.v1]
+contains ACTION b_a[openEHR-EHR-ACTION.procedure.v1]
+where a/name/value='Procedures list'

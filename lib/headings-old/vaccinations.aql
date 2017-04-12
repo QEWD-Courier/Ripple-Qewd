@@ -1,0 +1,12 @@
+select
+    a/uid/value as uid,
+    a/composer/name as author,
+    a/context/start_time/value as date_created,
+    b_a/description[at0001]/items[at0002]/value/value as vaccination_name,
+    b_a/description[at0001]/items[at0004]/value/magnitude as series_number,
+    b_a/description[at0001]/items[at0015]/value/value as comment,
+    b_a/time/value as vaccination_time
+ from EHR e[ehr_id/value='{{ehrId}}']
+   contains COMPOSITION a[openEHR-EHR-COMPOSITION.health_summary.v1]
+   contains ACTION b_a[openEHR-EHR-ACTION.immunisation_procedure.v1]
+ where a/name/value='Immunisation summary'

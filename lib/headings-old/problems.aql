@@ -1,0 +1,13 @@
+select
+  a/uid/value as uid,
+  a/composer/name as author,
+  a/context/start_time/value as date_created,
+  b_a/data[at0001]/items[at0002]/value/value as problem,
+   b_a/data[at0001]/items[at0002]/value/defining_code/code_string as problem_code,
+   b_a/data[at0001]/items[at0002]/value/defining_code/terminology_id/value as problem_terminology,
+   b_a/data[at0001]/items[at0009]/value/value as description,
+   b_a/data[at0001]/items[at0077]/value/value as onset_date
+ from EHR e [ehr_id/value = '{{ehrId}}']
+ contains COMPOSITION a[openEHR-EHR-COMPOSITION.problem_list.v1]
+ contains EVALUATION b_a[openEHR-EHR-EVALUATION.problem_diagnosis.v1]
+ where a/name/value='Problem list'

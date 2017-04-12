@@ -1,0 +1,18 @@
+select
+    a/uid/value as uid,
+    a/composer/name as author,
+    a/context/start_time/value as date_created,
+    b_a/items[at0001]/value/value as name,
+    b_a/items[at0001]/value/defining_code/code_string as medication_code,
+    b_a/items[at0001]/value/defining_code/terminology_id/value as medication_terminology,
+    b_a/items[at0002]/value/value as route,
+    b_a/items[at0003]/value/value as dose_directions,
+    b_a/items[at0020]/value/value as dose_amount,
+    b_a/items[at0021]/value/value as dose_timing,
+    b_a/items[at0046]/items[at0039]/value/value as start_date
+from EHR e [ehr_id/value = '{{ehrId}}']
+contains COMPOSITION a[openEHR-EHR-COMPOSITION.care_summary.v0]
+contains (
+    EVALUATION a_a[openEHR-EHR-EVALUATION.medication_statement_uk.v1] and
+    CLUSTER b_a[openEHR-EHR-CLUSTER.medication_item.v1])
+where a/name/value='Current medication list'

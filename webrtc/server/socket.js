@@ -6,8 +6,8 @@
 const fs = require('fs');
 const https = require('https');
 const server = https.createServer({
-    key: fs.readFileSync('/home/ripple/ewd3/ssl/ssl.key'),
-    cert: fs.readFileSync('/home/ripple/ewd3/ssl/ssl.crt')
+    key: fs.readFileSync('/home/ripple/qewd/ssl/ssl.key'),
+    cert: fs.readFileSync('/home/ripple/qewd/ssl/ssl.crt')
 });
 server.listen(8070);
 
@@ -25,6 +25,8 @@ const User = require('./lib/userItem');
 const Appointment = require('./lib/appointmentItem');
 
 io.on('connection', function (socket) {
+    console.log('connection from ' + socket.id);
+
     socketsList[socket.id] = {};
 
     /**

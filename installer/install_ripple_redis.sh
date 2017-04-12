@@ -148,7 +148,9 @@ echo "-----------------------------------------------------------------------"
 # Retrieve the UI code
 cd ~
 
-wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/master/build/ripple-latest.zip?raw=true
+# wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/develop/build/ripple-latest.zip?raw=true
+
+wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/master/build/ripple-latest.zip?raw=true 
 
 # Unpack the UI
 

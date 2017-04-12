@@ -141,6 +141,44 @@ cp ~/qewd/node_modules/qewd-content-store/www/*.html ~/qewd/www/qewd-content-sto
 
 cp ~/qewd/node_modules/ewd-client/lib/proto/ewd-client.js ~/qewd/www/ewd-client.js
 
+# ============ WebRTC installation ========
+
+# Server
+
+cp -r ~/qewd/node_modules/qewd-ripple/webrtc/server/ ~/videochat-socket-server/
+cd ~/videochat-socket-server
+npm install
+pm2 start pm2.json
+pm2 save
+
+# Client
+
+cp -r ~/qewd/node_modules/qewd-ripple/webrtc/client/ ~/qewd/www/videochat/
+
+# TURN Server
+
+# Optional - uncomment if needed
+#  You'll also need to change the turnServer definition
+#  at the top of ~/qewd/www/videochat/videochat.js
+
+# cd ~/qewd/node_modules/qewd-ripple/webrtc/turn
+# echo 'deb http://http.us.debian.org/debian jessie main' | sudo tee /etc/apt/sources.list.d/coturn.list
+# gpg --keyserver pgpkeys.mit.edu --recv-key 8B48AD6246925553
+# gpg -a --export 8B48AD6246925553 | sudo apt-key add -
+# gpg --keyserver pgpkeys.mit.edu --recv-key 7638D0442B90D010
+# gpg -a --export 7638D0442B90D010 | sudo apt-key add -
+# gpg --keyserver pgpkeys.mit.edu --recv-key CBF8D6FD518E17E1
+# gpg -a --export CBF8D6FD518E17E1 | sudo apt-key add -
+# sudo apt-get update
+# sudo apt-get install coturn=4.2.1.2-1 -y
+# sudo cp -f ./turnserver.conf /etc/
+# sudo cp -f ./turnuserdb.conf /etc/
+# sudo cp -f ./coturn /etc/default
+# sudo service coturn start
+
+# ============  WebRTC installed ==========
+
+
 echo "QEWD / Node.js middle tier is now installed"
 
 cd ~/qewd
@@ -190,7 +228,9 @@ echo "-----------------------------------------------------------------------"
 # Retrieve the UI code
 cd ~
 
-wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/master/build/ripple-latest.zip?raw=true
+# wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/develop/build/ripple-latest.zip?raw=true
+
+wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/master/build/ripple-latest.zip?raw=true 
 
 # Unpack the UI
 
@@ -201,20 +241,37 @@ unzip ripple_ui.zip
 mv -v ~/dist/* ~/qewd/www/
 
 # Map port 80 to port 3000
+# sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 
-sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+# echo "----------------------------------------------------------------------------------"
+# echo " Port 80 will be permanently mapped to port 3000"
+# echo "  Answer Yes to all questions that follow to make this happen...                  "
+# echo "----------------------------------------------------------------------------------"
 
-echo "----------------------------------------------------------------------------------"
-echo " Port 80 will be permanently mapped to port 3000"
-echo "  Answer Yes to all questions that follow to make this happen...                  "
-echo "----------------------------------------------------------------------------------"
+# sudo apt-get install iptables-persistent
 
-sudo apt-get install iptables-persistent
+# ========== Install nginx Proxy, listening on port 8086 =================
+
+#  alias /var/www to the QEWD www directory
+
+sudo ln -s ~/qewd/www/ /var/www
+sudo apt-get install nginx
+sudo cp ~/qewd/node_modules/qewd-ripple/nginx/sites-available/default ~/etc/nginx/sites-available/default
+sudo systemctl restart nginx
+
 
 echo "----------------------------------------------------------------------------------"
 echo " The set up of the QEWD Ripple Middle Tier on your Ubuntu server is now complete!"
 echo "  Startup template files (ripple-demo.js and ripple-secure.js                     "
 echo "    are in the ~/qewd directory.  Add the appropriate Auth0 credentials           "
+echo "                                                                                  "
+echo "  eg:                                                                             "
+echo "     cd ~/qewd                                                                    "
+echo "     node ripple-demo                                                             "
+echo "                                                                                  "
+echo "  or use PM2 to run it as a service, eg:                                          "
+echo "     cd ~/qewd                                                                    "
+echo "     pm2 start ripple-demo.js                                                     "
 echo "----------------------------------------------------------------------------------"
 
 cd ~/qewd

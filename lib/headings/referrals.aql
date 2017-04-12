@@ -9,7 +9,7 @@ select
     b_a/protocol[at0008]/items[openEHR-EHR-CLUSTER.organisation.v1, 'Receiver']/items[at0001]/value/value as referralTo,
     b_a/protocol[at0008]/items[at0011]/value/value as referral_ref,
     b_c/description[at0001]/items[at0011]/value/value as service_name,
-    b_c/description[at0001]/items[at0028]/value/value as Outcome,
+    b_c/description[at0001]/items[at0028]/value/value as outcome,
     b_c/time/value as dateOfState,
     b_c/ism_transition/current_state/value as state,
     b_c/ism_transition/current_state/defining_code/code_string as stateCode,

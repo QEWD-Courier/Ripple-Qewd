@@ -1,0 +1,10 @@
+5. Open the following ports:
+TCP 443
+TCP 3478-3479
+TCP 32355-65535
+UDP 3478-3479
+UDP 32355-65535
+
+To check if TURN server working, see:
+
+https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
