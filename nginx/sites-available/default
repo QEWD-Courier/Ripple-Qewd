@@ -14,8 +14,8 @@
 # Default server configuration
 #
 server {
-	listen 8086 default_server;
-	listen [::]:8086 default_server;
+	listen 80 default_server;
+	listen [::]:80 default_server;
 
 	# SSL configuration
 	#
