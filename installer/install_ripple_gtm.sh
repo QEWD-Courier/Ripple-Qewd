@@ -252,11 +252,13 @@ mv -v ~/dist/* ~/qewd/www/
 
 # sudo apt-get install iptables-persistent
 
-# ========== Install nginx Proxy, listening on port 80 =================
+# ========== Install nginx Proxy, listening on ports 80 and 443 =================
+# ==========   to ripple-demo and ripple-secure respectively    =================
 
 #  alias /var/www to the QEWD www directory
 
 sudo ln -s ~/qewd/www/ /var/www
+sudo ln -s ~/qewd/ssl/ /var/ssl
 sudo apt-get install -y nginx
 sudo cp ~/qewd/node_modules/qewd-ripple/nginx/sites-available/default /etc/nginx/sites-available/default
 sudo systemctl restart nginx
