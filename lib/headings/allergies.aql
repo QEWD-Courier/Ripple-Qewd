@@ -8,6 +8,8 @@ select
   b_a/data[at0001]/items[at0009]/items[at0011]/value/value as reaction,
   b_a/data[at0001]/items[at0009]/items[at0011]/value/defining_code/codeString as reaction_code,
   b_a/data[at0001]/items[at0009]/items[at0011]/value/terminology_id/value as reaction_terminology
+  b_a/provider/external_ref/id/value as originalComposition,
+  b_a/provider/name as originalSource
  from EHR e [ehr_id/value = '{{ehrId}}']
   contains COMPOSITION a[openEHR-EHR-COMPOSITION.adverse_reaction_list.v1]
   contains EVALUATION b_a[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]
