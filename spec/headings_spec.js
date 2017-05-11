@@ -29,40 +29,21 @@
 */
 
 var headings = require('./../lib/headings/headings');
-var openEHR = require('./../lib/openEHR/openEHR');
+var dateTime = require('./../lib/dateTime');
 var template = require('qewd-template');
+var _ = require('underscore');
 
-Object.keys(openEHR.servers).forEach(function(server) {
-  var session;
+var hasAQL = function(heading) { return heading.query && heading.query.aql }
+var forEachHeading = function(callback) {
+  _.chain(headings.headings).filter(hasAQL).forEach(callback);
+}
 
-  // Create a session with the current openEHR server
-  beforeEach(function(done) {
-    openEHR.startSession(server, function(res) {
-      session = res.id;
-      done();
-    });
-  });
-
-  afterEach(function(done) {
-    openEHR.stopSession(server, session, done);
-  });
-
-  function request(url, data, done, process) {
-    openEHR.request({
-      url: url,
-      queryString: data,
-      host: server,
-      session: session,
-      processBody: process,
-      callback: done
-    });
-  }
-
-  describe("OpenEHR Server " + server, function() {
+inOpenEHRSession(function(request, server) {
+  describe("Ivor Cox on OpenEHR Server " + server, function() {
     var ivorCoxNhsId = 9999999000;
     var ivorCoxEhrId;
 
-    beforeEach(function(done) {
+    beforeAll(function(done) {
       request('/rest/v1/ehr', {
           subjectId: ivorCoxNhsId,
           subjectNamespace: 'uk.nhs.nhs_number'
@@ -71,20 +52,48 @@ Object.keys(openEHR.servers).forEach(function(server) {
     });
 
     // For each heading which has an aql defined
-    Object.keys(headings.headings).forEach(function(headingName) {
-      var heading = headings.headings[headingName];
-      describe("using " + headingName, function() {
-        if(heading.query && heading.query.aql) {
-          it("can get Ivor Cox details using AQL", function(done) {
-            aql = template.replace(heading.query.aql,{
-              patientId: ivorCoxNhsId, ehrId: ivorCoxEhrId
-            });
-
-            request('/rest/v1/query', {aql:aql}, done, function(res) {
-              expect(res.resultSet).toBeTruthy();
-            });
+    forEachHeading(function(heading) {
+      describe("GET AQL response of " + heading.name, function() {
+        var result;
+        beforeAll(function(done){
+          spyOn(dateTime, 'getRippleTime');
+          spyOn(dateTime, 'msSinceMidnight');
+          var aql = template.replace(heading.query.aql,{
+            patientId: ivorCoxNhsId, ehrId: ivorCoxEhrId
           });
-        }
+          // Get and store the result of the heading
+          request('/rest/v1/query', {aql:aql}, done, function(res) { result = res; });
+        });
+
+        it("returns a result", function() {
+          expect(result.resultSet).toBeTruthy();
+        });
+
+        it("to contain all string mapped keys", function(){
+          var record = result.resultSet[0];
+          var stringMaps = _.chain(heading.fieldMap).values().filter(_.isString).value()
+
+          stringMaps.forEach(function(key){
+            expect(_.contains(_.keys(record), key)).toBe(true);
+          });
+        });
+
+        it("to only map actual values using dateTime", function() {
+          var record = result.resultSet[0];
+          var functionMaps = _.chain(heading.fieldMap)
+                              .values()
+                              .filter(_.isFunction)
+                              .each(function(mappingFunction){
+            mappingFunction(record, null);
+          })
+
+          dateTime.getRippleTime.calls.all().forEach(function(call) {
+            expect(call.args[0]).toBeDefined();
+          });
+          dateTime.msSinceMidnight.calls.all().forEach(function(call) {
+            expect(call.args[0]).toBeDefined();
+          });
+        })
       });
     });
   });
