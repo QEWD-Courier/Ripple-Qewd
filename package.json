@@ -4,7 +4,7 @@
   "description": "QEWD-based Middle Tier for Ripple OSI",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/jasmine/bin/jasmine.js"
+    "test": "node_modules/jasmine-es6/bin/jasmine.js"
   },
   "dependencies": {
     "qewd": "",
@@ -24,7 +24,7 @@
     "js2xmlparser": ""
   },
   "devDependencies": {
-    "jasmine": ""
+    "jasmine-es6": ""
   },
   "repository": {
     "type": "git",
