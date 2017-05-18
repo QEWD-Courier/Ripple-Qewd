@@ -212,19 +212,20 @@ completes, you'll have a fully-working QEWD and Ripple system.
 Note: during the installation, you'll be asked for the settings it should use for Redis.  Just accept
 all the default values by pressing the *Enter* key when asked.
 
-Start it up using:
+PM2 and nginx (which acts as a proxy) are installed and configured for you, and the QEWD Ripple system is 
+automatically started and managed for you as a service by PM2.
 
-      cd ~/qewd
-      node ripple-rpi
+So, on completion of the installer, all you need to do is point a browser at the IP address of
+your Raspberry Pi, eg:
 
-The QEWD Express server will be listening on port 3000, so you can start the Ripple UI by simply 
-pointing a browser at the IP address of your Raspberry Pi, using port 3000, eg
+      http://192.168.1.75
 
-      http://192.168.1.75:3000
+and RippleOSI should burst into life!
+
 
 To run the qewd-monitor application:
 
-      http://192.168.1.75:3000/qewd-monitor/index.html
+      http://192.168.1.75/qewd-monitor/index.html
 
 The default management password is: *keepThisSecret!*
 
@@ -249,11 +250,17 @@ Add the property *managementPassword* to the *config* object, eg:
        ewdRipple.start(config);
 
 
-## About QEWD
+Restart QEWD-Ripple using:
 
-For further information on QEWD, see [http://www.mgateway.com](http://www.mgateway.com)
+        pm2 stop ripple-rpi
+        pm2 start ripple-rpi
 
-and, for a full online course, see [http://ec2.mgateway.com/ewd/ws/training.html](http://ec2.mgateway.com/ewd/ws/training.html)
+
+
+## About QEWD.js
+
+For further information on QEWD.js, see [http://qewdjs.com)
+
 
 
 ## License
