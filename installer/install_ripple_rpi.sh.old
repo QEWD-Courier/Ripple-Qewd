@@ -4,8 +4,6 @@
 # run using: source install_ripple_rpi.sh
 # run as normal user, eg pi
 
-# 18 May 2017
-
 echo "-----------------------------------------------------------------------"
 echo 'Preparing environment'
 echo "-----------------------------------------------------------------------"
@@ -34,14 +32,6 @@ echo 'Installing Node.js'
 echo "-----------------------------------------------------------------------"
 
 nvm install 6
-
-#make Node.js available to sudo
-
-sudo ln -s /usr/local/bin/node /usr/bin/node
-sudo ln -s /usr/local/lib/node /usr/lib/node
-sudo ln -s /usr/local/bin/npm /usr/bin/npm
-sudo ln -s /usr/local/bin/node-waf /usr/bin/node-waf
-n=$(which node);n=${n%/bin/node}; chmod -R 755 $n/bin/*; sudo cp -r $n/{bin,lib,share} /usr/local
 
 echo "Node.js installed:"
 node -v
@@ -135,9 +125,7 @@ cd redis
 
 # build Redis
 
-echo "-----------------------------------------------------------------------"
 echo "Building Redis - be patient, this will take some time!"
-echo "-----------------------------------------------------------------------"
 
 make
 sudo make install
@@ -213,20 +201,19 @@ mv -v ~/dist/* ~/qewd/www/
 
 sudo ln -s ~/qewd/www/ /var/www
 sudo apt-get install -y nginx
-sudo cp ~/qewd/node_modules/qewd-ripple/nginx/sites-available/default.rpi /etc/nginx/sites-available/default
+sudo cp ~/qewd/node_modules/qewd-ripple/nginx/sites-available/default /etc/nginx/sites-available/default
 sudo systemctl restart nginx
 
 cd ~/qewd
-pm2 start ripple-rpi.js
+pm2 start ripple-demo.js
+pm2 start ripple-secure.js
 
 echo "----------------------------------------------------------------------------------"
 echo " The set up of the QEWD Ripple Middle Tier on your Raspberry Pi is now complete!  "
-echo "  The Startup template file (ripple-rpi.js) is in the ~/qewd directory.           "
+echo "  Startup template files (ripple-demo.js and ripple-secure.js                     "
+echo "    are in the ~/qewd directory.  Add the appropriate Auth0 credentials           "
 echo "                                                                                  "
-echo "  ripple-rpi has been started in PM2 for you and should be ready for use          "
-echo "                                                                                  "
-echo " Just point your browser at your RPi's IP address, eg http://192.168.1.100        "
-echo "  to start RippleOSI                                                              "
+echo "  ripple-demo and ripple-secure have been started in PM2 for you                  "
 echo "----------------------------------------------------------------------------------"
 
 
