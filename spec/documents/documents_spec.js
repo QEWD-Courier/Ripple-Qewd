@@ -33,7 +33,7 @@
 // New template-based documents APIs
 
 var documents = require('./../../lib/documents/docs');
-var openEhr = require('./../../lib/openEhr/openEhr');
+var openEhr =   require('./../../lib/openEHR/openEHR');
 var fs = require('fs');
 
 const tests = {
