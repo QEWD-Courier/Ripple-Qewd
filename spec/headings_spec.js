@@ -76,7 +76,7 @@ Object.keys(openEHR.servers).forEach(function(server) {
       describe("using " + headingName, function() {
         if(heading.query && heading.query.aql) {
           it("can get Ivor Cox details using AQL", function(done) {
-            aql = template.replace(heading.query.aql,{
+            var aql = template.replace(heading.query.aql,{
               patientId: ivorCoxNhsId, ehrId: ivorCoxEhrId
             });
 
