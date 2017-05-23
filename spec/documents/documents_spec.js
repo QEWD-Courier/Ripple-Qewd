@@ -145,7 +145,7 @@ describe("documents ", function () {
         }
       }
 
-      documents.init.call(this);
+      //documents.init.call(this);
       done();
     });
 
