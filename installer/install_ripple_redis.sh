@@ -4,6 +4,8 @@
 
 # run as normal user, eg ubuntu
 
+# 23 May 2017
+
 
 # Prepare
 
@@ -211,6 +213,7 @@ mv -v ~/dist/* ~/qewd/www/
 #  alias /var/www to the QEWD www directory
 
 sudo ln -s ~/qewd/www/ /var/www
+sudo ln -s ~/qewd/ssl/ /var/ssl
 sudo apt-get install -y nginx
 sudo cp ~/qewd/node_modules/qewd-ripple/nginx/sites-available/default /etc/nginx/sites-available/default
 sudo systemctl restart nginx
