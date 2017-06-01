@@ -1,10 +1,10 @@
-# qewd-ripple
+#Ripple-Qewd .. a.k.a. qewd-ripple on npm
 
 [![Build Status](https://travis-ci.org/RippleOSI/Qewd-Ripple.svg?branch=master)](https://travis-ci.org/RippleOSI/Qewd-Ripple)
 
 
-Email: <code.custodian@rippleosi.org>
-2016 Ripple Foundation Community Interest Company [http://rippleosi.org  ](http://rippleosi.org)
+Email: <code.custodian@ripple.foundation>
+2016 Ripple Foundation Community Interest Company [http://ripple.foundation](http://ripple.foundation)
 
 Author: Rob Tweed, M/Gateway Developments Ltd (@rtweed)
 
