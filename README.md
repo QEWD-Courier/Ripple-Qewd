@@ -1,4 +1,4 @@
-#Ripple-Qewd .. a.k.a. qewd-ripple on npm
+#Ripple-Qewd .. a.k.a. qewd-ripple
 
 [![Build Status](https://travis-ci.org/RippleOSI/Qewd-Ripple.svg?branch=master)](https://travis-ci.org/RippleOSI/Qewd-Ripple)
 
@@ -10,7 +10,7 @@ Author: Rob Tweed, M/Gateway Developments Ltd (@rtweed)
 
 ## Introduction
 
-*qewd-ripple* is a Node.js-based Middle Tier for the Ripple OSI project, based on the QEWD framework.
+*qewd-ripple* is a Node.js-based Middle Tier for the Ripple Foundation open source platform push, based on the [QEWDjs](http://qewdjs.com) framework.
 
 
 ### Installing and Configuring the RippleOSI Node.js / QEWD Middle Tier
