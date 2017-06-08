@@ -207,6 +207,20 @@ unzip ripple_ui.zip
 
 mv -v ~/dist/* ~/qewd/www/
 
+# Install Swagger UI and specification
+
+echo "-----------------------------------------------------------------------"
+echo " Installing Swagger UI & Specification for Ripple"
+echo "-----------------------------------------------------------------------"
+
+cd ~/qewd/www
+mkdir swagger
+git clone https://github.com/swagger-api/swagger-ui.git
+cp ~/qewd/node_modules/qewd-ripple/swagger/index.html ~/qewd/www/swagger-ui/dist
+cp ~/qewd/node_modules/qewd-ripple/swagger/*.json ~/qewd/www/swagger
+cp ~/qewd/node_modules/qewd-ripple/swagger/createSwaggerSpec.js ~/qewd
+
+
 # ========== Install nginx Proxy, listening on port 80 =================
 
 #  alias /var/www to the QEWD www directory

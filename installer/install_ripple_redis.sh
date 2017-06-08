@@ -198,6 +198,20 @@ unzip ripple_ui.zip
 
 mv -v ~/dist/* ~/qewd/www/
 
+# Install Swagger UI and specification
+
+echo "-----------------------------------------------------------------------"
+echo " Installing Swagger UI & Specification for Ripple"
+echo "-----------------------------------------------------------------------"
+
+cd ~/qewd/www
+mkdir swagger
+git clone https://github.com/swagger-api/swagger-ui.git
+cp ~/qewd/node_modules/qewd-ripple/swagger/index.html ~/qewd/www/swagger-ui/dist
+cp ~/qewd/node_modules/qewd-ripple/swagger/*.json ~/qewd/www/swagger
+cp ~/qewd/node_modules/qewd-ripple/swagger/createSwaggerSpec.js ~/qewd
+
+
 # Map port 80 to port 3000
 # sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 
