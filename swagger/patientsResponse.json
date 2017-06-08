@@ -1,0 +1,54 @@
+{
+  "properties": {
+    "patientId": {
+      "description": "Object containing patient's data",
+      "type": "object",
+      "properties": {
+        "address": {
+          "description": "Postal Address",
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "description": "Date of Birth: JavaScript Date().getTime() format",
+          "type": "string"
+        },
+        "department": {
+          "description": "Department category",
+          "type": "string"
+        },
+        "gender": {
+          "description": "Patient's Gender (Male/Female)",
+          "type": "string"
+        },
+        "gpAddress": {
+          "description": "GP's address",
+          "type": "string"
+        },
+        "gpName": {
+          "description": "GP's Name",
+          "type": "string"
+        },
+        "id": {
+          "description": "Patient's Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "Patient's Name",
+          "type": "string"
+        },
+        "nhsNumber": {
+          "description": "NHS Number",
+          "type": "string"
+        },
+        "pasNo": {
+          "description": "PAS-specific Patient Identifier",
+          "type": "string"
+        },
+        "phone": {
+          "description": "User's Phone No",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

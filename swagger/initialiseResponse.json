@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "token": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string"
+    }
+  }
+}

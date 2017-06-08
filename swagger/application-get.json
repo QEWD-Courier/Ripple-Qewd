@@ -1,0 +1,11 @@
+{
+  "tags": ["Ripple"],
+  "description": "Gets user's application settings",
+  "security": "=> auth()",
+  "produces": "=> json()",
+  "parameters": [],
+  "responses": {
+    "200": "=> get('response200.json', 'desc', 'The users application settings', 'ref', 'applicationPayload')",
+    "403": "=> get('response403.json')"
+  }
+}

@@ -1,0 +1,12 @@
+{    
+  "properties": {
+    "ok": {
+      "type": "boolean"
+    },
+    "role": {
+      "description": "User role",
+      "type": "string"
+    }
+  }
+}
+

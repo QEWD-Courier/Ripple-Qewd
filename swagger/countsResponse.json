@@ -1,0 +1,49 @@
+{
+  "type": "array",
+  "items": {
+    "description": "Counts from one OpenEHR Source",
+    "type": "object",
+    "properties" : {
+      "diagnosesCount" : {
+        "description": "Number of Diagnoses",
+        "type" : "string"
+      },
+      "diagnosesDate" : {
+        "description": "Date count last updated",
+        "type" : "string"
+      },
+      "ordersCount" : {
+        "description": "Number of Orders",
+        "type" : "string"
+      },
+      "ordersDate" : {
+        "description": "Date count last updated",
+        "type" : "string"
+      },
+      "resultsCount" : {
+        "description": "Number of Results",
+        "type" : "string"
+      },
+      "resultsDate" : {
+        "description": "Date count last updated",
+        "type" : "string"
+      },
+      "vitalsCount" : {
+        "description": "Number of Vital Sign records",
+        "type" : "string"
+      },
+      "vitalsDate" : {
+        "description": "Date count last updated",
+        "type" : "string"
+      },
+      "source" : {
+        "description": "Source OpenEHR System",
+        "type" : "string"
+      },
+      "sourceId" : {
+        "description": "Notional Source Identifier (for completeness)",
+        "type" : "string"
+      }
+    }
+  }
+}

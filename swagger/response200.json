@@ -1,0 +1,10 @@
+{
+  "description": "{{desc}}",
+  "headers": {
+    "X-ResponseTime": {
+      "description": "Back-end response time",
+      "type": "string"
+    }
+  },
+  "schema": "=> schema(ref)"
+}

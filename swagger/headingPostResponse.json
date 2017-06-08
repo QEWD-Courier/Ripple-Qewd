@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "info": {
+      "description": "Successful Post Confirmation",
+      "type": "string"
+    }
+  }
+}

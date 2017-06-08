@@ -1,0 +1,22 @@
+{
+  "1": {
+    "department": "Neighbourhood",
+    "id": 1
+  },
+  "2": {
+    "department": "Hospital",
+    "id": 2
+  },
+  "3": {
+    "department": "Community Care",
+    "id": 3
+  },
+  "4": {
+    "department": "Primary Care",
+    "id": 4
+  },
+  "5": {
+    "department": "Mental Health",
+    "id": 5
+  }
+}

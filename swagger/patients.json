@@ -1,0 +1,13 @@
+{
+  "get": {
+    "tags": ["Ripple"],
+    "description": "Gets data for all patients in PAS",
+    "security": "=> auth()",
+    "produces": "=> json()",
+    "parameters": [],
+    "responses": {
+      "200": "=> get('response200.json', 'desc', 'Patient Data', 'ref', 'patientsResponse')",
+      "403": "=> get('response403.json')"
+    }
+  }
+}

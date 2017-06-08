@@ -1,0 +1,13 @@
+{
+  "get": {
+    "tags": ["Ripple"],
+    "description": "Gets current user's details",
+    "security": "=> auth()",
+    "produces": "=> json()",
+    "parameters": [],
+    "responses": {
+      "200": "=> get('response200.json', 'desc', 'The users details', 'ref', 'userResponse')",
+      "400": "=> get('response400.json', 'desc', 'Delivers new user session token to browser and signals it to reload')"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "sub": {
+      "description": "authentication key",
+      "type": "string"
+    },
+    "given_name": {
+      "description": "User's given (first) name",
+      "type": "string"
+    },
+    "family_name": {
+      "description": "User's family (last) name",
+      "type": "string"
+    },
+    "email": {
+      "description": "User's email address",
+      "type": "string"
+    },
+    "tenant": {
+      "description": "Not used",
+      "type": "string"
+    },
+    "role": {
+      "description": "User role",
+      "type": "string"
+    },
+    "roles": {
+      "description": "Array of roles (where more than 1 applies)",
+      "type": "array",
+      "items": {
+        "description": "role",
+        "type": "string"
+      }
+    }
+  }
+}

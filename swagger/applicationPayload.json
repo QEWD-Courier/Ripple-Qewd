@@ -1,0 +1,23 @@
+{
+  "properties": {
+    "title": {
+      "description": "Application Heading Title",
+      "type": "string"
+    },
+    "logoB64": {
+      "description": "Logo image defined as Base64 string, chunked into array elements, max 4000 characters",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "themeColor": {
+      "description": "CSS Theming Colour definition",
+      "type": "string"
+    },
+    "browserTitle": {
+      "description": "Title for browser tab/heading",
+      "type": "string"
+    }
+  }
+}

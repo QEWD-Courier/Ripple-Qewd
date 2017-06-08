@@ -1,0 +1,21 @@
+{
+  "get" : {
+    "tags": ["Ripple"],
+    "description" : "Gets Heading counts for specified patient",
+    "security": "=> auth()",
+    "produces": "=> json()",
+    "parameters": [
+      {
+        "name": "patientId",
+        "in": "path",
+        "description": "Patient Id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": "=> get('response200.json', 'desc', 'Counts for selected headings', 'ref', 'countsResponse')",
+      "403": "=> get('response403.json')"
+    }
+  }
+}

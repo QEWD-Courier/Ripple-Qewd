@@ -1,0 +1,26 @@
+{
+    "tags": ["Headings"],
+    "description": "=> headingPostDescription(headingName)",
+    "security": "=> auth()",
+    "produces": "=> json()",
+    "parameters": [
+      {
+        "name": "patientId",
+        "in": "path",
+        "description": "Patient Id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "body",
+        "name": "body",
+        "description": "Body Payload containing heading data",
+        "required": true,
+        "schema": "=> headingPostSchema(headingName)"
+      }
+    ],
+    "responses": {
+      "200": "=> get('response200.json', 'desc', 'Confirmation that data has been saved', 'ref', 'headingPostResponse')",
+      "403": "=> get('response403.json')"
+    }
+}

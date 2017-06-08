@@ -1,0 +1,17 @@
+{
+  "properties": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "description": "User Session Token",
+          "type": "string"
+        },
+        "reload": {
+          "description": "UI reload trigger signal",
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

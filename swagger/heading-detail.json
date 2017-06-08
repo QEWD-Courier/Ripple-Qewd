@@ -1,0 +1,26 @@
+{
+    "tags": ["Headings"],
+    "description": "=> headingDetailDescription(headingName)",
+    "security": "=> auth()",
+    "produces": "=> json()",
+    "parameters": [
+      {
+        "name": "patientId",
+        "in": "path",
+        "description": "Patient Id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "sourceId",
+        "in": "path",
+        "description": "OpenEHR Composition Id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": "=> get('response200.json', 'headingDetail', headingName, 'desc', 'Full Data', 'ref', 'Response')",
+      "403": "=> get('response403.json')"
+    }
+}

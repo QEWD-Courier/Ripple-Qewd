@@ -1,0 +1,13 @@
+{
+  "get": {
+    "tags": ["Ripple"],
+    "description": "Starts a User Session",
+    "parameters": [],
+    "produces": "=> json()",
+    "responses": {
+      "200": "=> get('response200.json', 'desc', 'The users session token and mode', 'ref', 'initialiseResponse')"
+    }
+  }
+}
+
+

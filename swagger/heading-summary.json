@@ -1,0 +1,19 @@
+{
+    "tags": ["Headings"],
+    "description": "=> headingSummaryDescription(headingName)",
+    "security": "=> auth()",
+    "produces": "=> json()",
+    "parameters": [
+      {
+        "name": "patientId",
+        "in": "path",
+        "description": "Patient Id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": "=> get('response200.json', 'headingSummary', headingName, 'desc', 'Summary Data', 'ref', 'Response')",
+      "403": "=> get('response403.json')"
+    }
+}
