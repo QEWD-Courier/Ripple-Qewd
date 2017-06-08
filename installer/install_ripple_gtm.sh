@@ -250,6 +250,7 @@ mkdir swagger
 git clone https://github.com/swagger-api/swagger-ui.git
 cp ~/qewd/node_modules/qewd-ripple/swagger/index.html ~/qewd/www/swagger-ui/dist
 cp ~/qewd/node_modules/qewd-ripple/swagger/*.json ~/qewd/www/swagger
+cp ~/qewd/node_modules/qewd-ripple/swagger/createSwaggerSpec.js ~/qewd
 
 
 # Map port 80 to port 3000
