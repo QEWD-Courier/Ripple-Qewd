@@ -3,23 +3,32 @@
 [![Build Status](https://travis-ci.org/RippleOSI/Ripple-Qewd.svg?branch=master)](https://travis-ci.org/RippleOSI/Ripple-Qewd)
 
 
-Email: <code.custodian@rippleosi.org>
-2016 Ripple Foundation Community Interest Company [http://rippleosi.org  ](http://rippleosi.org)
+Email: <code.custodian@ripple.foundation>
+
+2016 Ripple Foundation Community Interest Company 
+
+[http://ripple.foundation](http://ripple.foundation)
 
 Author: Rob Tweed, M/Gateway Developments Ltd (@rtweed)
 
 ## Introduction
 
-*qewd-ripple* is a Node.js-based Middle Tier for the Ripple OSI project, based on the QEWD framework.
+*qewd-ripple* is a Node.js-based Middle Tier , built as a key element of the open platform showcase stack supported by the Ripple Foundation, based on the [QEWDjs framework](https://github.com/robtweed/qewd). 
+
+Qewd-Ripple can be explained as; QewdJS related library for Ripple/Ripple is leveraging QewdJS .. so the terms Ripple-Qewd and Qewd-Ripple are used interchangeably here.
+
+More details on the work of the [Ripple Foundation is available here](http://ripple.foundation/).
+
+More details on QEWDjs is available at [QEWDjs.com](http://qewdjs.com/)
 
 
-### Installing and Configuring the RippleOSI Node.js / QEWD Middle Tier
+### Installing and Configuring the Ripple Foundation Node.js / QEWD-Ripple Middle Tier
 
 Please follow ALL the steps listed below:
 
 1) Assumptions
 
-  The QEWD Middle Tier for RippleOSI is designed to run on a Linux
+  The QEWD-Ripple Middle Tier is designed to run on a Linux
   platform (eg Ubuntu 16.04).  The embedded Redis or Open Source GT.M database is
   used as a high-performance cache and session store.
 
@@ -60,11 +69,11 @@ To install *qewd-ripple* with GT.M as its database:
 
 The installer scripts install and configures the following:
 
-- Redis or the Open Source GT.M database (used by RippleOSI's middle tier as a high-performance session cache and Document Store)
+- Redis or the Open Source GT.M database (used by Ripple stack's middle tier as a high-performance session cache and Document Store)
 - Node.js
 - QEWD
-- The QEWD-based RippleOSI Middle Tier
-- The RippleOSI User Interface files
+- The QEWD-based Ripple Stack Middle Tier
+- The Ripple Showcase Pulsetile (User Interface) files
 - A MySQL-based Patient Administration (PAS) database
 
 
@@ -75,7 +84,7 @@ The installer scripts install and configures the following:
 
 ### Demo Mode
 
-If you just want to try out RippleOSI, use the demo startup file - no changes are needed to it.  Just type the
+If you just want to try out the Ripple Showcase stack via Qewd-Ripple, use the demo startup file - no changes are needed to it.  Just type the
 following in a terminal window to start it up:
 
         cd ~/qewd
@@ -128,10 +137,10 @@ URL will not work.  However, if you specify port 3000, it should burst into life
 If you're running in secure mode, the first time you connect you'll be redirected to Auth0's Lock screen, 
 through which you can log in.  
 
-The RippleOSI User Interface should then appear.
+The Ripple Showcase Stack User Interface known as [PulseTile](http://ripple.foundation/pulsetile/) should then appear.
 
 
-6) You'll probably want to run the Ripple middle tier as a background service.  The easiest way is to use *PM2*
+6) You'll probably want to run the Ripple-QEWD middle tier as a background service.  The easiest way is to use *PM2*
  which has already been installed for you.
 
 
@@ -195,9 +204,9 @@ Add the property *managementPassword* to the *config* object, eg:
        ewdRipple.start(config);
 
 
-## Installing and running Ripple OSI on a Raspberry Pi
+## Installing and running Ripple Showcase stack on a Raspberry Pi
 
-Believe it or not, it's also possible to install and run a fully-working Ripple OSI system on a Raspberry Pi!
+Believe it or not, it's also possible to install and run a fully-working Ripple showcase stack system on a Raspberry Pi!
 
 If you want to give it a try, you should use a newly-installed version of Raspbian, ideally with 
 no other software installed.  Then follow these steps:
@@ -268,8 +277,8 @@ For further information on QEWD.js, see [http://qewdjs.com)
   Copyright (c) 2016-17 Ripple Foundation Community Interest Company
   All rights reserved.
 
-  http://rippleosi.org
-  Email: code.custodian@rippleosi.org                                                                          
+  http://ripple.foundation
+  Email: code.custodian@ripple.foundation                                                                          
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.

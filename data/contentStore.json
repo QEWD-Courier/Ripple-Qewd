@@ -1,0 +1,1096 @@
+{
+  "store": {
+    "rob": {
+      "byId": {
+        "1": {
+          "authoredPhrase": "Phrase one",
+          "phrase": "Phrase one",
+          "subject": {
+            "display": "Phrase one",
+            "value": "phrase one"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Phrase one"
+        },
+        "2": {
+          "authoredPhrase": "Phrase two",
+          "phrase": "Phrase two",
+          "subject": {
+            "display": "Phrase two",
+            "value": "phrase two"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Phrase two"
+        },
+        "3": {
+          "authoredPhrase": "Phrase three",
+          "phrase": "Phrase three",
+          "subject": {
+            "display": "Phrase three",
+            "value": "phrase three"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Phrase three"
+        },
+        "4": {
+          "authoredPhrase": "Phrase two point five",
+          "phrase": "Phrase two point five",
+          "subject": {
+            "display": "Phrase two point five",
+            "value": "phrase two point five"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Phrase two point five"
+        },
+        "5": {
+          "authoredPhrase": "Phrase one point five yy",
+          "phrase": "Phrase one point five yy",
+          "subject": {
+            "display": "Phrase one point five yy",
+            "value": "phrase one point five yy"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Phrase one point five yy"
+        },
+        "6": {
+          "authoredPhrase": "Phrase two point seven ttt",
+          "phrase": "Phrase two point seven ttt",
+          "subject": {
+            "display": "Phrase two point seven ttt",
+            "value": "phrase two point seven ttt"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Phrase two point seven ttt"
+        },
+        "7": {
+          "authoredPhrase": "Phrase two point seven indeed",
+          "phrase": "Phrase two point seven indeed",
+          "subject": {
+            "display": "Phrase two point seven indeed",
+            "value": "phrase two point seven indeed"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Phrase two point seven indeed"
+        },
+        "8": {
+          "authoredPhrase": "hello world",
+          "phrase": "hello world",
+          "subject": {
+            "display": "hello world",
+            "value": "hello world"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "hello world"
+        },
+        "9": {
+          "authoredPhrase": "Before world",
+          "phrase": "Before world",
+          "subject": {
+            "display": "Before world",
+            "value": "before world"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Before world"
+        },
+        "10": {
+          "authoredPhrase": "after world",
+          "phrase": "after world",
+          "subject": {
+            "display": "after world",
+            "value": "after world"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "after world"
+        },
+        "11": {
+          "authoredPhrase": "Berfore {hrase two x",
+          "phrase": "Berfore {{:unit}}undefined",
+          "subject": {
+            "display": "Berfore {hrase two x",
+            "value": "berfore {hrase two x"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Berfore hrase two x",
+          "unit": {
+            "display": "hrase two x",
+            "value": "hrase two x"
+          }
+        },
+        "12": {
+          "authoredPhrase": "Immediately before three",
+          "phrase": "Immediately before three",
+          "subject": {
+            "display": "Immediately before three",
+            "value": "immediately before three"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "Immediately before three"
+        },
+        "13": {
+          "authoredPhrase": "sss sss",
+          "phrase": "sss sss",
+          "subject": {
+            "display": "sss sss",
+            "value": "sss sss"
+          },
+          "uiPhrase": "sss sss"
+        },
+        "14": {
+          "authoredPhrase": "sss qqq",
+          "phrase": "sss qqq",
+          "subject": {
+            "display": "sss qqq",
+            "value": "sss qqq"
+          },
+          "tags": {
+            "test": ""
+          },
+          "uiPhrase": "sss qqq"
+        },
+        "15": {
+          "authoredPhrase": "abcd",
+          "phrase": "abcd",
+          "subject": {
+            "display": "abcd",
+            "value": "abcd"
+          },
+          "tags": {
+            "lmnop": "",
+            "test2": ""
+          },
+          "uiPhrase": "abcd"
+        },
+        "16": {
+          "authoredPhrase": "cuz",
+          "phrase": "cuz",
+          "subject": {
+            "display": "cuz",
+            "value": "cuz"
+          },
+          "tags": {
+            "test2": ""
+          },
+          "uiPhrase": "cuz"
+        }
+      },
+      "byPhrase": {
+        "abcd": 15,
+        "after world": 10,
+        "before world": 9,
+        "berfore {hrase two x": 11,
+        "cuz": 16,
+        "hello world": 8,
+        "immediately before three": 12,
+        "phrase one": 1,
+        "phrase one point five yy": 5,
+        "phrase three": 3,
+        "phrase two": 2,
+        "phrase two point five": 4,
+        "phrase two point seven indeed": 7,
+        "phrase two point seven ttt": 6,
+        "sss qqq": 14
+      },
+      "byTag": {
+        "lmnop": {
+          "15": ""
+        },
+        "test": {
+          "1": "",
+          "2": "",
+          "3": "",
+          "4": "",
+          "5": "",
+          "6": "",
+          "7": "",
+          "8": "",
+          "9": "",
+          "10": "",
+          "11": "",
+          "12": "",
+          "14": ""
+        },
+        "test2": {
+          "15": "",
+          "16": ""
+        }
+      },
+      "byTagInPhraseOrder": {
+        "test": [
+          9,
+          1,
+          8,
+          7,
+          5,
+          14,
+          10,
+          11,
+          2,
+          4,
+          6,
+          12,
+          3
+        ]
+      },
+      "byWord": {
+        "abcd": {
+          "15": ""
+        },
+        "berfore": {
+          "11": ""
+        },
+        "cuz": {
+          "16": ""
+        },
+        "hrase": {
+          "11": ""
+        },
+        "immediately": {
+          "12": ""
+        },
+        "phrase": {
+          "1": "",
+          "2": "",
+          "3": "",
+          "4": "",
+          "5": "",
+          "6": "",
+          "7": ""
+        },
+        "point": {
+          "4": "",
+          "5": "",
+          "6": "",
+          "7": ""
+        },
+        "qqq": {
+          "14": ""
+        },
+        "sss": {
+          "14": ""
+        },
+        "ttt": {
+          "6": ""
+        },
+        "world": {
+          "8": "",
+          "9": "",
+          "10": ""
+        },
+        "yy": {
+          "5": ""
+        }
+      },
+      "delimiters": {
+        "delimiters": {
+          "subject": {
+            "left": "~",
+            "right": "~"
+          },
+          "unit": {
+            "left": "{",
+            "right": "}"
+          },
+          "value": {
+            "left": "|",
+            "right": "|"
+          }
+        }
+      },
+      "phraseIdCounter": 16
+    },
+    "ts": {
+      "byId": {
+        "1": {
+          "authoredPhrase": "test1",
+          "phrase": "test1",
+          "subject": {
+            "display": "test1",
+            "value": "test1"
+          },
+          "tags": {
+            "t1": "",
+            "tagb": ""
+          },
+          "uiPhrase": "test1"
+        },
+        "2": {
+          "authoredPhrase": "test2",
+          "phrase": "test2",
+          "subject": {
+            "display": "test2",
+            "value": "test2"
+          },
+          "tags": {
+            "t1": ""
+          },
+          "uiPhrase": "test2"
+        },
+        "3": {
+          "authoredPhrase": "~this subject~ with |5| {units of movement}",
+          "phrase": "{{:subject}} with {{:value}} {{:unit}}",
+          "subject": {
+            "display": "this subject",
+            "value": "this subject"
+          },
+          "tags": {
+            "t1": ""
+          },
+          "uiPhrase": "this subject with 5 units of movement",
+          "unit": {
+            "display": "units of movement",
+            "value": "units of movement"
+          },
+          "value": {
+            "display": 5,
+            "value": 5
+          }
+        },
+        "4": {
+          "authoredPhrase": "The pain was gradual in onset",
+          "phrase": "The pain was gradual in onset",
+          "subject": {
+            "display": "The pain was gradual in onset",
+            "value": "the pain was gradual in onset"
+          },
+          "tags": {
+            "chestpain": "",
+            "test1": ""
+          },
+          "uiPhrase": "The pain was gradual in onset"
+        },
+        "5": {
+          "authoredPhrase": "The pain was acute in onset",
+          "phrase": "The pain was acute in onset",
+          "subject": {
+            "display": "The pain was acute in onset",
+            "value": "the pain was acute in onset"
+          },
+          "tags": {
+            "chestpain": ""
+          },
+          "uiPhrase": "The pain was acute in onset"
+        },
+        "6": {
+          "authoredPhrase": "The ~pain~ was severe at |10/10| in {severity}",
+          "phrase": "The {{:subject}} was severe at {{:value}} in {{:unit}}",
+          "subject": {
+            "display": "pain",
+            "value": "pain"
+          },
+          "tags": {
+            "chestpain": ""
+          },
+          "uiPhrase": "The pain was severe at 10/10 in severity",
+          "unit": {
+            "display": "severity",
+            "value": "severity"
+          },
+          "value": {
+            "display": "10/10",
+            "value": "10/10"
+          }
+        },
+        "7": {
+          "authoredPhrase": "The ~pain~ was mild at |?| in {severity}",
+          "phrase": "The {{:subject}} was mild at {{:value}} in {{:unit}}",
+          "subject": {
+            "display": "pain",
+            "value": "pain"
+          },
+          "tags": {
+            "chestpain": ""
+          },
+          "uiPhrase": "The pain was mild at |?| in severity",
+          "unit": {
+            "display": "severity",
+            "value": "severity"
+          },
+          "value": "?"
+        },
+        "8": {
+          "authoredPhrase": "The chest pain radiated to the neck",
+          "phrase": "The chest pain radiated to the neck",
+          "subject": {
+            "display": "The chest pain radiated to the neck",
+            "value": "the chest pain radiated to the neck"
+          },
+          "tags": {
+            "chestpain": ""
+          },
+          "uiPhrase": "The chest pain radiated to the neck"
+        },
+        "9": {
+          "authoredPhrase": "The chest pain radiated to the left arm",
+          "phrase": "The chest pain radiated to the left arm",
+          "subject": {
+            "display": "The chest pain radiated to the left arm",
+            "value": "the chest pain radiated to the left arm"
+          },
+          "tags": {
+            "chestpain": ""
+          },
+          "uiPhrase": "The chest pain radiated to the left arm"
+        },
+        "10": {
+          "authoredPhrase": "The pain was associated with exercise",
+          "phrase": "The pain was associated with exercise",
+          "subject": {
+            "display": "The pain was associated with exercise",
+            "value": "the pain was associated with exercise"
+          },
+          "tags": {
+            "acutesob": "",
+            "chestpain": ""
+          },
+          "uiPhrase": "The pain was associated with exercise"
+        },
+        "11": {
+          "authoredPhrase": "The pain settled with rest",
+          "phrase": "The pain settled with rest",
+          "subject": {
+            "display": "The pain settled with rest",
+            "value": "the pain settled with rest"
+          },
+          "tags": {
+            "chestpain": ""
+          },
+          "uiPhrase": "The pain settled with rest"
+        },
+        "12": {
+          "authoredPhrase": "The ~pain~ was associated with breathing",
+          "phrase": "The {{:subject}} was associated with breathing",
+          "subject": {
+            "display": "pain",
+            "value": "pain"
+          },
+          "tags": {
+            "acutesob": "",
+            "chestpain": "",
+            "lung": ""
+          },
+          "uiPhrase": "The pain was associated with breathing"
+        },
+        "13": {
+          "authoredPhrase": "The ~pain~ was medium at |5/10| in {severity}",
+          "phrase": "The {{:subject}} was medium at {{:value}} in {{:unit}}",
+          "subject": {
+            "display": "pain",
+            "value": "pain"
+          },
+          "tags": {
+            "chestpain": ""
+          },
+          "uiPhrase": "The pain was medium at 5/10 in severity",
+          "unit": {
+            "display": "severity",
+            "value": "severity"
+          },
+          "value": {
+            "display": "5/10",
+            "value": "5/10"
+          }
+        },
+        "14": {
+          "authoredPhrase": "the pain was |9/10| in severity",
+          "phrase": "the pain was {{:value}} in severity",
+          "subject": {
+            "display": "the pain was |9/10| in severity",
+            "value": "the pain was |9/10| in severity"
+          },
+          "tags": {
+            "chestpain": ""
+          },
+          "uiPhrase": "the pain was 9/10 in severity",
+          "value": {
+            "display": "9/10",
+            "value": "9/10"
+          }
+        },
+        "15": {
+          "authoredPhrase": "the ~pain~ was |mild| in {onset}",
+          "phrase": "the {{:subject}} was {{:value}} in {{:unit}}",
+          "subject": {
+            "display": "pain",
+            "value": "pain"
+          },
+          "tags": {
+            "chestpain": ""
+          },
+          "uiPhrase": "the pain was mild in onset",
+          "unit": {
+            "display": "onset",
+            "value": "onset"
+          },
+          "value": {
+            "display": "mild",
+            "value": "mild"
+          }
+        },
+        "16": {
+          "authoredPhrase": "~Diagnosis of Angina~ |SNOMEDCT| {1234455}",
+          "phrase": "{{:subject}} {{:value}} {{:unit}}",
+          "subject": {
+            "display": "Diagnosis of Angina",
+            "value": "diagnosis of angina"
+          },
+          "tags": {
+            "chestpain": "",
+            "snomedct": ""
+          },
+          "uiPhrase": "Diagnosis of Angina SNOMEDCT 1234455",
+          "unit": {
+            "display": 1234455,
+            "value": 1234455
+          },
+          "value": {
+            "display": "SNOMEDCT",
+            "value": "snomedct"
+          }
+        },
+        "17": {
+          "authoredPhrase": "Presents with Shoulder Pain",
+          "phrase": "Presents with Shoulder Pain",
+          "subject": {
+            "display": "Presents with Shoulder Pain",
+            "value": "presents with shoulder pain"
+          },
+          "tags": {
+            "shoulder": "",
+            "shoulder2": ""
+          },
+          "uiPhrase": "Presents with Shoulder Pain"
+        },
+        "18": {
+          "authoredPhrase": "Onset after recent fall",
+          "phrase": "Onset after recent fall",
+          "subject": {
+            "display": "Onset after recent fall",
+            "value": "onset after recent fall"
+          },
+          "tags": {
+            "shoulder": "",
+            "shoulder2": ""
+          },
+          "uiPhrase": "Onset after recent fall"
+        },
+        "19": {
+          "authoredPhrase": "Onset gradual, no obvious incident",
+          "phrase": "Onset gradual, no obvious incident",
+          "subject": {
+            "display": "Onset gradual, no obvious incident",
+            "value": "onset gradual, no obvious incident"
+          },
+          "tags": {
+            "shoulder": "",
+            "shoulder2": ""
+          },
+          "uiPhrase": "Onset gradual, no obvious incident"
+        },
+        "20": {
+          "authoredPhrase": "Movement is normal ",
+          "phrase": "Movement is normal ",
+          "subject": {
+            "display": "Movement is normal ",
+            "value": "movement is normal "
+          },
+          "tags": {
+            "shoulder": "",
+            "shoulder2": ""
+          },
+          "uiPhrase": "Movement is normal "
+        },
+        "21": {
+          "authoredPhrase": "Movement is reduced",
+          "phrase": "Movement is reduced",
+          "subject": {
+            "display": "Movement is reduced",
+            "value": "movement is reduced"
+          },
+          "tags": {
+            "shoulder": "",
+            "shoulder2": ""
+          },
+          "uiPhrase": "Movement is reduced"
+        },
+        "22": {
+          "authoredPhrase": "Internal Rotation to 45 degrees",
+          "phrase": "Internal Rotation to 45 degrees",
+          "subject": {
+            "display": "Internal Rotation to 45 degrees",
+            "value": "internal rotation to 45 degrees"
+          },
+          "tags": {
+            "shoulder": "",
+            "shoulder2": ""
+          },
+          "uiPhrase": "Internal Rotation to 45 degrees"
+        },
+        "23": {
+          "authoredPhrase": "~Internal Rotation~ to |?| {degrees}",
+          "phrase": "{{:subject}} to {{:value}} {{:unit}}",
+          "subject": {
+            "display": "Internal Rotation",
+            "value": "internal rotation"
+          },
+          "tags": {
+            "shoulder": ""
+          },
+          "uiPhrase": "Internal Rotation to |?| degrees",
+          "unit": {
+            "display": "degrees",
+            "value": "degrees"
+          },
+          "value": "?"
+        },
+        "24": {
+          "authoredPhrase": "Xray shows no obvious injury",
+          "phrase": "Xray shows no obvious injury",
+          "subject": {
+            "display": "Xray shows no obvious injury",
+            "value": "xray shows no obvious injury"
+          },
+          "tags": {
+            "shoulder": "",
+            "shoulder2": ""
+          },
+          "uiPhrase": "Xray shows no obvious injury"
+        },
+        "25": {
+          "authoredPhrase": "UltraSound is normal",
+          "phrase": "UltraSound is normal",
+          "subject": {
+            "display": "UltraSound is normal",
+            "value": "ultrasound is normal"
+          },
+          "tags": {
+            "shoulder": "",
+            "shoulder2": ""
+          },
+          "uiPhrase": "UltraSound is normal"
+        },
+        "26": {
+          "authoredPhrase": "Ultrasound shows rotator cuff injury",
+          "phrase": "Ultrasound shows rotator cuff injury",
+          "subject": {
+            "display": "Ultrasound shows rotator cuff injury",
+            "value": "ultrasound shows rotator cuff injury"
+          },
+          "tags": {
+            "shoulder": "",
+            "shoulder2": ""
+          },
+          "uiPhrase": "Ultrasound shows rotator cuff injury"
+        },
+        "27": {
+          "authoredPhrase": "Internal Rotation to ?? degrees",
+          "phrase": "Internal Rotation to ?? degrees",
+          "subject": {
+            "display": "Internal Rotation to ?? degrees",
+            "value": "internal rotation to ?? degrees"
+          },
+          "tags": {
+            "shoulder2": ""
+          },
+          "uiPhrase": "Internal Rotation to ?? degrees"
+        },
+        "28": {
+          "authoredPhrase": "Pain came on after swimming",
+          "phrase": "Pain came on after swimming",
+          "subject": {
+            "display": "Pain came on after swimming",
+            "value": "pain came on after swimming"
+          },
+          "tags": {
+            "earpain": ""
+          },
+          "uiPhrase": "Pain came on after swimming"
+        },
+        "29": {
+          "authoredPhrase": "Pain in right ear",
+          "phrase": "Pain in right ear",
+          "subject": {
+            "display": "Pain in right ear",
+            "value": "pain in right ear"
+          },
+          "tags": {
+            "earpain": ""
+          },
+          "uiPhrase": "Pain in right ear"
+        },
+        "30": {
+          "authoredPhrase": "Pain in left ear",
+          "phrase": "Pain in left ear",
+          "subject": {
+            "display": "Pain in left ear",
+            "value": "pain in left ear"
+          },
+          "tags": {
+            "earpain": ""
+          },
+          "uiPhrase": "Pain in left ear"
+        },
+        "31": {
+          "authoredPhrase": "~Ear Pain~ is  {?} /|10| ",
+          "phrase": "{{:subject}} is  {{:unit}} /{{:value}} ",
+          "subject": {
+            "display": "Ear Pain",
+            "value": "ear pain"
+          },
+          "tags": {
+            "earpain": ""
+          },
+          "uiPhrase": "Ear Pain is {?} /10 ",
+          "unit": {
+            "display": "?",
+            "value": "?"
+          },
+          "value": {
+            "display": 10,
+            "value": 10
+          }
+        }
+      },
+      "byPhrase": {
+        "internal rotation to 45 degrees": 22,
+        "internal rotation to ?? degrees": 27,
+        "movement is normal ": 20,
+        "movement is reduced": 21,
+        "onset after recent fall": 18,
+        "onset gradual, no obvious incident": 19,
+        "pain came on after swimming": 28,
+        "pain in left ear": 30,
+        "pain in right ear": 29,
+        "presents with shoulder pain": 17,
+        "test1": 1,
+        "test2": 2,
+        "the chest pain radiated to the left arm": 9,
+        "the chest pain radiated to the neck": 8,
+        "the pain settled with rest": 11,
+        "the pain was acute in onset": 5,
+        "the pain was associated with exercise": 10,
+        "the pain was gradual in onset": 4,
+        "the pain was |9/10| in severity": 14,
+        "the ~pain~ was associated with breathing": 12,
+        "the ~pain~ was medium at |5/10| in {severity}": 13,
+        "the ~pain~ was mild at |?| in {severity}": 7,
+        "the ~pain~ was severe at |10/10| in {severity}": 6,
+        "the ~pain~ was |mild| in {onset}": 15,
+        "ultrasound is normal": 25,
+        "ultrasound shows rotator cuff injury": 26,
+        "xray shows no obvious injury": 24,
+        "~diagnosis of angina~ |snomedct| {1234455}": 16,
+        "~ear pain~ is  {?} /|10| ": 31,
+        "~internal rotation~ to |?| {degrees}": 23,
+        "~this subject~ with |5| {units of movement}": 3
+      },
+      "byTag": {
+        "acutesob": {
+          "10": "",
+          "12": ""
+        },
+        "chestpain": {
+          "4": "",
+          "5": "",
+          "6": "",
+          "7": "",
+          "8": "",
+          "9": "",
+          "10": "",
+          "11": "",
+          "12": "",
+          "13": "",
+          "14": "",
+          "15": "",
+          "16": ""
+        },
+        "earpain": {
+          "28": "",
+          "29": "",
+          "30": "",
+          "31": ""
+        },
+        "lung": {
+          "12": ""
+        },
+        "shoulder": {
+          "17": "",
+          "18": "",
+          "19": "",
+          "20": "",
+          "21": "",
+          "22": "",
+          "23": "",
+          "24": "",
+          "25": "",
+          "26": ""
+        },
+        "shoulder2": {
+          "17": "",
+          "18": "",
+          "19": "",
+          "20": "",
+          "21": "",
+          "22": "",
+          "24": "",
+          "25": "",
+          "26": "",
+          "27": ""
+        },
+        "snomedct": {
+          "16": ""
+        },
+        "t1": {
+          "1": "",
+          "2": "",
+          "3": ""
+        },
+        "tagb": {
+          "1": ""
+        },
+        "test1": {
+          "4": ""
+        }
+      },
+      "byTagInPhraseOrder": {
+        "chestpain": [
+          13,
+          14,
+          5,
+          6,
+          7,
+          4,
+          8,
+          9,
+          15,
+          10,
+          11,
+          12,
+          16
+        ],
+        "t1": [
+          2,
+          3,
+          1
+        ]
+      },
+      "byWord": {
+        "acute": {
+          "5": ""
+        },
+        "angina": {
+          "16": ""
+        },
+        "arm": {
+          "9": ""
+        },
+        "breathing": {
+          "12": ""
+        },
+        "chest": {
+          "8": "",
+          "9": ""
+        },
+        "cuff": {
+          "26": ""
+        },
+        "degrees": {
+          "22": "",
+          "23": "",
+          "27": ""
+        },
+        "diagnosis": {
+          "16": ""
+        },
+        "ear": {
+          "29": "",
+          "30": "",
+          "31": ""
+        },
+        "exercise": {
+          "10": ""
+        },
+        "fall": {
+          "18": ""
+        },
+        "gradual": {
+          "4": "",
+          "19": ""
+        },
+        "incident": {
+          "19": ""
+        },
+        "injury": {
+          "24": "",
+          "26": ""
+        },
+        "internal": {
+          "22": "",
+          "23": "",
+          "27": ""
+        },
+        "left": {
+          "9": "",
+          "30": ""
+        },
+        "medium": {
+          "13": ""
+        },
+        "mild": {
+          "7": "",
+          "15": ""
+        },
+        "movement": {
+          "3": "",
+          "20": "",
+          "21": ""
+        },
+        "neck": {
+          "8": ""
+        },
+        "normal": {
+          "20": "",
+          "25": ""
+        },
+        "obvious": {
+          "19": "",
+          "24": ""
+        },
+        "onset": {
+          "4": "",
+          "5": "",
+          "15": "",
+          "18": "",
+          "19": ""
+        },
+        "pain": {
+          "4": "",
+          "5": "",
+          "6": "",
+          "7": "",
+          "8": "",
+          "9": "",
+          "10": "",
+          "11": "",
+          "12": "",
+          "13": "",
+          "14": "",
+          "15": "",
+          "17": "",
+          "28": "",
+          "29": "",
+          "30": "",
+          "31": ""
+        },
+        "presents": {
+          "17": ""
+        },
+        "radiated": {
+          "8": "",
+          "9": ""
+        },
+        "recent": {
+          "18": ""
+        },
+        "reduced": {
+          "21": ""
+        },
+        "rest": {
+          "11": ""
+        },
+        "rotation": {
+          "22": "",
+          "23": "",
+          "27": ""
+        },
+        "rotator": {
+          "26": ""
+        },
+        "settled": {
+          "11": ""
+        },
+        "severe": {
+          "6": ""
+        },
+        "severity": {
+          "6": "",
+          "7": "",
+          "13": "",
+          "14": ""
+        },
+        "shoulder": {
+          "17": ""
+        },
+        "shows": {
+          "24": "",
+          "26": ""
+        },
+        "snomedct": {
+          "16": ""
+        },
+        "subject": {
+          "3": ""
+        },
+        "swimming": {
+          "28": ""
+        },
+        "test1": {
+          "1": ""
+        },
+        "test2": {
+          "2": ""
+        },
+        "ultrasound": {
+          "25": "",
+          "26": ""
+        },
+        "units": {
+          "3": ""
+        },
+        "xray": {
+          "24": ""
+        }
+      },
+      "delimiters": {
+        "delimiters": {
+          "subject": {
+            "left": "~",
+            "right": "~"
+          },
+          "unit": {
+            "left": "{",
+            "right": "}"
+          },
+          "value": {
+            "left": "|",
+            "right": "|"
+          }
+        }
+      },
+      "phraseIdCounter": 31
+    }
+  }
+}

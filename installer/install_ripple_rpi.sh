@@ -4,7 +4,7 @@
 # run using: source install_ripple_rpi.sh
 # run as normal user, eg pi
 
-# 18 May 2017
+# 14 June 2017
 
 echo "-----------------------------------------------------------------------"
 echo 'Preparing environment'
@@ -198,9 +198,10 @@ echo "-----------------------------------------------------------------------"
 
 cd ~
 
-# wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/develop/build/ripple-latest.zip?raw=true
+# wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/develop/build/PulseTile-latest.zip?raw=true
 
-wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/master/build/ripple-latest.zip?raw=true
+wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/master/build/PulseTile-latest.zip?raw=true
+
 unzip ripple_ui.zip
 
 # move the files into place
