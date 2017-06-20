@@ -4,7 +4,7 @@
 # run using: source install_ripple_rpi.sh
 # run as normal user, eg pi
 
-# 14 June 2017
+# 20 June 2017
 
 echo "-----------------------------------------------------------------------"
 echo 'Preparing environment'
@@ -143,12 +143,14 @@ make
 sudo make install
 cd utils
 
-echo "----------------------------------------------------------------------------------"
-echo " Redis Server now being started"
-echo "  Hit Enter to accept the default settings in the questions that follow...      "
-echo "----------------------------------------------------------------------------------"
+PORT=6379
+CONFIG_FILE=/etc/redis/6379.conf
+LOG_FILE=/var/log/redis_6379.log
+DATA_DIR=/var/lib/redis/6379
+EXECUTABLE=/usr/local/bin/redis-server
 
-sudo ./install_server.sh
+echo -e "${PORT}\n${CONFIG_FILE}\n${LOG_FILE}\n${DATA_DIR}\n${EXECUTABLE}\n" | sudo ./install_server.sh
+sudo update-rc.d redis_6379 defaults
 
 echo "Redis is now installed and running, listening on port 6379"
 
@@ -167,25 +169,12 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 sudo apt-get install -y mysql-server
 sudo service mysql start
 
-# Get the database scripts
+# Run the database scripts
 cd ~
-
-wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-Middleware/develop/ripple-database/src/main/resources/sql/legacy/create_database_and_tables.sql
-wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-Middleware/develop/ripple-database/src/main/resources/sql/legacy/populate_general_practitioners_table.sql
-wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-Middleware/develop/ripple-database/src/main/resources/sql/legacy/populate_medical_departments_table.sql
-wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-Middleware/develop/ripple-database/src/main/resources/sql/legacy/populate_patients_table.sql
-
-# Run the scripts
-mysql -u root -ppassword < ~/create_database_and_tables.sql
-mysql -u root -ppassword < ~/populate_general_practitioners_table.sql
-mysql -u root -ppassword < ~/populate_medical_departments_table.sql
-mysql -u root -ppassword < ~/populate_patients_table.sql
-
-# Delete scripts
-sudo rm ~/create_database_and_tables.sql
-sudo rm ~/populate_general_practitioners_table.sql
-sudo rm ~/populate_medical_departments_table.sql
-sudo rm ~/populate_patients_table.sql
+mysql -u root -ppassword < ~/qewd/node_modules/qewd-ripple/data/create_database_and_tables.sql
+mysql -u root -ppassword < ~/qewd/node_modules/qewd-ripple/data/populate_general_practitioners_table.sql
+mysql -u root -ppassword < ~/qewd/node_modules/qewd-ripple/data/populate_medical_departments_table.sql
+mysql -u root -ppassword < ~/qewd/node_modules/qewd-ripple/data/populate_patients_table.sql
 
 echo "-----------------------------------------------------------------------"
 echo " MySQL environment and data set up"

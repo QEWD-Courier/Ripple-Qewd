@@ -7,7 +7,7 @@
 
 # run as normal user, eg ubuntu
 
-# 14 June 2017
+# 20 June 2017
 
 # Prepare
 
@@ -199,25 +199,13 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 sudo apt-get install -y mysql-server
 sudo service mysql start
 
-# Get the database scripts
+# Run the database scripts
+
 cd ~
-
-wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-Middleware/develop/ripple-database/src/main/resources/sql/legacy/create_database_and_tables.sql
-wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-Middleware/develop/ripple-database/src/main/resources/sql/legacy/populate_general_practitioners_table.sql
-wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-Middleware/develop/ripple-database/src/main/resources/sql/legacy/populate_medical_departments_table.sql
-wget https://raw.githubusercontent.com/RippleOSI/Org-Ripple-Middleware/develop/ripple-database/src/main/resources/sql/legacy/populate_patients_table.sql
-
-# Run the scripts
-mysql -u root -ppassword < ~/create_database_and_tables.sql
-mysql -u root -ppassword < ~/populate_general_practitioners_table.sql
-mysql -u root -ppassword < ~/populate_medical_departments_table.sql
-mysql -u root -ppassword < ~/populate_patients_table.sql
-
-# Delete scripts
-sudo rm ~/create_database_and_tables.sql
-sudo rm ~/populate_general_practitioners_table.sql
-sudo rm ~/populate_medical_departments_table.sql
-sudo rm ~/populate_patients_table.sql
+mysql -u root -ppassword < ~/qewd/node_modules/qewd-ripple/data/create_database_and_tables.sql
+mysql -u root -ppassword < ~/qewd/node_modules/qewd-ripple/data/populate_general_practitioners_table.sql
+mysql -u root -ppassword < ~/qewd/node_modules/qewd-ripple/data/populate_medical_departments_table.sql
+mysql -u root -ppassword < ~/qewd/node_modules/qewd-ripple/data/populate_patients_table.sql
 
 echo "-----------------------------------------------------------------------"
 echo " MySQL environment and data set up"
