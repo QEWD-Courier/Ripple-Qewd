@@ -1,0 +1,10 @@
+select 
+  e/ehr_id/value as ehrId,
+  e/ehr_status/subject/external_ref/id/value as nhsNo
+ from EHR e
+ contains COMPOSITION a
+ contains EVALUATION a_a[openEHR-EHR-EVALUATION.adverse_reaction_risk.v1]
+ where 
+  a/name/value='Adverse reaction list'
+ and
+  a_a/data[at0001]/items[at0002]/value/value {{like}} '{{queryText}}'

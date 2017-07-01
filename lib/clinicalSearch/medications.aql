@@ -1,0 +1,10 @@
+select 
+  e/ehr_id/value as ehrId,
+  e/ehr_status/subject/external_ref/id/value as nhsNo
+ from EHR e
+ contains COMPOSITION a
+ contains INSTRUCTION a_a[openEHR-EHR-INSTRUCTION.medication_order.v1]
+ where 
+  a/name/value='Medication statement list'
+ and
+  a_a/activities[at0001]/description[at0002]/items[at0070]/value/value {{like}} '{{queryText}}'

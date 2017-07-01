@@ -39,7 +39,7 @@ var config = {
     indexURL: '/index.html',
     connections: ['Username-Password-Authentication', 'google-oauth2', 'twitter']
   },
-  port: 3000,
+  port: 8081,
   poolSize: 2,
   ripple: {
     mode: 'secure'

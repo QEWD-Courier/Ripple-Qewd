@@ -1,0 +1,10 @@
+select 
+  e/ehr_id/value as ehrId,
+  e/ehr_status/subject/external_ref/id/value as nhsNo
+ from EHR e
+ contains COMPOSITION a
+ contains ACTION a_a[openEHR-EHR-ACTION.procedure.v1]
+ where 
+  a/name/value='Procedures list'
+ and
+  a_a/description[at0001]/items[at0002]/value/value {{like}} '{{queryText}}'

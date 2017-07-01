@@ -1,15 +1,13 @@
 select
-  a/uid/value as uid,
-  a/composer/name as author,
-  a/context/start_time/value as date_created,
-  a_a/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value/value as test_name,
-  a_a/data[at0001]/events[at0002]/data[at0003]/items[at0057]/value/value as conclusion,
-  a_a/data[at0001]/events[at0002]/data[at0003]/items[at0073]/value/value as status,
-  a_a/data[at0001]/events[at0002]/data[at0003]/items[at0075]/value/value as sample_taken,
-  a_a/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_panel.v0] as test_panel
- from EHR e
- contains COMPOSITION a[openEHR-EHR-COMPOSITION.report-result.v1]
- contains OBSERVATION a_a[openEHR-EHR-OBSERVATION.laboratory_test.v0]
- where a/name/value='Laboratory test report'
- and e/ehr_status/subject/external_ref/namespace = 'uk.nhs.nhs_number'
- and e/ehr_status/subject/external_ref/id/value = '{{patientId}}'
+   a/uid/value as uid,   
+   a/composer/name as author,
+   a/context/start_time/value as date_created,
+   a_a/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value/value as test_name,
+   a_a/data[at0001]/events[at0002]/data[at0003]/items[at0057]/value/value as conclusion,
+   a_a/data[at0001]/events[at0002]/data[at0003]/items[at0073]/value/value as status,
+   a_a/data[at0001]/events[at0002]/data[at0003]/items[at0075]/value/value as sample_taken,
+   a_a/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_panel.v0] as test_panel  
+  from EHR e[ehr_id/value='{{ehrId}}']
+  contains COMPOSITION a[openEHR-EHR-COMPOSITION.report-result.v1]
+  contains OBSERVATION a_a[openEHR-EHR-OBSERVATION.laboratory_test.v0]  
+  where a/name/value='Laboratory test report'
