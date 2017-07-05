@@ -3,7 +3,7 @@
   "info": {
     "description": "RippleOSI Middle Tier REST APIs",
     "version":     "1.0.0",
-    "title":       "RippleOSI"
+    "title":       "Ripple Showcase Stack  - Swagger - Open APIs"
   },
   "schemes": ["http"],
   "tags": [{
