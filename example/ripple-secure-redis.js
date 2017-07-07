@@ -46,7 +46,9 @@ var config = {
   },
   database: {
     type: 'redis'
-  }
+  },
+  cors: true,
+  ssl: false // SSL handled by nginx proxy
 
 };
 

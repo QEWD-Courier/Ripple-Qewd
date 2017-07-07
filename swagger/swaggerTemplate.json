@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "description": "RippleOSI Middle Tier REST APIs",
-    "version":     "1.0.0",
-    "title":       "RippleOSI"
+    "version":     "1.1.0",
+    "title":       "Ripple Showcase Stack  - Swagger - Open APIs"
   },
   "schemes": ["http"],
   "tags": [{
@@ -18,15 +18,16 @@
     }
   },
   "paths": {
-    "/api/initialise":                  "=> get('initialise.json')",
+    "/api/initialise":                         "=> get('initialise.json')",
     "/api/application" : {
-      "get" :                           "=> get('application-get.json')",
-      "post":                           "=> get('application-post.json', 'desc', 'Saves users application settings')",
-      "put":                            "=> get('application-post.json', 'desc', 'Updates users application settings')"
+      "get" :                                  "=> get('application-get.json')",
+      "post":                                  "=> get('application-post.json', 'desc', 'Saves users application settings')",
+      "put":                                   "=> get('application-post.json', 'desc', 'Updates users application settings')"
     },
-    "/api/user":                        "=> get('user.json')",
-    "/api/patients":                    "=> get('patients.json')",
-    "/api/patients/{patientId}/counts": "=> get('patientCounts.json')"
+    "/api/user":                               "=> get('user.json')",
+    "/api/patients":                           "=> get('patients.json')",
+    "/api/patients/{patientId}/counts":        "=> get('patientCounts.json')",
+    "/api/patients/{patientId}/dicom/studies": "=> get('dicomStudies.json')"  
   },
   "definitions": {
     "initialiseResponse":      "=> get('initialiseResponse.json')",
@@ -36,6 +37,7 @@
     "userError":               "=> get('userError.json')",
     "patientsResponse":        "=> get('patientsResponse.json')",
     "countsResponse":          "=> get('countsResponse.json')",
-    "headingPostResponse":     "=> get('headingPostResponse.json')"
+    "headingPostResponse":     "=> get('headingPostResponse.json')",
+    "dicomStudiesResponse":    "=> get('dicomStudiesResponse.json')"
   }
 }

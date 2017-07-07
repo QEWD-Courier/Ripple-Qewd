@@ -1,0 +1,25 @@
+{
+  "type": "array",
+  "items": {
+    "description": "All Digital Imaging and Communications in Medicine (DICOM) studies for a specified patient",
+    "type": "object",
+    "properties": {
+      "dateRecorded": {
+        "description": "Date the study was recororded",
+        "type": "string"
+      },
+      "studyDescription": {
+        "description": "Description of the type of study conducted",
+        "type": "string"
+      },
+      "source": {
+        "description": "Reference to the originating system, e.g. orthanc",
+        "type": "string"
+      },
+      "studyId": {
+        "description": "Unique ID of the study",
+        "type": "string"
+      }
+    }
+  }
+}

@@ -130,10 +130,12 @@ server {
        }
 
        # Proxy all non-static content via QEWD
+       # nginx will provide the SSL interface,
+       # proxying to QEWD listening on port 8081 in the clear
 
        location @qewd {
-         proxy_pass https://localhost:8081;
-                    proxy_http_version 1.1;
+         proxy_pass http://localhost:8081;
+         proxy_http_version 1.1;
          proxy_set_header Upgrade $http_upgrade;
          proxy_set_header Connection 'upgrade';
          proxy_set_header Host $host;

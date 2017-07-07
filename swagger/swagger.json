@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "description": "RippleOSI Middle Tier REST APIs",
-    "version": "1.0.0",
-    "title": "RippleOSI"
+    "version": "1.1.0",
+    "title": "Ripple Showcase Stack  - Swagger - Open APIs"
   },
   "schemes": [
     "http"
@@ -271,6 +271,48 @@
             },
             "schema": {
               "$ref": "#/definitions/countsResponse"
+            }
+          },
+          "403": {
+            "description": "Missing or invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/api/patients/{patientId}/dicom/studies": {
+      "get": {
+        "tags": [
+          "Dicom"
+        ],
+        "description": "Gets all Digital Imaging for Communications in Medicine (DICOM) records for specified patient",
+        "security": [
+          {
+            "QEWDToken": []
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "Patient Id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All DICOM documents",
+            "headers": {
+              "X-ResponseTime": {
+                "description": "Back-end response time",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/dicomStudiesResponse"
             }
           },
           "403": {
@@ -2280,6 +2322,146 @@
           }
         }
       }
+    },
+    "/api/patients/{patientId}/events": {
+      "get": {
+        "tags": [
+          "Headings"
+        ],
+        "description": "Get events summary data",
+        "security": [
+          {
+            "QEWDToken": []
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "Patient Id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Summary Data for events",
+            "headers": {
+              "X-ResponseTime": {
+                "description": "Back-end response time",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/eventsSummaryResponse"
+            }
+          },
+          "403": {
+            "description": "Missing or invalid authentication credentials"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Headings"
+        ],
+        "description": "Save a new events record",
+        "security": [
+          {
+            "QEWDToken": []
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "Patient Id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Body Payload containing heading data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/eventsSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Confirmation that data has been saved",
+            "headers": {
+              "X-ResponseTime": {
+                "description": "Back-end response time",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/headingPostResponse"
+            }
+          },
+          "403": {
+            "description": "Missing or invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/api/patients/{patientId}/events/{sourceId}": {
+      "get": {
+        "tags": [
+          "Headings"
+        ],
+        "description": "Get complete events data",
+        "security": [
+          {
+            "QEWDToken": []
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "Patient Id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sourceId",
+            "in": "path",
+            "description": "OpenEHR Composition Id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Full Data for events",
+            "headers": {
+              "X-ResponseTime": {
+                "description": "Back-end response time",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/eventsDetailResponse"
+            }
+          },
+          "403": {
+            "description": "Missing or invalid authentication credentials"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -2488,6 +2670,31 @@
         "info": {
           "description": "Successful Post Confirmation",
           "type": "string"
+        }
+      }
+    },
+    "dicomStudiesResponse": {
+      "type": "array",
+      "items": {
+        "description": "All Digital Imaging and Communications in Medicine (DICOM) studies for a specified patient",
+        "type": "object",
+        "properties": {
+          "dateRecorded": {
+            "description": "Date the study was recororded",
+            "type": "string"
+          },
+          "studyDescription": {
+            "description": "Description of the type of study conducted",
+            "type": "string"
+          },
+          "source": {
+            "description": "Reference to the originating system, e.g. orthanc",
+            "type": "string"
+          },
+          "studyId": {
+            "description": "Unique ID of the study",
+            "type": "string"
+          }
         }
       }
     },
@@ -2760,9 +2967,6 @@
           "type": "string"
         },
         "startDate": {
-          "type": "string"
-        },
-        "doseDirections": {
           "type": "string"
         }
       }
@@ -3569,7 +3773,7 @@
         "author": {
           "type": "string"
         },
-        "dateCreate": {
+        "dateCreated": {
           "type": "string"
         },
         "newsScore": {
@@ -3742,6 +3946,86 @@
           "type": "string"
         },
         "note": {
+          "type": "string"
+        }
+      }
+    },
+    "eventsSummaryResponse": {
+      "properties": {
+        "source": {
+          "description": "Source OpenEHR System",
+          "type": "string"
+        },
+        "sourceId": {
+          "description": "Source OpenEHR Composition Id",
+          "type": "string"
+        },
+        "dateCreated": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dateTime": {
+          "type": "string"
+        }
+      }
+    },
+    "eventsDetailResponse": {
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "sourceId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dateTime": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "dateCreated": {
+          "type": "string"
+        }
+      }
+    },
+    "eventsSchema": {
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "healthcareFacilityId": {
+          "type": "string"
+        },
+        "healthcareFacilityName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dateTime": {
           "type": "string"
         }
       }

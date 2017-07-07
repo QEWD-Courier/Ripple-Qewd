@@ -72,7 +72,7 @@ VALUES
 (66,	'Bird Darrel L.',	'Northmapton Practice',	'616-9384 Mauris Rd.',	'Northampton',	'Northamptonshire',	'ZY9 2KM'),
 (67,	'Webster Uta A.',	'Port Glasgow Practice',	'4872 Cubilia St.',	'Port Glasgow',	'Renfrewshire',	'TQ3J 4JG'),
 (68,	'Hooper Tate K.',	'Newport Practice',	'Ap #491-7493 Donec Ave',	'Newport',	'Hampshire',	'JB48 4EL'),
-(69,	'Parsons Melissa A.',	'Edinburgh Practice',	'7673 Luctus St.',	'Edinburgh',	'Midlothian',	'OS65 6FU'),
+(69,	'Parsons Melissa A.',	'Burmantofts Medical Centre',	'Cromwell Mount',	'Leeds',	'',	'LS9 7TA'),
 (70,	'Schultz Kane E.',	'Taunton Practice',	'611-682 Sed Road',	'Taunton',	'Somerset',	'Y92 1WA'),
 (71,	'Ortiz Whitney X.',	'Aulderan Practice',	'Ap #806-2884 Enim St.',	'Auldearn',	'Nairnshire',	'V4F 9GJ'),
 (72,	'Horn Bevis E.',	'Scalloway Practice',	'549-6333 Magna Street',	'Scalloway',	'Shetland',	'KF3 8IO'),

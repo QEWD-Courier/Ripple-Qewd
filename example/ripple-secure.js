@@ -32,10 +32,10 @@ var ewdRipple = require('qewd-ripple/lib/startup');
 
 var config = {
   auth0: {
-    domain:       'rippleosi.eu.auth0.com',
-    clientID:     'Ghi91Wk1PERQjxIN5ili6rssnl4em8In',
-    callbackURL:  'https://138.68.134.7:8081/auth0/token',
-    clientSecret: 'sZn_wWPQQV3mfIYDANrufQ12pyWcCtWULoGOqqakH1IiCs0IBLRybK6c1XB863WT',
+    domain:       'xxxxxxxxx.eu.auth0.com',
+    clientID:     'xxxxxxxxxxxxxxxxxxxxxxxx',
+    callbackURL:  'http://xxx.xxx.xxx.xxx/auth0/token',
+    clientSecret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
     indexURL: '/index.html',
     connections: ['Username-Password-Authentication', 'google-oauth2', 'twitter']
   },
@@ -45,10 +45,13 @@ var config = {
     mode: 'secure'
   },
   cors: true,
+  ssl: false // SSL provided by nginx
+  /*
   ssl: {
     keyFilePath: 'ssl/ssl.key',
     certFilePath: 'ssl/ssl.crt',
   }
+  */
 };
 
 config.addMiddleware = function(bodyParser, app) {

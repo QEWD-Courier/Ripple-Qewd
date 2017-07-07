@@ -122,6 +122,12 @@ Once you've edited the *ripple-secure.js* file, you should now be able to start 
       cd ~/qewd
       node ripple-secure
 
+The startup file (~/qewd/ripple-secure.js) is set up to listen in the clear via port 8081.  The nginx configuration
+file (/etc/nginx/sites-available/default) is set up to provide the SSL service for your system and proxies the
+ripple-secure QEWD system.  The qewd-ripple installer includes a self-signed certificate (installed in the 
+~/qewd/ssl directory).  Switch these out for a proper SSL certificate and adjust the nginx SSL configuration in the 
+*sites-available/default* file.
+
 
 5) Point at the browser at the server's IP address and it should start up, eg:
 
@@ -202,6 +208,18 @@ Add the property *managementPassword* to the *config* object, eg:
        };
        
        ewdRipple.start(config);
+
+
+## Updating the PulseTile User Interface
+
+From time to time, updates to the PulseTile User Interface are released.  You can update your system by running the
+*update-ui.sh* installer script that you'll find in your qewd-ripple repository directory at:
+
+        ~/qewd/node_modules/qewd-ripple/installer/update-ui.sh
+
+Run this by simply typing:
+
+        source ~/qewd/node_modules/qewd-ripple/installer/update-ui.sh
 
 
 ## Installing and running Ripple Showcase stack on a Raspberry Pi

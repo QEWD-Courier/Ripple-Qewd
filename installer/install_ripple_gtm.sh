@@ -217,9 +217,20 @@ echo " Initialising deployment environment..."
 echo "-----------------------------------------------------------------------"
 
 # Retrieve the UI code
-cd ~
 
-# wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/develop/build/PulseTile-latest.zip?raw=true
+# To download the version of the UI that contains only core headings, please use the following link: 
+
+#   https://github.com/PulseTile/PulseTile/blob/master/build/PulseTile-core-1.0.0.zip;
+ 
+# In case you need a previous UI build - you'll see the builds available for downloading at:
+
+#   https://github.com/PulseTile/PulseTile/blob/master/build/" 
+
+cd ~
+#
+# If you want the latest development version: 
+#   wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/develop/build/PulseTile-latest.zip?raw=true
+#
 
 wget -O ripple_ui.zip https://github.com/PulseTile/PulseTile/blob/master/build/PulseTile-latest.zip?raw=true
 
