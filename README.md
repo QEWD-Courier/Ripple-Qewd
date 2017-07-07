@@ -32,8 +32,21 @@ Please follow ALL the steps listed below:
   platform (eg Ubuntu 16.04).  The embedded Redis or Open Source GT.M database is
   used as a high-performance cache and session store.
 
-2) If your Linux machine / VM only has a root user, you'll need to create a non-root user with sudo privileges.
-If you already log in to your Linux machine with a non-root user, the user will need sudo privileges.
+2) DO NOT install or configure QEWD-Ripple using the "root" username!  ALWAYS use a non-root username that
+has *sudo* prvileges.
+
+If your Linux machine / VM only has a root user, you'll need to create a non-root user with sudo privileges.
+
+If you already log in to your Linux machine with a non-root user, the user will need to have sudo privileges.
+You can check this by typing:
+
+        groups
+
+*sudo* should be one of the groups listed, eg:
+
+        ripple@Ripple-2Gb-ShowcaseDemo-m3:~$ *groups*
+        ripple sudo
+
 
 To create a new user named *ripple* (change to whatever you want) (when logged in as root):
 
@@ -42,7 +55,7 @@ To create a new user named *ripple* (change to whatever you want) (when logged i
 You'll be asked for a password.  You'll also be asked for user details which you can just leave blank by hitting
  the *Enter* key each time.
 
-To give the user sudo privileges:
+To give the user (*ripple* in this example) sudo privileges:
 
      usermod -aG sudo ripple
 
@@ -220,6 +233,9 @@ From time to time, updates to the PulseTile User Interface are released.  You ca
 Run this by simply typing:
 
         source ~/qewd/node_modules/qewd-ripple/installer/update-ui.sh
+
+*Note: DO NOT run this as root.  Log in using the same username that you used to install qewd-ripple, eg "ripple"*
+
 
 
 ## Installing and running Ripple Showcase stack on a Raspberry Pi
