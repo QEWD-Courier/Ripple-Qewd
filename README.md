@@ -44,7 +44,7 @@ You can check this by typing:
 
 *sudo* should be one of the groups listed, eg:
 
-        ripple@Ripple-2Gb-ShowcaseDemo-m3:~$ *groups*
+        ripple@Ripple-2Gb-ShowcaseDemo-m3:~$ groups
         ripple sudo
 
 
