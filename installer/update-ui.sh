@@ -2,6 +2,7 @@
 
 # Update the PulseTile UI to the latest version
 
+rm -r ~/dist
 rm -r ~/qewd/www/assets
 rm -r ~/qewd/www/videochat
 
