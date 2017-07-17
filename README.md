@@ -60,7 +60,7 @@ To give the user (*ripple* in this example) sudo privileges:
      usermod -aG sudo ripple
 
 
-3) **Use One Installer Script* from this repo to create the QEWD/Node.js-based Ripple 
+3) **Use One Installer Script from this repo to create the QEWD/Node.js-based Ripple 
  Middle Tier and UI**.  
 
 *We suggest you either install *qewd-ripple* with Redis as its database*:
