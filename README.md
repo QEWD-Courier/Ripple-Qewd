@@ -326,3 +326,26 @@ For further information on QEWD.js, see [http://qewdjs.com)
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
+
+
+## Product/Project Support
+This product /project is supported by the Ripple Foundation, who aim to enhance the Ripple-Qewd framework. 
+We are working to fund as many of the enhancements of Ripple-Qewd as we can based on projects that our non profit organisation supports.
+
+We will try to fix any key bugs and documentation errors ourselves. 
+Other issues, requests for enhancements or feature additions, will be added to the project backlog.
+
+The Ripple Foundation is committed to offering free and open software, with quality, free and open documentation, but unfortunately is unable to offer free support for all issues/pull requests in the backlog.
+
+(Our latest thinking on the best model to support our open platform mission in healthcare may best be understood by reading this article. https://opensource.com/business/16/4/refactoring-open-source-business-models
+
+If you would like to offer some of your energy/ suggest other ideas towards progressing an open platform in healthcare, please contact us at info@ripple.foundation )
+
+If you need support with a particular issue/pull request, please let us know and we can consider a bounty source (https://www.bountysource.com/), to get these reviewed / addressed.
+
+Thanks for your interest in Ripple-Qewd
+
+The Ripple Foundation
+
+http://ripple.foundation/
+ 
