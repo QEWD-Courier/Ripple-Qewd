@@ -329,7 +329,7 @@ For further information on QEWD.js, see [http://qewdjs.com)
 
 
 ## Product/Project Support
-This product /project is supported by the Ripple Foundation, who aim to enhance the Ripple-Qewd framework. 
+This product /project is supported by the Ripple Foundation, who aim to enhance the Ripple-Qewd framework, as part of our open platform mission in healthcare. 
 We are working to fund as many of the enhancements of Ripple-Qewd as we can based on projects that our non profit organisation supports.
 
 We will try to fix any key bugs and documentation errors ourselves. 
