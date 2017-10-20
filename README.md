@@ -303,7 +303,7 @@ Restart QEWD-Ripple using:
 
 ## About QEWD.js
 
-For further information on QEWD.js, see [http://qewdjs.com)
+For further information on QEWD.js, see http://qewdjs.com
 
 
 
