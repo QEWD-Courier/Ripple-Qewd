@@ -24,7 +24,7 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  26 January 2017
+  16 October 2017
 
 */
 
@@ -32,20 +32,38 @@ var ewdRipple = require('qewd-ripple/lib/startup');
 
 var config = {
   port: 3000,
-  poolSize: 2,
+  poolSize: 4,
   ripple: {
     mode: 'demo'
-  }
+  },
+  cors: true,
+  bodyParser: require('body-parser') // over-rides default setting for limit
 };
 
 config.addMiddleware = function(bodyParser, app) {
+
+  app.use(bodyParser.json({limit: '1mb'}));
+  app.use(bodyParser.urlencoded({limit: '1mb', extended: true}));
+
   require('body-parser-xml')(bodyParser);
+
   app.use(bodyParser.xml({
      limit: '1MB',
      xmlParseOptions: {
         explicitArray: false
      }
   }));
+
+  // custom error handler for XML parsing errors:
+
+  app.use(function(err, req, res, next) {
+    if (req.headers['content-type'] && req.headers['content-type'] === 'text/xml') {
+      res.status(500).send({ error: 'Unable to parse XML - ' + err});
+    }
+    else {
+      next(err);
+    }
+  });
 };
 
 ewdRipple.start(config);

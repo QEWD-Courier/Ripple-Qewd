@@ -48,6 +48,48 @@
         }
       }
     },
+    "/api/ui/{uiType}": {
+      "get": {
+        "tags": [
+          "Ripple"
+        ],
+        "description": "Switch UI between React and Angular versions",
+        "security": [
+          {
+            "QEWDToken": []
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uiType",
+            "in": "path",
+            "description": "UI Type: react or angular",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Confirmation of UI swap",
+            "headers": {
+              "X-ResponseTime": {
+                "description": "Back-end response time",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/uiResponse"
+            }
+          },
+          "403": {
+            "description": "Missing or invalid authentication credentials"
+          }
+        }
+      }
+    },
     "/api/application": {
       "get": {
         "tags": [
@@ -282,7 +324,7 @@
     "/api/patients/{patientId}/dicom/studies": {
       "get": {
         "tags": [
-          "Dicom"
+          "Ripple"
         ],
         "description": "Gets all Digital Imaging for Communications in Medicine (DICOM) records for specified patient",
         "security": [
@@ -313,6 +355,158 @@
             },
             "schema": {
               "$ref": "#/definitions/dicomStudiesResponse"
+            }
+          },
+          "403": {
+            "description": "Missing or invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/api/documents/patient/{patientId}": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "description": "Get a summary list of documents for a patient",
+        "security": [
+          {
+            "QEWDToken": []
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "Patient Id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Summary List of Documents",
+            "headers": {
+              "X-ResponseTime": {
+                "description": "Back-end response time",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/documentsSummaryResponse"
+            }
+          },
+          "403": {
+            "description": "Missing or invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/api/documents/patient/{patientId}/{sourceId}": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "description": "Get the contents of a specified document for a patient",
+        "security": [
+          {
+            "QEWDToken": []
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "Patient Id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sourceId",
+            "in": "path",
+            "description": "Document Composition Id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document Contents",
+            "headers": {
+              "X-ResponseTime": {
+                "description": "Back-end response time",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/documentsDetailResponse"
+            }
+          },
+          "403": {
+            "description": "Missing or invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/api/documents/patient/{patientId}/{host}": {
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "description": "Saves a Healthlink Referral or Discharge Document",
+        "security": [
+          {
+            "QEWDToken": []
+          }
+        ],
+        "consumes": [
+          "application/xml"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Body Payload containing HealthLink XML Document",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "patientId",
+            "in": "path",
+            "description": "Patient Id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "host",
+            "in": "path",
+            "description": "OpenEHR Host System on which to save Document (eg marand, ethercis)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {
+              "X-ResponseTime": {
+                "description": "Back-end response time",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/postDocumentResponse"
             }
           },
           "403": {
@@ -2475,6 +2669,17 @@
         }
       }
     },
+    "uiResponse": {
+      "properties": {
+        "ok": {
+          "type": "string"
+        },
+        "uiType": {
+          "description": "The UI Type selected (react or angular)",
+          "type": "string"
+        }
+      }
+    },
     "applicationPayload": {
       "properties": {
         "title": {
@@ -2695,6 +2900,110 @@
             "description": "Unique ID of the study",
             "type": "string"
           }
+        }
+      }
+    },
+    "documentsSummaryResponse": {
+      "type": "array",
+      "items": {
+        "description": "Summary of documents for the selected patient",
+        "type": "object",
+        "properties": {
+          "sourceId": {
+            "description": "Composition Id of the Document",
+            "type": "string"
+          },
+          "dateCreated": {
+            "description": "Date on which the Document was created",
+            "type": "string"
+          },
+          "author": {
+            "description": "The Documents Author",
+            "type": "string"
+          },
+          "documentType": {
+            "description": "The Document type: Referral or Discharge Summary",
+            "type": "string"
+          },
+          "source": {
+            "description": "The OpenEHR system from which the Document was retrieved",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "documentsDetailResponse": {
+      "properties": {
+        "sourceId": {
+          "description": "Document Composition Id",
+          "type": "string"
+        },
+        "author_name": {
+          "description": "Document Author",
+          "type": "string"
+        },
+        "author_id": {
+          "description": "Document Author Id",
+          "type": "string"
+        },
+        "author_idScheme": {
+          "description": "Document Author Id Scheme",
+          "type": "string"
+        },
+        "documentDate": {
+          "description": "Document Creation Date",
+          "type": "string"
+        },
+        "facility": {
+          "description": "Hospital / Facility for which the document was created",
+          "type": "string"
+        },
+        "patientIdentifer_mrn": {
+          "description": "Patient Medical Record Number",
+          "type": "string"
+        },
+        "patientIdentifer_mrnType": {
+          "description": "Patient Medical Record Number Type",
+          "type": "string"
+        },
+        "patientIdentifer_oth": {
+          "description": "Patient OTH",
+          "type": "string"
+        },
+        "patientIdentifer_othType": {
+          "description": "Patient OTH Type",
+          "type": "string"
+        },
+        "patientIdentifer_gms": {
+          "description": "Patient GMS",
+          "type": "string"
+        },
+        "patientIdentifer_gmsType": {
+          "description": "Patient GMS Type",
+          "type": "string"
+        },
+        "responsibleProfessional_name": {
+          "description": "Name of Responsible Professional",
+          "type": "string"
+        },
+        "responsibleProfessional_id": {
+          "description": "Id of Responsible Professional",
+          "type": "string"
+        },
+        "responsibleProfessional_idType": {
+          "description": "Id Type of Responsible Professional",
+          "type": "string"
+        },
+        "dischargingOrganisation": {
+          "description": "Discharging Organisation",
+          "type": "string"
+        }
+      }
+    },
+    "postDocumentResponse": {
+      "properties": {
+        "ok": {
+          "type": "string"
         }
       }
     },
@@ -2955,6 +3264,9 @@
           "type": "string"
         },
         "medicationTerminology": {
+          "type": "string"
+        },
+        "doseDirections": {
           "type": "string"
         },
         "route": {
@@ -3399,6 +3711,9 @@
           "type": "string"
         },
         "referralTo": {
+          "type": "string"
+        },
+        "referralReason)": {
           "type": "string"
         }
       }

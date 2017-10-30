@@ -1,0 +1,21 @@
+{
+  "get" : {
+    "tags": ["Ripple"],
+    "description": "Switch UI between React and Angular versions",
+    "security": "=> auth()",
+    "produces": "=> json()",
+    "parameters": [
+      {
+        "name": "uiType",
+        "in": "path",
+        "description": "UI Type: react or angular",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": "=> get('response200.json', 'desc', 'Confirmation of UI swap', 'ref', 'uiResponse')",
+      "403": "=> get('response403.json')"
+    }
+  }
+}

@@ -24,7 +24,7 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  26 January 2017
+  12 October 2017
 
 */
 
@@ -44,6 +44,7 @@ var config = {
   ripple: {
     mode: 'secure'
   },
+  bodyParser: require('body-parser'), // over-rides default setting for limit
   cors: true,
   ssl: false // SSL provided by nginx
   /*
@@ -55,6 +56,10 @@ var config = {
 };
 
 config.addMiddleware = function(bodyParser, app) {
+
+  app.use(bodyParser.json({limit: '1mb'}));
+  app.use(bodyParser.urlencoded({limit: '1mb', extended: true}));
+
   require('body-parser-xml')(bodyParser);
   app.use(bodyParser.xml({
      limit: '1MB',

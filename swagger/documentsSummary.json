@@ -1,0 +1,21 @@
+{
+  "get" : {
+    "tags": ["Documents"],
+    "description": "Get a summary list of documents for a patient",
+    "security": "=> auth()",
+    "produces": "=> json()",
+    "parameters": [
+      {
+        "name": "patientId",
+        "in": "path",
+        "description": "Patient Id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": "=> get('response200.json', 'desc', 'Summary List of Documents', 'ref', 'documentsSummaryResponse')",
+      "403": "=> get('response403.json')"
+    }
+  }
+}

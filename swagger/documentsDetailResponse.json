@@ -1,0 +1,68 @@
+{
+  "properties": {
+    "sourceId": {
+      "description": "Document Composition Id",
+      "type": "string"
+    },
+    "author_name": {
+      "description": "Document Author",
+      "type": "string"
+    },
+    "author_id": {
+      "description": "Document Author Id",
+      "type": "string"
+    },
+    "author_idScheme": {
+      "description": "Document Author Id Scheme",
+      "type": "string"
+    },
+    "documentDate": {
+      "description": "Document Creation Date",
+      "type": "string"
+    },
+    "facility": {
+      "description": "Hospital / Facility for which the document was created",
+      "type": "string"
+    },
+    "patientIdentifer_mrn": {
+      "description": "Patient Medical Record Number",
+      "type": "string"
+    },
+    "patientIdentifer_mrnType": {
+      "description": "Patient Medical Record Number Type",
+      "type": "string"
+    },
+    "patientIdentifer_oth": {
+      "description": "Patient OTH",
+      "type": "string"
+    },
+    "patientIdentifer_othType": {
+      "description": "Patient OTH Type",
+      "type": "string"
+    },
+    "patientIdentifer_gms": {
+      "description": "Patient GMS",
+      "type": "string"
+    },
+    "patientIdentifer_gmsType": {
+      "description": "Patient GMS Type",
+      "type": "string"
+    },
+    "responsibleProfessional_name": {
+      "description": "Name of Responsible Professional",
+      "type": "string"
+    },
+    "responsibleProfessional_id": {
+      "description": "Id of Responsible Professional",
+      "type": "string"
+    },
+    "responsibleProfessional_idType": {
+      "description": "Id Type of Responsible Professional",
+      "type": "string"
+    },
+    "dischargingOrganisation": {
+      "description": "Discharging Organisation",
+      "type": "string"
+    }
+  }
+}

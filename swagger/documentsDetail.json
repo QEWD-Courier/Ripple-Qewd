@@ -1,0 +1,28 @@
+{
+  "get" : {
+    "tags": ["Documents"],
+    "description": "Get the contents of a specified document for a patient",
+    "security": "=> auth()",
+    "produces": "=> json()",
+    "parameters": [
+      {
+        "name": "patientId",
+        "in": "path",
+        "description": "Patient Id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "sourceId",
+        "in": "path",
+        "description": "Document Composition Id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "responses": {
+      "200": "=> get('response200.json', 'desc', 'Document Contents', 'ref', 'documentsDetailResponse')",
+      "403": "=> get('response403.json')"
+    }
+  }
+}

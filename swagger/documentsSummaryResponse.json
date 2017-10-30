@@ -1,0 +1,29 @@
+{
+  "type": "array",
+  "items": {
+    "description": "Summary of documents for the selected patient",
+    "type": "object",
+    "properties": {
+      "sourceId": {
+        "description": "Composition Id of the Document",
+        "type": "string"
+      },
+      "dateCreated": {
+        "description": "Date on which the Document was created",
+        "type": "string"
+      },
+      "author": {
+        "description": "The Documents Author",
+        "type": "string"
+      },
+      "documentType": {
+        "description": "The Document type: Referral or Discharge Summary",
+        "type": "string"
+      },
+      "source": {
+        "description": "The OpenEHR system from which the Document was retrieved",
+        "type": "string"
+      }
+    }
+  }
+}

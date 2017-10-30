@@ -24,7 +24,7 @@
  |  limitations under the License.                                          |
  ----------------------------------------------------------------------------
 
-  30 January 2017
+  12 October 2017
 
 */
 
@@ -47,12 +47,17 @@ var config = {
   database: {
     type: 'redis'
   },
+  bodyParser: require('body-parser'), // over-rides default setting for limit
   cors: true,
   ssl: false // SSL handled by nginx proxy
 
 };
 
 config.addMiddleware = function(bodyParser, app) {
+
+  app.use(bodyParser.json({limit: '1mb'}));
+  app.use(bodyParser.urlencoded({limit: '1mb', extended: true}));
+
   require('body-parser-xml')(bodyParser);
   app.use(bodyParser.xml({
      limit: '1MB',

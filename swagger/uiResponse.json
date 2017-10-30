@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "ok": {
+      "type": "string"
+    },
+    "uiType": {
+      "description": "The UI Type selected (react or angular)",
+      "type": "string"
+    }
+  }
+}
