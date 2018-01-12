@@ -32,6 +32,8 @@ Please follow ALL the steps listed below:
   platform (eg Ubuntu 16.04).  The embedded Redis or Open Source GT.M database is
   used as a high-performance cache and session store.
 
+
+
 2) DO NOT install or configure QEWD-Ripple using the "root" username!  ALWAYS use a non-root username that
 has *sudo* prvileges.
 
@@ -60,7 +62,9 @@ To give the user (*ripple* in this example) sudo privileges:
      usermod -aG sudo ripple
 
 
-3) **Use *one* installer script from this repo to create the QEWD/Node.js-based Ripple 
+
+
+3) **Use *one* installer script from this repo, as the "ripple" user, to create the QEWD/Node.js-based Ripple 
  Middle Tier and UI**.  
 
 *We suggest you either install *qewd-ripple* with Redis as its database*:
@@ -89,6 +93,8 @@ The installer scripts install and configures the following:
 - The QEWD-based Ripple Stack Middle Tier
 - The Ripple Showcase Pulsetile (User Interface) files
 - A MySQL-based Patient Administration (PAS) database
+
+
 
 
 4) When the installer has completed, you'll find two template startup files in the *~/qewd* directory:
@@ -143,11 +149,16 @@ ripple-secure QEWD system.  The qewd-ripple installer includes a self-signed cer
 *sites-available/default* file.
 
 
-5) Point at the browser at the server's IP address and it should start up, eg:
+
+
+5) Startup: IPAddress & Port
+
+Point at the browser at the server's IP address and it should start up, eg:
 
       http://123.221.100.21
 
 **Note**: as a last step, the installer attempts to add an *iptables* rule to map port 3000 to port 80.
+(i.e. nginx is set up as a proxy - it listens on port 80 and maps to port 3000)
 On some systems it has been noticed that this step fails.  If this is the case, then the above 
 URL will not work.  However, if you specify port 3000, it should burst into life, eg:
 
