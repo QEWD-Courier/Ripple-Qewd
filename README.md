@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/RippleOSI/Ripple-Qewd.svg?branch=master)](https://travis-ci.org/RippleOSI/Ripple-Qewd)
 
+[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Ripple-Foundation/Qewd-Ripple)
 
 Email: <code.custodian@ripple.foundation>
 
