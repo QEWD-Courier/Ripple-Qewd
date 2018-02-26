@@ -1,18 +1,25 @@
 select
      a/uid/value as uid,
+     a/composer/name as author,
+     e/ehr_status/subject/external_ref/id/value as subjectId,
+     e/ehr_status/subject/external_ref/namespace as subjectNamespace,
+     a/composer/name as authorName,
+     a/composer/external_ref/id/value as authorIdentifier,
+     a/composer/external_ref/namespace as authorNamespace,
      a/context/start_time/value as meeting_date,
      b_a/time/value as request_date,
      a_a/protocol[at0008]/items[at0011]/value/value as service_team,
      a_b/data[at0001]/items[at0004]/value/value as question,
      a_c/data[at0001]/items[at0002]/value/value as notes,
-     b_a/ism_transition/careflow_step/defining_code/code_string as careflow_step
+     b_a/ism_transition/careflow_step/defining_code/code_string as careflow_step,
+     b_a/protocol[at0015]/items[at0018]/value/value as Service_team
  from EHR e [ehr_id/value = '{{ehrId}}']
  contains COMPOSITION a[openEHR-EHR-COMPOSITION.report.v1]
  contains (
      INSTRUCTION a_a[openEHR-EHR-INSTRUCTION.request.v0] or
      EVALUATION a_b[openEHR-EHR-EVALUATION.reason_for_encounter.v1] or
-         EVALUATION a_c[openEHR-EHR-EVALUATION.recommendation.v1] or
-         ACTION b_a[openEHR-EHR-ACTION.service.v0])
+     EVALUATION a_c[openEHR-EHR-EVALUATION.recommendation.v1] or
+     ACTION b_a[openEHR-EHR-ACTION.service.v0])
  where
      a/name/value='MDT Output Report' and
      b_a/ism_transition/careflow_step/defining_code/code_string='at0026'
