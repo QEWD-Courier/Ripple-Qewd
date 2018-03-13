@@ -1,15 +1,15 @@
 select
-    a/uid/value as uid,
-    a/composer/name as author,
-    a/context/start_time/value as date_created,
-    a_a/activities[at0001]/description[at0009]/items[at0121]/value/value as name,
-    a_a/activities[at0001]/description[at0009]/items[at0121]/value/defining_code/code_string as code,
-    a_a/activities[at0001]/description[at0009]/items[at0121]/value/defining_code/terminology_id/value as terminology,
-    b_a/description[at0001]/items[at0017]/value/value as Test_name,
-    b_a/time/value as date_ordered
+  a/uid/value as uid,
+  a/composer/name as author,
+  a/context/start_time/value as date_created,
+  a_a/activities[at0001]/description[at0009]/items[at0121]/value/value as name,
+  a_a/activities[at0001]/description[at0009]/items[at0121]/value/defining_code/code_string as code,
+  a_a/activities[at0001]/description[at0009]/items[at0121]/value/defining_code/terminology_id/value as terminology,
+  b_a/description[at0001]/items[at0017]/value/value as Test_name,
+  b_a/time/value as date_ordered
 from EHR e[ehr_id/value='{{ehrId}}']
 contains COMPOSITION a
 contains (
-    INSTRUCTION a_a[openEHR-EHR-INSTRUCTION.request-lab_test.v1] or
-    ACTION b_a[openEHR-EHR-ACTION.laboratory_test.v1])
+  INSTRUCTION a_a[openEHR-EHR-INSTRUCTION.request-lab_test.v1] or
+  ACTION b_a[openEHR-EHR-ACTION.laboratory_test.v0])
 where a/name/value='Laboratory order'
