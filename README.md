@@ -65,8 +65,7 @@ To give the user (*ripple* in this example) sudo privileges:
 
 
 
-#### 3) **Use *one* installer script from this repo, as the "ripple" user, to create the QEWD/Node.js-based Ripple 
- Middle Tier and UI**.  
+#### 3) **Use *one* installer script from this repo, as the "ripple" user, to create the QEWD/Node.js-based Ripple Middle Tier and UI**.  
 
 *We suggest you either install *qewd-ripple* with Redis as its database*:
 
