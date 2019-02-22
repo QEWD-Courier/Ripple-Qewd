@@ -35,8 +35,7 @@ Please follow ALL the steps listed below:
 
 
 
-#### 2) DO NOT install or configure QEWD-Ripple using the "root" username!  ALWAYS use a non-root username that
-has *sudo* prvileges.
+#### 2) DO NOT install or configure QEWD-Ripple using the "root" username!  ALWAYS use a non-root username that has *sudo* prvileges.
 
 If your Linux machine / VM only has a root user, you'll need to create a non-root user with sudo privileges.
 
@@ -65,8 +64,7 @@ To give the user (*ripple* in this example) sudo privileges:
 
 
 
-#### 3) **Use *one* installer script from this repo, as the "ripple" user, to create the QEWD/Node.js-based Ripple 
- Middle Tier and UI**.  
+#### 3) Use *one* installer script from this repo, as the "ripple" user, to create the QEWD/Node.js-based Ripple Middle Tier and UI. 
 
 *We suggest you either install *qewd-ripple* with Redis as its database*:
 
