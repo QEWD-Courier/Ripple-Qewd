@@ -1,5 +1,8 @@
 # qewd-ripple
 
+this work is being archived as it has been refactored
+See github.com/qewd-courier for latest related developments
+
 [![Build Status](https://travis-ci.org/RippleOSI/Ripple-Qewd.svg?branch=master)](https://travis-ci.org/RippleOSI/Ripple-Qewd)
 
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Ripple-Foundation/Qewd-Ripple)
